@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>R3 Fleet Tracker</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
+#app{max-width:480px;margin:0 auto;padding-bottom:72px;min-height:100vh}
+.topbar{background:#1F4E78;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.topbar h1{font-size:17px;font-weight:600;flex:1}
+.back-btn{background:rgba(255,255,255,.18);border:none;color:#fff;padding:6px 12px;border-radius:6px;font-size:14px;cursor:pointer}
+.search-wrap{padding:10px 16px;background:#fff;border-bottom:1px solid #e5e5ea}
+.search-wrap input{width:100%;padding:9px 13px;border:1px solid #c7c7cc;border-radius:10px;font-size:16px;background:#f2f2f7}
+.search-wrap input:focus{outline:none;border-color:#1F4E78}
+.sec-label{padding:10px 16px 4px;font-size:12px;font-weight:600;letter-spacing:.04em;color:#8e8e93;text-transform:uppercase}
+.mrow{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #e5e5ea;cursor:pointer;gap:12px;background:#fff}
+.mrow:active{background:#f2f2f7}
+.mthumb{width:44px;height:44px;border-radius:9px;object-fit:cover;border:1px solid #e5e5ea;flex-shrink:0}
+.mbadge{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;letter-spacing:-.01em}
+.mbadge.truck{background:#e1ecf8;color:#185FA5}
+.mbadge.equipment{background:#e4f0d8;color:#3B6D11}
+.minfo{flex:1;min-width:0}
+.mid{font-size:14px;font-weight:600}
+.mdesc{font-size:12px;color:#636366;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.mchev{color:#c7c7cc;font-size:20px}
+.ldot{width:8px;height:8px;border-radius:50%;background:#34c759;flex-shrink:0}
+.view{display:none}
+.view.active{display:block}
+.ph-hero{position:relative;width:100%;height:210px;background:#0d3459;overflow:hidden}
+.ph-hero img{width:100%;height:100%;object-fit:cover}
+.ph-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.35);font-size:13px}
+.ph-no-img .icon{font-size:42px}
+.add-photo-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:20px;padding:6px 13px;font-size:12px;cursor:pointer}
+.photo-strip{display:flex;gap:7px;overflow-x:auto;padding:10px 16px 0;scrollbar-width:none;background:#1F4E78}
+.photo-strip::-webkit-scrollbar{display:none}
+.strip-thumb{width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);cursor:pointer}
+.strip-add{width:56px;height:56px;border-radius:7px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;color:rgba(255,255,255,.6);font-size:24px;background:transparent}
+.ph-info{background:#1F4E78;color:#fff;padding:12px 16px 16px}
+.ph-fleet{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.ph-name{font-size:15px;opacity:.85;margin-top:1px}
+.ph-meta{font-size:12px;opacity:.6;margin-top:3px}
+.toast{background:#1a5c0a;color:#fff;padding:12px 16px;margin:10px 16px 0;border-radius:10px;font-size:14px;font-weight:500;display:none}
+.gps-bar{background:#0d3459;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px;font-size:13px;min-height:36px}
+.gps-bar a{color:#7ec8f7;text-decoration:none;font-weight:600}
+.gps-dot{width:8px;height:8px;border-radius:50%;background:#34c759;flex-shrink:0}
+.gps-dot.searching{background:#ff9f0a;animation:blink 1.2s infinite}
+.gps-dot.err{background:#ff3b30}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.lform{padding:14px 16px}
+.fc{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.fc h3{font-size:11px;font-weight:600;color:#8e8e93;margin-bottom:11px;text-transform:uppercase;letter-spacing:.05em}
+.field{margin-bottom:10px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13px;color:#636366;margin-bottom:4px}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid #c7c7cc;border-radius:9px;font-size:16px;background:#f2f2f7;color:#1c1c1e;font-family:inherit}
+.field input:focus,.field textarea:focus{outline:none;border-color:#1F4E78;background:#fff}
+.field textarea{min-height:75px;resize:vertical}
+.fuel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.fb{padding:9px 4px;border:1px solid #c7c7cc;border-radius:8px;background:#f2f2f7;color:#636366;font-size:13px;cursor:pointer;text-align:center;font-weight:500}
+.fb.sel{background:#1F4E78;color:#fff;border-color:#1F4E78}
+.sbtn{width:100%;padding:14px;background:#1F4E78;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;margin-top:2px}
+.sbtn:active{opacity:.85}
+.logs-sec{padding:0 16px 16px}
+.logs-sec h3{font-size:11px;font-weight:600;color:#8e8e93;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.lentry{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.leh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ldate{font-size:12px;color:#8e8e93}
+.lby{font-size:12px;font-weight:600;color:#636366}
+.lread{font-size:16px;font-weight:600;margin-bottom:2px}
+.lloc{font-size:13px;color:#636366}
+.lissue{font-size:13px;color:#c0392b;margin-top:8px;padding-top:8px;border-top:1px solid #e5e5ea}
+.lissue-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;color:#c0392b}
+.no-logs{font-size:13px;color:#8e8e93;text-align:center;padding:24px 0}
+.master-wrap{padding:16px}
+.master-wrap h2{font-size:20px;font-weight:600;margin-bottom:3px}
+.master-sub{font-size:13px;color:#636366;margin-bottom:14px}
+.me{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.me:active{background:#f2f2f7}
+.met{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
+.mefl{font-size:14px;font-weight:700}
+.medt{font-size:12px;color:#8e8e93}
+.memac{font-size:12px;color:#636366}
+.merd{font-size:13px;margin-top:3px}
+.ipill{display:inline-block;background:#fdecea;color:#c0392b;border-radius:20px;font-size:11px;font-weight:600;padding:2px 9px;margin-top:5px}
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:10}
+.tab{flex:1;padding:10px 8px 8px;text-align:center;cursor:pointer;font-size:11px;color:#8e8e93;border:none;background:none;font-weight:500}
+.tab .ticon{font-size:22px;display:block;margin-bottom:2px}
+.tab.active{color:#1F4E78}
+.empty{text-align:center;padding:40px 20px;color:#8e8e93;font-size:14px}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:100;align-items:center;justify-content:center;flex-direction:column}
+.lightbox.open{display:flex}
+.lightbox img{max-width:96vw;max-height:80vh;border-radius:8px;object-fit:contain}
+.lb-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer}
+.lb-del{margin-top:16px;background:rgba(200,40,40,.8);color:#fff;border:none;padding:9px 22px;border-radius:20px;font-size:14px;cursor:pointer;font-weight:600}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- FLEET LIST VIEW -->
+  <div id="view-list" class="view active">
+    <div class="topbar"><h1>R3 Fleet Tracker</h1></div>
+    <div class="search-wrap"><input id="search" placeholder="Search fleet #, make, or model..." oninput="filterList(this.value)" autocomplete="off"></div>
+    <div id="mlist"></div>
+  </div>
+
+  <!-- MACHINE PROFILE VIEW -->
+  <div id="view-profile" class="view">
+    <div class="topbar">
+      <button class="back-btn" onclick="showView('list')">&#8592; Back</button>
+      <h1 id="ptitle"></h1>
+    </div>
+    <div class="ph-hero" id="hero">
+      <div class="ph-no-img" id="no-img"><div class="icon">&#128247;</div><span>No photo yet — tap to add</span></div>
+      <img id="main-photo" src="" alt="" style="display:none" onclick="openLb(0)">
+      <button class="add-photo-btn" onclick="document.getElementById('photo-input').click()">&#128247; Add photo</button>
+    </div>
+    <div class="photo-strip" id="photo-strip"></div>
+    <div class="ph-info">
+      <div class="ph-fleet" id="ph-fleet"></div>
+      <div class="ph-name" id="ph-name"></div>
+      <div class="ph-meta" id="ph-meta"></div>
+    </div>
+    <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotos(this)">
+    <div class="gps-bar" id="gps-bar"><div class="gps-dot searching" id="gps-dot"></div><span id="gps-text">Getting location...</span></div>
+    <div class="toast" id="toast"></div>
+    <div class="lform">
+      <div class="fc">
+        <h3>Current reading</h3>
+        <div class="field"><label id="rlbl">Hours / Miles</label><input type="number" id="f-reading" placeholder="e.g. 1450" inputmode="numeric"></div>
+        <div class="field"><label>Date</label><input type="date" id="f-date"></div>
+      </div>
+      <div class="fc">
+        <h3>Location</h3>
+        <div class="field"><label>Job site / description (optional)</label><input type="text" id="f-loc" placeholder="Job site name, yard, shop..."></div>
+        <div class="field"><label>GPS coordinates <span id="gps-coord-label" style="color:#8e8e93;font-weight:400"></span></label><input type="text" id="f-gps" placeholder="Detecting..." readonly style="background:#f2f2f7;color:#636366;font-size:13px"></div>
+      </div>
+      <div class="fc">
+        <h3>Fuel level</h3>
+        <div class="fuel-grid">
+          <button class="fb" onclick="selFuel(this,'E')">E</button>
+          <button class="fb" onclick="selFuel(this,'1/4')">1/4</button>
+          <button class="fb" onclick="selFuel(this,'1/2')">1/2</button>
+          <button class="fb" onclick="selFuel(this,'3/4')">3/4</button>
+          <button class="fb" onclick="selFuel(this,'F')">F</button>
+        </div>
+      </div>
+      <div class="fc">
+        <h3>Issues or damage</h3>
+        <div class="field"><label>Describe any problems (leave blank if none)</label><textarea id="f-issues" placeholder="Any issues, leaks, damage, needed repairs..."></textarea></div>
+      </div>
+      <div class="fc">
+        <h3>Reported by</h3>
+        <div class="field"><label>Your name</label><input type="text" id="f-reporter" placeholder="Your name" autocomplete="name"></div>
+      </div>
+      <button class="sbtn" onclick="submitLog()">Save Log Entry</button>
+    </div>
+    <div class="logs-sec">
+      <h3>Previous logs</h3>
+      <div id="mlogs"></div>
+    </div>
+  </div>
+
+  <!-- ALL LOGS VIEW -->
+  <div id="view-master" class="view">
+    <div class="topbar"><h1>All Logs</h1></div>
+    <div class="master-wrap">
+      <h2>Master log</h2>
+      <p class="master-sub">All entries from every machine, newest first.</p>
+      <div id="alllogs"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tabbar">
+  <button class="tab active" id="tab-fleet" onclick="showView('list')"><span class="ticon">&#128666;</span>Fleet</button>
+  <button class="tab" id="tab-logs" onclick="showView('master')"><span class="ticon">&#128203;</span>All Logs</button>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLb()">&#10005;</button>
+  <img id="lb-img" src="" alt="Full size photo">
+  <button class="lb-del" onclick="delPhoto()">&#128465; Remove photo</button>
+</div>
+
+<script>
+const MACHINES=[{"id":"P100","make":"Ford","model":"F250","type":"Salvaged","year":"2022","cat":"truck","operator":""},{"id":"P21","make":"Ford","model":"Explorer","type":"Staff car","year":"2002","cat":"truck","operator":""},{"id":"P25","make":"Sterling","model":"L7501","type":"Water Truck","year":"1998","cat":"truck","operator":""},{"id":"P32","make":"GMC","model":"7500","type":"2K gal. Water Truck","year":"1998","cat":"truck","operator":""},{"id":"P36","make":"Ford","model":"Fusion","type":"Green Staff car","year":"2013","cat":"truck","operator":"Jamie Trumble"},{"id":"P37","make":"Ford","model":"F450","type":"1-1/2 ton (D)","year":"2013","cat":"truck","operator":"Zane Payne"},{"id":"P40","make":"International","model":"","type":"2K gal. Water Truck","year":"1990","cat":"truck","operator":""},{"id":"P43","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P44","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P45","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P46","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P49","make":"Ford","model":"F450","type":"1-ton (D)","year":"2015","cat":"truck","operator":"Nelson Cuervo"},{"id":"P53","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Victor Carcoba"},{"id":"P54","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Cesar Flores"},{"id":"P55","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Jim Rowe"},{"id":"P56","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Billy Palmer"},{"id":"P59","make":"Freightliner","model":"M2","type":"Dump Truck","year":"2012","cat":"truck","operator":""},{"id":"P60","make":"Ford","model":"F750","type":"2K Water Truck","year":"2009","cat":"truck","operator":""},{"id":"P63","make":"Ford","model":"F150","type":"P/UP","year":"2017","cat":"truck","operator":"Manuel Tinajero"},{"id":"P64","make":"Ford","model":"F350","type":"Box/Dump (G)","year":"2016","cat":"truck","operator":""},{"id":"P65","make":"International","model":"4300","type":"5 Y. dump truck","year":"2014","cat":"truck","operator":""},{"id":"P67","make":"Ford","model":"Ford","type":"Water Truck","year":"2013","cat":"truck","operator":""},{"id":"P68","make":"Itnl","model":"Comm","type":"Commercial","year":"2015","cat":"truck","operator":""},{"id":"P69","make":"Intl","model":"Comm","type":"Water Truck","year":"2015","cat":"truck","operator":""},{"id":"P71","make":"Ford","model":"F150","type":"P/UP","year":"2020","cat":"truck","operator":"Jim Rowe"},{"id":"P72","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Bobby Witt"},{"id":"P73","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Joshua Fristad JR"},{"id":"P75","make":"Ford","model":"F450","type":"1-ton (D)","year":"2020","cat":"truck","operator":""},{"id":"P76","make":"Chevy","model":"3500","type":"1-ton","year":"2018","cat":"truck","operator":""},{"id":"P77","make":"Ford","model":"F250","type":"3/4-ton","year":"2019","cat":"truck","operator":"Everett Thompson"},{"id":"P78","make":"Ford","model":"F350","type":"1-ton (G)","year":"2021","cat":"truck","operator":"Cameron Falkowsky"},{"id":"P79","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Mark"},{"id":"P84","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Don Huse"},{"id":"P85","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Hugo Cardoso"},{"id":"P86","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Mike Nelson"},{"id":"P87","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Ruben Resendez"},{"id":"P91","make":"RAM","model":"2500","type":"P/UP","year":"2022","cat":"truck","operator":"Alan Rock"},{"id":"P92","make":"FORD","model":"EXPLORER","type":"","year":"2023","cat":"truck","operator":"Mark Trumble"},{"id":"P93","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Mark Knip"},{"id":"P94","make":"FORD","model":"Explorer","type":"SALVAGED","year":"2020","cat":"truck","operator":"Eugene Fig"},{"id":"P95","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Jacob Benthal"},{"id":"P96","make":"CHEVY","model":"3500","type":"SALVAGED","year":"2022","cat":"truck","operator":"Rollin Ryan"},{"id":"P97","make":"FORD","model":"F250","type":"SALVAGED","year":"2024","cat":"truck","operator":"Miguel Roman"},{"id":"P98","make":"Ford","model":"F150","type":"Salvaged","year":"2023","cat":"truck","operator":"Matt Trumble"},{"id":"P99","make":"Dodge/Ram","model":"2500","type":"Salvaged","year":"2022","cat":"truck","operator":""},{"id":"T1","make":"Hyundai","model":"HL760-7","type":"Wheel Loader","year":"","cat":"equipment","operator":""},{"id":"T10","make":"Volvo","model":"EC330BLC","type":"Excavator","year":"2006","cat":"equipment","operator":""},{"id":"T11","make":"Hyundai","model":"HL760-7A","type":"Wheel Loader","year":"2007","cat":"equipment","operator":""},{"id":"T17","make":"Ingersol","model":"","type":"Compressor","year":"","cat":"equipment","operator":""},{"id":"T19","make":"Sullair","model":"","type":"Compressor","year":"","cat":"equipment","operator":""},{"id":"T29","make":"Bobcat","model":"334D","type":"7.5K Mini-Excavator","year":"2004","cat":"equipment","operator":""},{"id":"T32","make":"Bobcat","model":"Sweeper 60","type":"sweeper attachment","year":"","cat":"equipment","operator":""},{"id":"T33","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T34","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T35","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":""},{"id":"T36","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T37","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T38","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":""},{"id":"T39","make":"Cat","model":"GP25K","type":"5000 LB forklift","year":"","cat":"equipment","operator":""},{"id":"T41","make":"Hyundai","model":"HX330L","type":"75K Excavator","year":"2016","cat":"equipment","operator":""},{"id":"T42","make":"Hyundai","model":"HX220L","type":"50K Excavator","year":"2016","cat":"equipment","operator":""},{"id":"T43","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T44","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T45","make":"Hyundai","model":"HX145LCR","type":"34K midi-ex 0-tail swing","year":"","cat":"equipment","operator":""},{"id":"T46","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T47","make":"Hyundai","model":"HX300","type":"70K Excavator","year":"2017","cat":"equipment","operator":""},{"id":"T48","make":"Bobcat","model":"S650","type":"High Flow Skidsteer","year":"2014","cat":"equipment","operator":""},{"id":"T49","make":"Bobcat","model":"AP450","type":"Universal Cold Planer","year":"2014","cat":"equipment","operator":""},{"id":"T50","make":"Bobcat","model":"72SB","type":"sweeper attachment","year":"2014","cat":"equipment","operator":""},{"id":"T51","make":"Wanco","model":"SA6000-WLT","type":"(4) 1000W Diesel light twr","year":"2017","cat":"equipment","operator":""},{"id":"T52","make":"Hyundai","model":"HL760-9A","type":"4.5 Y loader","year":"2013","cat":"equipment","operator":""},{"id":"T53","make":"Hyundai","model":"HL960","type":"4.5 Y.loader","year":"2017","cat":"equipment","operator":""},{"id":"T54","make":"Multi Quip","model":"MC64PH","type":"6 cu. Ft. cement mixer","year":"2015","cat":"equipment","operator":""},{"id":"T55","make":"Hyundai","model":"HL960","type":"4.5 Y loader","year":"2017","cat":"equipment","operator":""},{"id":"T56","make":"Hyundai","model":"R35Z-9A","type":"9K mini excavator","year":"2017","cat":"equipment","operator":""},{"id":"T57","make":"Hyundai","model":"R80CR-9A","type":"18.5K mini excavator","year":"2015","cat":"equipment","operator":""},{"id":"T58","make":"Bomag","model":"BW120","type":"3-5 Ton Roller","year":"2016","cat":"equipment","operator":""},{"id":"T59","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":""},{"id":"T60","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":""},{"id":"T61","make":"John Deere","model":"210LEP","type":"Skip Loader","year":"2016","cat":"equipment","operator":""},{"id":"T62","make":"LiuGong","model":"950E","type":"100K Excavator","year":"2020","cat":"equipment","operator":""},{"id":"T63","make":"ASV","model":"VT70","type":"Track Skid Steer","year":"2017","cat":"equipment","operator":""},{"id":"T64","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"","cat":"equipment","operator":""},{"id":"T66","make":"ASV","model":"RT40","type":"Track Mini Skid Steer","year":"2018","cat":"equipment","operator":""},{"id":"T67","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"2018","cat":"equipment","operator":""},{"id":"T68","make":"ASV","model":"RS60","type":"Skid Steer","year":"2018","cat":"equipment","operator":""},{"id":"T69","make":"Yamaha","model":"YXR66","type":"Rhino","year":"2007","cat":"equipment","operator":""},{"id":"T70","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T71","make":"Case","model":"CX17C","type":"Mini Excavator","year":"","cat":"equipment","operator":""}];
+
+const LS_LOGS='r3_fleet_logs', LS_PHOTOS='r3_fleet_photos';
+let cur=null, fuelVal='', lbIdx=null;
+let logs={}, photos={};
+
+function loadData(){
+  try{const v=localStorage.getItem(LS_LOGS); if(v)logs=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(LS_PHOTOS); if(v)photos=JSON.parse(v);}catch(e){}
+}
+function saveLogs(){try{localStorage.setItem(LS_LOGS,JSON.stringify(logs));}catch(e){alert('Storage full — try removing some photos.');}}
+function savePhotos(){try{localStorage.setItem(LS_PHOTOS,JSON.stringify(photos));}catch(e){alert('Storage full — photos could not be saved.');}}
+
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
+
+function showView(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  if(v==='list')document.getElementById('tab-fleet').classList.add('active');
+  if(v==='master'){document.getElementById('tab-logs').classList.add('active');renderMaster();}
+}
+
+function renderList(list){
+  let html='', lastCat='';
+  list.forEach(m=>{
+    const cat=m.cat==='truck'?'Trucks':'Heavy Equipment';
+    if(cat!==lastCat){html+=`<div class="sec-label">${cat}</div>`;lastCat=cat;}
+    const pp=photos[m.id]||[];
+    const ll=logs[m.id]||[];
+    const thumb=pp.length?`<img class="mthumb" src="${pp[0]}" alt="${m.id}">`:`<div class="mbadge ${m.cat}">${m.cat==='truck'?'TRK':'EQP'}</div>`;
+    const desc=[m.make,m.model,m.type,m.year].filter(Boolean).join(' · ');
+    html+=`<div class="mrow" onclick="openMachine('${m.id}')">${thumb}<div class="minfo"><div class="mid">${m.id}${m.operator?' — '+m.operator:''}</div><div class="mdesc">${desc}</div></div>${ll.length?'<div class="ldot"></div>':''}<div class="mchev">›</div></div>`;
+  });
+  if(!list.length)html='<div class="empty">No machines match your search.</div>';
+  document.getElementById('mlist').innerHTML=html;
+}
+
+function filterList(q){
+  q=q.toLowerCase();
+  renderList(MACHINES.filter(m=>m.id.toLowerCase().includes(q)||m.make.toLowerCase().includes(q)||m.model.toLowerCase().includes(q)||m.type.toLowerCase().includes(q)||m.operator.toLowerCase().includes(q)));
+}
+
+function openMachine(id){
+  cur=MACHINES.find(m=>m.id===id);
+  if(!cur)return;
+  document.getElementById('ptitle').textContent=id;
+  document.getElementById('ph-fleet').textContent=id;
+  document.getElementById('ph-name').textContent=[cur.make,cur.model].filter(Boolean).join(' ');
+  document.getElementById('ph-meta').textContent=[cur.type,cur.year].filter(Boolean).join(' · ')+(cur.operator?' · '+cur.operator:'');
+  document.getElementById('rlbl').textContent=cur.cat==='truck'?'Current mileage (odometer)':'Current hours (hour meter)';
+  document.getElementById('f-date').value=new Date().toISOString().slice(0,10);
+  ['f-reading','f-loc','f-issues','f-reporter'].forEach(id=>document.getElementById(id).value='');
+  fuelVal=''; document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('toast').style.display='none';
+  renderPhotos(); renderMachineLogs(id);
+  showView('profile');
+  window.scrollTo(0,0);
+  startGPS();
+}
+
+function renderPhotos(){
+  const pp=photos[cur.id]||[];
+  const main=document.getElementById('main-photo');
+  const noImg=document.getElementById('no-img');
+  if(pp.length){main.src=pp[0];main.style.display='block';noImg.style.display='none';}
+  else{main.style.display='none';noImg.style.display='flex';}
+  let html='';
+  pp.forEach((p,i)=>html+=`<img class="strip-thumb" src="${p}" alt="Photo ${i+1}" onclick="openLb(${i})">`);
+  html+=`<div class="strip-add" onclick="document.getElementById('photo-input').click()">+</div>`;
+  document.getElementById('photo-strip').innerHTML=html;
+}
+
+function compress(dataUrl,maxW,q){
+  return new Promise(res=>{
+    const img=new Image();
+    img.onload=()=>{
+      let w=img.width,h=img.height;
+      if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}
+      const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      res(cv.toDataURL('image/jpeg',q));
+    };
+    img.src=dataUrl;
+  });
+}
+
+async function handlePhotos(input){
+  if(!cur||!input.files.length)return;
+  if(!photos[cur.id])photos[cur.id]=[];
+  for(const file of input.files){
+    const reader=new FileReader();
+    const dataUrl=await new Promise(res=>{reader.onload=e=>res(e.target.result);reader.readAsDataURL(file);});
+    photos[cur.id].push(await compress(dataUrl,1600,.78));
+  }
+  savePhotos(); renderPhotos(); renderList(MACHINES);
+  toast(input.files.length===1?'Photo saved':'Photos saved');
+  input.value='';
+}
+
+function openLb(i){lbIdx=i;document.getElementById('lb-img').src=(photos[cur.id]||[])[i];document.getElementById('lightbox').classList.add('open');}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');lbIdx=null;}
+function delPhoto(){if(lbIdx===null)return;photos[cur.id].splice(lbIdx,1);savePhotos();closeLb();renderPhotos();renderList(MACHINES);toast('Photo removed');}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb();});
+
+function selFuel(btn,v){fuelVal=v;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+
+// --- GPS ---
+let gpsCoords=null;
+function startGPS(){
+  const dot=document.getElementById('gps-dot');
+  const txt=document.getElementById('gps-text');
+  const inp=document.getElementById('f-gps');
+  const lbl=document.getElementById('gps-coord-label');
+  dot.className='gps-dot searching';
+  txt.innerHTML='Getting location...';
+  inp.value='Detecting...';
+  gpsCoords=null;
+  if(!navigator.geolocation){
+    dot.className='gps-dot err';
+    txt.textContent='GPS not available on this device';
+    inp.value='Unavailable';
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      const lat=pos.coords.latitude.toFixed(5);
+      const lng=pos.coords.longitude.toFixed(5);
+      const acc=Math.round(pos.coords.accuracy);
+      gpsCoords={lat,lng,acc};
+      dot.className='gps-dot';
+      const mapsUrl=`https://www.google.com/maps?q=${lat},${lng}`;
+      txt.innerHTML=`&#128205; <a href="${mapsUrl}" target="_blank">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;
+      inp.value=`${lat}, ${lng}`;
+      lbl.textContent=`— accurate to ±${acc}m`;
+    },
+    err=>{
+      dot.className='gps-dot err';
+      const msgs={1:'Location permission denied — allow in phone settings',2:'GPS signal not found',3:'GPS timed out'};
+      txt.textContent=msgs[err.code]||'Could not get location';
+      inp.value='Location unavailable';
+    },
+    {enableHighAccuracy:true,timeout:12000,maximumAge:0}
+  );
+}
+
+function submitLog(){
+  if(!cur)return;
+  const entry={
+    ts:new Date().toISOString(),
+    date:document.getElementById('f-date').value,
+    reading:document.getElementById('f-reading').value,
+    loc:document.getElementById('f-loc').value,
+    gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',
+    gpsAcc:gpsCoords?gpsCoords.acc:null,
+    fuel:fuelVal,
+    issues:document.getElementById('f-issues').value,
+    reporter:document.getElementById('f-reporter').value
+  };
+  if(!logs[cur.id])logs[cur.id]=[];
+  logs[cur.id].unshift(entry);
+  saveLogs();
+  ['f-reading','f-loc','f-issues','f-reporter'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-gps').value='Detecting...';
+  fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
+  renderMachineLogs(cur.id);renderList(MACHINES);
+  toast('Log saved');
+  startGPS(); // re-ping for next entry
+}
+
+function renderMachineLogs(id){
+  const ll=logs[id]||[];
+  const el=document.getElementById('mlogs');
+  if(!ll.length){el.innerHTML='<div class="no-logs">No logs yet.</div>';return;}
+  el.innerHTML=ll.map(l=>{
+    const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a>`:
+      l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:'';
+    const locLine=l.loc&&l.gps?`<div class="lloc">&#128205; ${l.loc}</div>${mapsLink}`:mapsLink;
+    return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${locLine}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
+  }).join('');
+}
+
+function renderMaster(){
+  const all=[];
+  Object.entries(logs).forEach(([id,ll])=>{const m=MACHINES.find(x=>x.id===id);ll.forEach(l=>all.push({...l,mid:id,m}));});
+  all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  const el=document.getElementById('alllogs');
+  if(!all.length){el.innerHTML='<div class="empty">No logs yet.<br>Scan a QR code or tap a machine to log it.</div>';return;}
+  el.innerHTML=all.map(l=>{
+    const gpsLink=l.gps?`<div style="margin-top:3px"><a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a></div>`:'';
+    return`<div class="me" onclick="openMachine('${l.mid}')"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div>${l.reading?`<div class="merd">${Number(l.reading).toLocaleString()} ${l.m&&l.m.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}${l.loc?' · '+l.loc:''}</div>`:''} ${gpsLink}${l.issues?'<span class="ipill">&#9888; Issue reported</span>':''}</div>`;
+  }).join('');
+}
+
+// On load: check URL for ?machine=ID to deep-link directly from QR scan
+loadData();
+renderList(MACHINES);
+const urlM=new URLSearchParams(location.search).get('machine');
+if(urlM){const m=MACHINES.find(x=>x.id===urlM);if(m)openMachine(m.id);}
+</script>
+</body>
+</html>
