@@ -1,3 +1,6 @@
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -395,7 +398,9 @@ function filterList(q){
 }
  
 /* ---- Open machine ---- */
-function openMachine(id){
+// fromScan=true only when opened via QR code URL — GPS fires automatically
+// fromScan=false when browsing the list manually — GPS is off unless user taps to enable it
+function openMachine(id, fromScan){
   cur=MACHINES.find(m=>m.id===id);
   if(!cur)return;
   document.getElementById('ptitle').textContent=id;
@@ -407,14 +412,18 @@ function openMachine(id){
   ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
   fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
   document.getElementById('toast').style.display='none';
-  // Switch to log tab by default
+  gpsCoords=null;
   switchProfTab('log');
   renderPhotos();
   renderMachineLogs(id);
   buildWAChecklist();
   showView('profile');
   window.scrollTo(0,0);
-  startGPS();
+  if(fromScan){
+    startGPS(); // QR scan — auto ping
+  } else {
+    setGPSIdle(); // browsing — show tap-to-enable instead
+  }
 }
  
 /* ---- Photos ---- */
@@ -448,13 +457,45 @@ function delPhoto(){if(lbIdx===null)return;photos[cur.id].splice(lbIdx,1);savePh
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb();});
  
 /* ---- GPS ---- */
+function setGPSIdle(){
+  // Browsing mode — GPS not active, show a manual trigger button
+  const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text');
+  const inp=document.getElementById('f-gps'),lbl=document.getElementById('gps-coord-label');
+  dot.className='gps-dot err';
+  txt.innerHTML='&#128205; Location not active &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;cursor:pointer">Tap to enable</button>';
+  if(inp)inp.value='Not captured';
+  if(lbl)lbl.textContent='';
+  gpsCoords=null;
+}
+ 
 function startGPS(){
-  const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text'),inp=document.getElementById('f-gps'),lbl=document.getElementById('gps-coord-label');
-  dot.className='gps-dot searching';txt.innerHTML='Getting location...';if(inp)inp.value='Detecting...';gpsCoords=null;
-  if(!navigator.geolocation){dot.className='gps-dot err';txt.textContent='GPS not available';return;}
+  const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text');
+  const inp=document.getElementById('f-gps'),lbl=document.getElementById('gps-coord-label');
+  dot.className='gps-dot searching';
+  txt.innerHTML='Getting location...';
+  if(inp)inp.value='Detecting...';
+  gpsCoords=null;
+  if(!navigator.geolocation){
+    dot.className='gps-dot err';
+    txt.textContent='GPS not available on this device';
+    return;
+  }
   navigator.geolocation.getCurrentPosition(
-    pos=>{const lat=pos.coords.latitude.toFixed(5),lng=pos.coords.longitude.toFixed(5),acc=Math.round(pos.coords.accuracy);gpsCoords={lat,lng,acc};dot.className='gps-dot';const url=`https://www.google.com/maps?q=${lat},${lng}`;txt.innerHTML=`&#128205; <a href="${url}" target="_blank">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;if(inp)inp.value=`${lat}, ${lng}`;if(lbl)lbl.textContent=`— ±${acc}m`;},
-    err=>{dot.className='gps-dot err';const msgs={1:'Location denied',2:'GPS not found',3:'GPS timed out'};txt.textContent=msgs[err.code]||'Location unavailable';if(inp)inp.value='Unavailable';},
+    pos=>{
+      const lat=pos.coords.latitude.toFixed(5),lng=pos.coords.longitude.toFixed(5),acc=Math.round(pos.coords.accuracy);
+      gpsCoords={lat,lng,acc};
+      dot.className='gps-dot';
+      const url=`https://www.google.com/maps?q=${lat},${lng}`;
+      txt.innerHTML=`&#128205; <a href="${url}" target="_blank" style="color:#7ec8f7">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;
+      if(inp)inp.value=`${lat}, ${lng}`;
+      if(lbl)lbl.textContent=`— ±${acc}m`;
+    },
+    err=>{
+      dot.className='gps-dot err';
+      const msgs={1:'Location permission denied — check phone settings',2:'GPS signal not found',3:'GPS timed out'};
+      txt.innerHTML=`${msgs[err.code]||'Location unavailable'} &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;cursor:pointer">Retry</button>`;
+      if(inp)inp.value='Unavailable';
+    },
     {enableHighAccuracy:true,timeout:12000,maximumAge:0}
   );
 }
@@ -470,7 +511,9 @@ function submitLog(){
   ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
   const gi=document.getElementById('f-gps');if(gi)gi.value='Detecting...';
   fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
-  renderMachineLogs(cur.id);renderList(MACHINES);toast('Log saved');startGPS();
+  renderMachineLogs(cur.id);renderList(MACHINES);toast('Log saved');
+  // Re-ping only if GPS was already active (scan mode)
+  if(gpsCoords)startGPS();
 }
 function renderMachineLogs(id){
   const ll=logs[id]||[];
@@ -642,7 +685,8 @@ function renderMaster(t){
 loadData();
 renderList(MACHINES);
 const urlM=new URLSearchParams(location.search).get('machine');
-if(urlM){const m=MACHINES.find(x=>x.id===urlM);if(m)openMachine(m.id);}
+// Only pass fromScan=true when machine= is in the URL (i.e. a real QR code scan)
+if(urlM){const m=MACHINES.find(x=>x.id===urlM);if(m)openMachine(m.id, true);}
 </script>
 </body>
 </html>
