@@ -20,7 +20,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .mrow{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #e5e5ea;cursor:pointer;gap:12px;background:#fff}
 .mrow:active{background:#f2f2f7}
 .mthumb{width:44px;height:44px;border-radius:9px;object-fit:cover;border:1px solid #e5e5ea;flex-shrink:0}
-.mbadge{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;letter-spacing:-.01em}
+.mbadge{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
 .mbadge.truck{background:#e1ecf8;color:#185FA5}
 .mbadge.equipment{background:#e4f0d8;color:#3B6D11}
 .minfo{flex:1;min-width:0}
@@ -30,26 +30,32 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .ldot{width:8px;height:8px;border-radius:50%;background:#34c759;flex-shrink:0}
 .view{display:none}
 .view.active{display:block}
-.ph-hero{position:relative;width:100%;height:210px;background:#0d3459;overflow:hidden}
+.ph-hero{position:relative;width:100%;height:200px;background:#0d3459;overflow:hidden}
 .ph-hero img{width:100%;height:100%;object-fit:cover}
 .ph-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.35);font-size:13px}
-.ph-no-img .icon{font-size:42px}
+.ph-no-img .icon{font-size:40px}
 .add-photo-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:20px;padding:6px 13px;font-size:12px;cursor:pointer}
-.photo-strip{display:flex;gap:7px;overflow-x:auto;padding:10px 16px 0;scrollbar-width:none;background:#1F4E78}
+.photo-strip{display:flex;gap:7px;overflow-x:auto;padding:8px 16px;scrollbar-width:none;background:#1F4E78}
 .photo-strip::-webkit-scrollbar{display:none}
-.strip-thumb{width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);cursor:pointer}
-.strip-add{width:56px;height:56px;border-radius:7px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;color:rgba(255,255,255,.6);font-size:24px;background:transparent}
-.ph-info{background:#1F4E78;color:#fff;padding:12px 16px 16px}
-.ph-fleet{font-size:28px;font-weight:700;letter-spacing:-.02em}
-.ph-name{font-size:15px;opacity:.85;margin-top:1px}
-.ph-meta{font-size:12px;opacity:.6;margin-top:3px}
-.toast{background:#1a5c0a;color:#fff;padding:12px 16px;margin:10px 16px 0;border-radius:10px;font-size:14px;font-weight:500;display:none}
-.gps-bar{background:#0d3459;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px;font-size:13px;min-height:36px}
+.strip-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);cursor:pointer}
+.strip-add{width:52px;height:52px;border-radius:7px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;color:rgba(255,255,255,.6);font-size:22px;background:transparent}
+.ph-info{background:#1F4E78;color:#fff;padding:10px 16px 14px}
+.ph-fleet{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.ph-name{font-size:14px;opacity:.85;margin-top:1px}
+.ph-meta{font-size:12px;opacity:.6;margin-top:2px}
+.gps-bar{background:#0d3459;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px;font-size:12px;min-height:34px}
 .gps-bar a{color:#7ec8f7;text-decoration:none;font-weight:600}
 .gps-dot{width:8px;height:8px;border-radius:50%;background:#34c759;flex-shrink:0}
 .gps-dot.searching{background:#ff9f0a;animation:blink 1.2s infinite}
 .gps-dot.err{background:#ff3b30}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+/* Profile tab switcher */
+.prof-tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea}
+.prof-tab{flex:1;padding:11px 8px;text-align:center;font-size:13px;font-weight:600;color:#8e8e93;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent}
+.prof-tab.active{color:#1F4E78;border-bottom-color:#1F4E78}
+.prof-panel{display:none}
+.prof-panel.active{display:block}
+.toast{background:#1a5c0a;color:#fff;padding:12px 16px;margin:10px 16px 0;border-radius:10px;font-size:14px;font-weight:500;display:none}
 .lform{padding:14px 16px}
 .fc{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
 .fc h3{font-size:11px;font-weight:600;color:#8e8e93;margin-bottom:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -58,7 +64,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .field label{display:block;font-size:13px;color:#636366;margin-bottom:4px}
 .field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid #c7c7cc;border-radius:9px;font-size:16px;background:#f2f2f7;color:#1c1c1e;font-family:inherit}
 .field input:focus,.field textarea:focus{outline:none;border-color:#1F4E78;background:#fff}
-.field textarea{min-height:75px;resize:vertical}
+.field textarea{min-height:70px;resize:vertical}
 .fuel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
 .fb{padding:9px 4px;border:1px solid #c7c7cc;border-radius:8px;background:#f2f2f7;color:#636366;font-size:13px;cursor:pointer;text-align:center;font-weight:500}
 .fb.sel{background:#1F4E78;color:#fff;border-color:#1F4E78}
@@ -70,11 +76,45 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .leh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .ldate{font-size:12px;color:#8e8e93}
 .lby{font-size:12px;font-weight:600;color:#636366}
-.lread{font-size:16px;font-weight:600;margin-bottom:2px}
+.lread{font-size:15px;font-weight:600;margin-bottom:2px}
 .lloc{font-size:13px;color:#636366}
 .lissue{font-size:13px;color:#c0392b;margin-top:8px;padding-top:8px;border-top:1px solid #e5e5ea}
 .lissue-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;color:#c0392b}
 .no-logs{font-size:13px;color:#8e8e93;text-align:center;padding:24px 0}
+/* Walk-around checklist */
+.wa-form{padding:14px 16px}
+.wa-section{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wa-section-hdr{background:#1F4E78;color:#fff;padding:10px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.wa-item{display:flex;align-items:center;padding:12px 14px;border-bottom:1px solid #f2f2f7;gap:12px}
+.wa-item:last-child{border-bottom:none}
+.wa-label{flex:1;font-size:14px;color:#1c1c1e}
+.wa-label span{display:block;font-size:11px;color:#8e8e93;margin-top:1px}
+.wa-btns{display:flex;gap:6px;flex-shrink:0}
+.wa-btn{width:38px;height:32px;border-radius:7px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:13px;cursor:pointer;font-weight:600;color:#636366}
+.wa-btn.ok{background:#e4f0d8;border-color:#97c459;color:#3B6D11}
+.wa-btn.bad{background:#fdecea;border-color:#e8a09a;color:#c0392b}
+.wa-notes-wrap{padding:12px 14px;border-top:1px solid #f2f2f7}
+.wa-notes-wrap textarea{width:100%;padding:9px 11px;border:1px solid #c7c7cc;border-radius:8px;font-size:14px;font-family:inherit;background:#f2f2f7;resize:vertical;min-height:60px}
+.wa-progress{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wa-prog-bar-wrap{background:#f2f2f7;border-radius:20px;height:8px;margin:8px 0 4px;overflow:hidden}
+.wa-prog-bar{background:#1F4E78;height:100%;border-radius:20px;transition:width .3s}
+.wa-prog-txt{font-size:12px;color:#8e8e93;display:flex;justify-content:space-between}
+.wa-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.wa-stat{text-align:center;padding:10px;border-radius:8px;font-size:12px;font-weight:600}
+.wa-stat.ok{background:#e4f0d8;color:#3B6D11}
+.wa-stat.bad{background:#fdecea;color:#c0392b}
+.wa-stat.skip{background:#f2f2f7;color:#8e8e93}
+.wa-stat big{display:block;font-size:22px;font-weight:700}
+/* Checklist history */
+.wentry{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06);cursor:pointer}
+.wentry-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.wentry-date{font-size:13px;font-weight:600}
+.wentry-by{font-size:12px;color:#8e8e93}
+.wentry-pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.wpill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:12px}
+.wpill.ok{background:#e4f0d8;color:#3B6D11}
+.wpill.bad{background:#fdecea;color:#c0392b}
+/* Master view */
 .master-wrap{padding:16px}
 .master-wrap h2{font-size:20px;font-weight:600;margin-bottom:3px}
 .master-sub{font-size:13px;color:#636366;margin-bottom:14px}
@@ -86,9 +126,12 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .memac{font-size:12px;color:#636366}
 .merd{font-size:13px;margin-top:3px}
 .ipill{display:inline-block;background:#fdecea;color:#c0392b;border-radius:20px;font-size:11px;font-weight:600;padding:2px 9px;margin-top:5px}
+.master-tabs{display:flex;gap:8px;margin-bottom:14px}
+.mtab{flex:1;padding:9px;text-align:center;border-radius:9px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:13px;font-weight:600;color:#636366;cursor:pointer}
+.mtab.active{background:#1F4E78;color:#fff;border-color:#1F4E78}
 .tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:10}
 .tab{flex:1;padding:10px 8px 8px;text-align:center;cursor:pointer;font-size:11px;color:#8e8e93;border:none;background:none;font-weight:500}
-.tab .ticon{font-size:22px;display:block;margin-bottom:2px}
+.tab .ticon{font-size:20px;display:block;margin-bottom:2px}
 .tab.active{color:#1F4E78}
 .empty{text-align:center;padding:40px 20px;color:#8e8e93;font-size:14px}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:100;align-items:center;justify-content:center;flex-direction:column}
@@ -102,21 +145,21 @@ input[type=file]{display:none}
 <body>
 <div id="app">
 
-  <!-- FLEET LIST VIEW -->
+  <!-- FLEET LIST -->
   <div id="view-list" class="view active">
     <div class="topbar"><h1>R3 Fleet Tracker</h1></div>
     <div class="search-wrap"><input id="search" placeholder="Search fleet #, make, or model..." oninput="filterList(this.value)" autocomplete="off"></div>
     <div id="mlist"></div>
   </div>
 
-  <!-- MACHINE PROFILE VIEW -->
+  <!-- MACHINE PROFILE -->
   <div id="view-profile" class="view">
     <div class="topbar">
       <button class="back-btn" onclick="showView('list')">&#8592; Back</button>
       <h1 id="ptitle"></h1>
     </div>
-    <div class="ph-hero" id="hero">
-      <div class="ph-no-img" id="no-img"><div class="icon">&#128247;</div><span>No photo yet — tap to add</span></div>
+    <div class="ph-hero">
+      <div class="ph-no-img" id="no-img"><div class="icon">&#128247;</div><span>No photo — tap to add</span></div>
       <img id="main-photo" src="" alt="" style="display:none" onclick="openLb(0)">
       <button class="add-photo-btn" onclick="document.getElementById('photo-input').click()">&#128247; Add photo</button>
     </div>
@@ -126,53 +169,106 @@ input[type=file]{display:none}
       <div class="ph-name" id="ph-name"></div>
       <div class="ph-meta" id="ph-meta"></div>
     </div>
+    <div class="gps-bar"><div class="gps-dot searching" id="gps-dot"></div><span id="gps-text">Getting location...</span></div>
     <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotos(this)">
-    <div class="gps-bar" id="gps-bar"><div class="gps-dot searching" id="gps-dot"></div><span id="gps-text">Getting location...</span></div>
-    <div class="toast" id="toast"></div>
-    <div class="lform">
-      <div class="fc">
-        <h3>Current reading</h3>
-        <div class="field"><label id="rlbl">Hours / Miles</label><input type="number" id="f-reading" placeholder="e.g. 1450" inputmode="numeric"></div>
-        <div class="field"><label>Date</label><input type="date" id="f-date"></div>
-      </div>
-      <div class="fc">
-        <h3>Location</h3>
-        <div class="field"><label>Job site / description (optional)</label><input type="text" id="f-loc" placeholder="Job site name, yard, shop..."></div>
-        <div class="field"><label>GPS coordinates <span id="gps-coord-label" style="color:#8e8e93;font-weight:400"></span></label><input type="text" id="f-gps" placeholder="Detecting..." readonly style="background:#f2f2f7;color:#636366;font-size:13px"></div>
-      </div>
-      <div class="fc">
-        <h3>Fuel level</h3>
-        <div class="fuel-grid">
-          <button class="fb" onclick="selFuel(this,'E')">E</button>
-          <button class="fb" onclick="selFuel(this,'1/4')">1/4</button>
-          <button class="fb" onclick="selFuel(this,'1/2')">1/2</button>
-          <button class="fb" onclick="selFuel(this,'3/4')">3/4</button>
-          <button class="fb" onclick="selFuel(this,'F')">F</button>
-        </div>
-      </div>
-      <div class="fc">
-        <h3>Issues or damage</h3>
-        <div class="field"><label>Describe any problems (leave blank if none)</label><textarea id="f-issues" placeholder="Any issues, leaks, damage, needed repairs..."></textarea></div>
-      </div>
-      <div class="fc">
-        <h3>Reported by</h3>
-        <div class="field"><label>Your name</label><input type="text" id="f-reporter" placeholder="Your name" autocomplete="name"></div>
-      </div>
-      <button class="sbtn" onclick="submitLog()">Save Log Entry</button>
+
+    <!-- Profile tab switcher -->
+    <div class="prof-tabs">
+      <button class="prof-tab active" id="ptab-log" onclick="switchProfTab('log')">&#128203; Log Entry</button>
+      <button class="prof-tab" id="ptab-wa" onclick="switchProfTab('wa')">&#9989; Walk-Around</button>
+      <button class="prof-tab" id="ptab-hist" onclick="switchProfTab('hist')">&#128337; History</button>
     </div>
-    <div class="logs-sec">
-      <h3>Previous logs</h3>
-      <div id="mlogs"></div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- LOG ENTRY PANEL -->
+    <div class="prof-panel active" id="panel-log">
+      <div class="lform">
+        <div class="fc">
+          <h3>Current reading</h3>
+          <div class="field"><label id="rlbl">Hours / Miles</label><input type="number" id="f-reading" placeholder="e.g. 1450" inputmode="numeric"></div>
+          <div class="field"><label>Date</label><input type="date" id="f-date"></div>
+        </div>
+        <div class="fc">
+          <h3>Location</h3>
+          <div class="field"><label>Job site / description</label><input type="text" id="f-loc" placeholder="Job site, yard, shop..."></div>
+          <div class="field"><label>GPS <span id="gps-coord-label" style="color:#8e8e93;font-weight:400"></span></label><input type="text" id="f-gps" placeholder="Detecting..." readonly style="background:#f2f2f7;color:#636366;font-size:13px"></div>
+        </div>
+        <div class="fc">
+          <h3>Fuel level</h3>
+          <div class="fuel-grid">
+            <button class="fb" onclick="selFuel(this,'E')">E</button>
+            <button class="fb" onclick="selFuel(this,'1/4')">1/4</button>
+            <button class="fb" onclick="selFuel(this,'1/2')">1/2</button>
+            <button class="fb" onclick="selFuel(this,'3/4')">3/4</button>
+            <button class="fb" onclick="selFuel(this,'F')">F</button>
+          </div>
+        </div>
+        <div class="fc">
+          <h3>Issues or damage</h3>
+          <div class="field"><label>Describe any problems (leave blank if none)</label><textarea id="f-issues" placeholder="Any issues, leaks, damage, needed repairs..."></textarea></div>
+        </div>
+        <div class="fc">
+          <h3>Reported by</h3>
+          <div class="field"><label>Your name</label><input type="text" id="f-reporter" placeholder="Your name" autocomplete="name"></div>
+        </div>
+        <button class="sbtn" onclick="submitLog()">Save Log Entry</button>
+      </div>
+      <div class="logs-sec">
+        <h3>Previous log entries</h3>
+        <div id="mlogs"></div>
+      </div>
+    </div>
+
+    <!-- WALK-AROUND PANEL -->
+    <div class="prof-panel" id="panel-wa">
+      <div class="wa-form">
+        <div class="wa-progress">
+          <div style="font-size:14px;font-weight:600">Daily Walk-Around Inspection</div>
+          <div class="wa-prog-bar-wrap"><div class="wa-prog-bar" id="wa-prog-bar" style="width:0%"></div></div>
+          <div class="wa-prog-txt"><span id="wa-prog-txt">0 of 0 items checked</span><span id="wa-prog-pct">0%</span></div>
+          <div class="wa-summary-grid">
+            <div class="wa-stat ok"><big id="wa-ok-count">0</big>OK</div>
+            <div class="wa-stat bad"><big id="wa-bad-count">0</big>Issues</div>
+            <div class="wa-stat skip"><big id="wa-skip-count">0</big>Skipped</div>
+          </div>
+        </div>
+        <div id="wa-checklist"></div>
+        <div class="fc">
+          <h3>Inspector name</h3>
+          <div class="field"><input type="text" id="wa-reporter" placeholder="Your name" autocomplete="name"></div>
+        </div>
+        <div class="fc">
+          <h3>Additional notes</h3>
+          <div class="field"><textarea id="wa-notes" placeholder="Any other observations or comments..." style="min-height:60px"></textarea></div>
+        </div>
+        <button class="sbtn" onclick="submitWalkAround()">Submit Walk-Around</button>
+      </div>
+    </div>
+
+    <!-- HISTORY PANEL -->
+    <div class="prof-panel" id="panel-hist">
+      <div style="padding:14px 16px">
+        <div class="master-tabs">
+          <button class="mtab active" id="htab-logs" onclick="switchHistTab('logs')">Log Entries</button>
+          <button class="mtab" id="htab-wa" onclick="switchHistTab('wa')">Walk-Arounds</button>
+        </div>
+        <div id="hist-logs"></div>
+        <div id="hist-wa" style="display:none"></div>
+      </div>
     </div>
   </div>
 
   <!-- ALL LOGS VIEW -->
   <div id="view-master" class="view">
-    <div class="topbar"><h1>All Logs</h1></div>
+    <div class="topbar"><h1>All Activity</h1></div>
     <div class="master-wrap">
-      <h2>Master log</h2>
-      <p class="master-sub">All entries from every machine, newest first.</p>
+      <div class="master-tabs">
+        <button class="mtab active" id="mtab-logs" onclick="switchMasterTab('logs')">Log Entries</button>
+        <button class="mtab" id="mtab-wa" onclick="switchMasterTab('wa')">Walk-Arounds</button>
+      </div>
       <div id="alllogs"></div>
+      <div id="allwa" style="display:none"></div>
     </div>
   </div>
 
@@ -180,7 +276,7 @@ input[type=file]{display:none}
 
 <div class="tabbar">
   <button class="tab active" id="tab-fleet" onclick="showView('list')"><span class="ticon">&#128666;</span>Fleet</button>
-  <button class="tab" id="tab-logs" onclick="showView('master')"><span class="ticon">&#128203;</span>All Logs</button>
+  <button class="tab" id="tab-logs" onclick="showView('master')"><span class="ticon">&#128203;</span>All Activity</button>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -192,16 +288,55 @@ input[type=file]{display:none}
 <script>
 const MACHINES=[{"id":"P100","make":"Ford","model":"F250","type":"Salvaged","year":"2022","cat":"truck","operator":""},{"id":"P21","make":"Ford","model":"Explorer","type":"Staff car","year":"2002","cat":"truck","operator":""},{"id":"P25","make":"Sterling","model":"L7501","type":"Water Truck","year":"1998","cat":"truck","operator":""},{"id":"P32","make":"GMC","model":"7500","type":"2K gal. Water Truck","year":"1998","cat":"truck","operator":""},{"id":"P36","make":"Ford","model":"Fusion","type":"Green Staff car","year":"2013","cat":"truck","operator":"Jamie Trumble"},{"id":"P37","make":"Ford","model":"F450","type":"1-1/2 ton (D)","year":"2013","cat":"truck","operator":"Zane Payne"},{"id":"P40","make":"International","model":"","type":"2K gal. Water Truck","year":"1990","cat":"truck","operator":""},{"id":"P43","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P44","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P45","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P46","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":""},{"id":"P49","make":"Ford","model":"F450","type":"1-ton (D)","year":"2015","cat":"truck","operator":"Nelson Cuervo"},{"id":"P53","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Victor Carcoba"},{"id":"P54","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Cesar Flores"},{"id":"P55","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Jim Rowe"},{"id":"P56","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Billy Palmer"},{"id":"P59","make":"Freightliner","model":"M2","type":"Dump Truck","year":"2012","cat":"truck","operator":""},{"id":"P60","make":"Ford","model":"F750","type":"2K Water Truck","year":"2009","cat":"truck","operator":""},{"id":"P63","make":"Ford","model":"F150","type":"P/UP","year":"2017","cat":"truck","operator":"Manuel Tinajero"},{"id":"P64","make":"Ford","model":"F350","type":"Box/Dump (G)","year":"2016","cat":"truck","operator":""},{"id":"P65","make":"International","model":"4300","type":"5 Y. dump truck","year":"2014","cat":"truck","operator":""},{"id":"P67","make":"Ford","model":"Ford","type":"Water Truck","year":"2013","cat":"truck","operator":""},{"id":"P68","make":"Itnl","model":"Comm","type":"Commercial","year":"2015","cat":"truck","operator":""},{"id":"P69","make":"Intl","model":"Comm","type":"Water Truck","year":"2015","cat":"truck","operator":""},{"id":"P71","make":"Ford","model":"F150","type":"P/UP","year":"2020","cat":"truck","operator":"Jim Rowe"},{"id":"P72","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Bobby Witt"},{"id":"P73","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Joshua Fristad JR"},{"id":"P75","make":"Ford","model":"F450","type":"1-ton (D)","year":"2020","cat":"truck","operator":""},{"id":"P76","make":"Chevy","model":"3500","type":"1-ton","year":"2018","cat":"truck","operator":""},{"id":"P77","make":"Ford","model":"F250","type":"3/4-ton","year":"2019","cat":"truck","operator":"Everett Thompson"},{"id":"P78","make":"Ford","model":"F350","type":"1-ton (G)","year":"2021","cat":"truck","operator":"Cameron Falkowsky"},{"id":"P79","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Mark"},{"id":"P84","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Don Huse"},{"id":"P85","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Hugo Cardoso"},{"id":"P86","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Mike Nelson"},{"id":"P87","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Ruben Resendez"},{"id":"P91","make":"RAM","model":"2500","type":"P/UP","year":"2022","cat":"truck","operator":"Alan Rock"},{"id":"P92","make":"FORD","model":"EXPLORER","type":"","year":"2023","cat":"truck","operator":"Mark Trumble"},{"id":"P93","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Mark Knip"},{"id":"P94","make":"FORD","model":"Explorer","type":"SALVAGED","year":"2020","cat":"truck","operator":"Eugene Fig"},{"id":"P95","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Jacob Benthal"},{"id":"P96","make":"CHEVY","model":"3500","type":"SALVAGED","year":"2022","cat":"truck","operator":"Rollin Ryan"},{"id":"P97","make":"FORD","model":"F250","type":"SALVAGED","year":"2024","cat":"truck","operator":"Miguel Roman"},{"id":"P98","make":"Ford","model":"F150","type":"Salvaged","year":"2023","cat":"truck","operator":"Matt Trumble"},{"id":"P99","make":"Dodge/Ram","model":"2500","type":"Salvaged","year":"2022","cat":"truck","operator":""},{"id":"T1","make":"Hyundai","model":"HL760-7","type":"Wheel Loader","year":"","cat":"equipment","operator":""},{"id":"T10","make":"Volvo","model":"EC330BLC","type":"Excavator","year":"2006","cat":"equipment","operator":""},{"id":"T11","make":"Hyundai","model":"HL760-7A","type":"Wheel Loader","year":"2007","cat":"equipment","operator":""},{"id":"T17","make":"Ingersol","model":"","type":"Compressor","year":"","cat":"equipment","operator":""},{"id":"T19","make":"Sullair","model":"","type":"Compressor","year":"","cat":"equipment","operator":""},{"id":"T29","make":"Bobcat","model":"334D","type":"7.5K Mini-Excavator","year":"2004","cat":"equipment","operator":""},{"id":"T32","make":"Bobcat","model":"Sweeper 60","type":"sweeper attachment","year":"","cat":"equipment","operator":""},{"id":"T33","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T34","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T35","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":""},{"id":"T36","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T37","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":""},{"id":"T38","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":""},{"id":"T39","make":"Cat","model":"GP25K","type":"5000 LB forklift","year":"","cat":"equipment","operator":""},{"id":"T41","make":"Hyundai","model":"HX330L","type":"75K Excavator","year":"2016","cat":"equipment","operator":""},{"id":"T42","make":"Hyundai","model":"HX220L","type":"50K Excavator","year":"2016","cat":"equipment","operator":""},{"id":"T43","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T44","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T45","make":"Hyundai","model":"HX145LCR","type":"34K midi-ex 0-tail swing","year":"","cat":"equipment","operator":""},{"id":"T46","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T47","make":"Hyundai","model":"HX300","type":"70K Excavator","year":"2017","cat":"equipment","operator":""},{"id":"T48","make":"Bobcat","model":"S650","type":"High Flow Skidsteer","year":"2014","cat":"equipment","operator":""},{"id":"T49","make":"Bobcat","model":"AP450","type":"Universal Cold Planer","year":"2014","cat":"equipment","operator":""},{"id":"T50","make":"Bobcat","model":"72SB","type":"sweeper attachment","year":"2014","cat":"equipment","operator":""},{"id":"T51","make":"Wanco","model":"SA6000-WLT","type":"(4) 1000W Diesel light twr","year":"2017","cat":"equipment","operator":""},{"id":"T52","make":"Hyundai","model":"HL760-9A","type":"4.5 Y loader","year":"2013","cat":"equipment","operator":""},{"id":"T53","make":"Hyundai","model":"HL960","type":"4.5 Y.loader","year":"2017","cat":"equipment","operator":""},{"id":"T54","make":"Multi Quip","model":"MC64PH","type":"6 cu. Ft. cement mixer","year":"2015","cat":"equipment","operator":""},{"id":"T55","make":"Hyundai","model":"HL960","type":"4.5 Y loader","year":"2017","cat":"equipment","operator":""},{"id":"T56","make":"Hyundai","model":"R35Z-9A","type":"9K mini excavator","year":"2017","cat":"equipment","operator":""},{"id":"T57","make":"Hyundai","model":"R80CR-9A","type":"18.5K mini excavator","year":"2015","cat":"equipment","operator":""},{"id":"T58","make":"Bomag","model":"BW120","type":"3-5 Ton Roller","year":"2016","cat":"equipment","operator":""},{"id":"T59","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":""},{"id":"T60","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":""},{"id":"T61","make":"John Deere","model":"210LEP","type":"Skip Loader","year":"2016","cat":"equipment","operator":""},{"id":"T62","make":"LiuGong","model":"950E","type":"100K Excavator","year":"2020","cat":"equipment","operator":""},{"id":"T63","make":"ASV","model":"VT70","type":"Track Skid Steer","year":"2017","cat":"equipment","operator":""},{"id":"T64","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"","cat":"equipment","operator":""},{"id":"T66","make":"ASV","model":"RT40","type":"Track Mini Skid Steer","year":"2018","cat":"equipment","operator":""},{"id":"T67","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"2018","cat":"equipment","operator":""},{"id":"T68","make":"ASV","model":"RS60","type":"Skid Steer","year":"2018","cat":"equipment","operator":""},{"id":"T69","make":"Yamaha","model":"YXR66","type":"Rhino","year":"2007","cat":"equipment","operator":""},{"id":"T70","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":""},{"id":"T71","make":"Case","model":"CX17C","type":"Mini Excavator","year":"","cat":"equipment","operator":""}];
 
-const LS_LOGS='r3_fleet_logs', LS_PHOTOS='r3_fleet_photos';
-let cur=null, fuelVal='', lbIdx=null;
-let logs={}, photos={};
+// Walk-around checklist items — trucks get items relevant to road vehicles,
+// heavy equipment gets items relevant to construction machines. Shared items apply to both.
+const WA_TRUCK=[
+  {id:'lights',label:'Lights & signals',note:'Headlights, brake lights, turn signals, hazards'},
+  {id:'wipers',label:'Wipers & washer fluid',note:''},
+  {id:'mirrors',label:'Mirrors',note:'All mirrors present and adjusted'},
+  {id:'tires',label:'Tires & pressure',note:'Check all tires for flats, damage, low pressure'},
+  {id:'brakes',label:'Brakes',note:'Test before moving — check pedal feel'},
+  {id:'seatbelt',label:'Seat belt',note:'Functional and not frayed'},
+  {id:'horn',label:'Horn',note:''},
+  {id:'engine_oil',label:'Engine oil level',note:'Check dipstick'},
+  {id:'coolant',label:'Coolant level',note:''},
+  {id:'fuel',label:'Fuel level',note:''},
+  {id:'leaks',label:'Fluid leaks',note:'Check under vehicle for oil, coolant, fuel'},
+  {id:'body',label:'Body & glass damage',note:'Dents, cracks, broken glass'},
+  {id:'bed',label:'Bed / cargo area',note:'Secured and clear'},
+  {id:'fire_ext',label:'Fire extinguisher',note:'Present and charged'},
+];
+const WA_EQUIP=[
+  {id:'engine_oil',label:'Engine oil level',note:'Check dipstick before start'},
+  {id:'coolant',label:'Coolant level',note:''},
+  {id:'hydraulic',label:'Hydraulic fluid level',note:''},
+  {id:'fuel',label:'Fuel level',note:''},
+  {id:'leaks',label:'Fluid leaks',note:'Oil, hydraulic, coolant, fuel — check ground under machine'},
+  {id:'tracks_tires',label:'Tracks / tires',note:'Check for damage, wear, proper tension'},
+  {id:'bucket_attach',label:'Bucket / attachment',note:'Pins secure, teeth intact, no cracks'},
+  {id:'boom_arm',label:'Boom & arm',note:'Check for cracks, bent pins, loose bolts'},
+  {id:'cylinders',label:'Hydraulic cylinders',note:'Check for leaks or damage on rods'},
+  {id:'lights',label:'Lights & horn',note:'Work lights and backup alarm functional'},
+  {id:'seatbelt',label:'Seat belt & ROPS',note:'Seatbelt functional, rollover protection intact'},
+  {id:'gauges',label:'Gauges & warning lights',note:'Check dash on startup — no warning lights'},
+  {id:'air_filter',label:'Air filter',note:'Check indicator if equipped'},
+  {id:'fire_ext',label:'Fire extinguisher',note:'Present and charged'},
+  {id:'housekeeping',label:'Cab cleanliness',note:'No trash, debris, or unsecured items in cab'},
+];
+
+const LS_LOGS='r3_fleet_logs', LS_PHOTOS='r3_fleet_photos', LS_WA='r3_fleet_wa';
+let cur=null, fuelVal='', lbIdx=null, gpsCoords=null;
+let logs={}, photos={}, walkarounds={};
+let waState={};  // current walk-around item states: {itemId: 'ok'|'bad'|null}
 
 function loadData(){
-  try{const v=localStorage.getItem(LS_LOGS); if(v)logs=JSON.parse(v);}catch(e){}
-  try{const v=localStorage.getItem(LS_PHOTOS); if(v)photos=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(LS_LOGS);if(v)logs=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(LS_PHOTOS);if(v)photos=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(LS_WA);if(v)walkarounds=JSON.parse(v);}catch(e){}
 }
-function saveLogs(){try{localStorage.setItem(LS_LOGS,JSON.stringify(logs));}catch(e){alert('Storage full — try removing some photos.');}}
-function savePhotos(){try{localStorage.setItem(LS_PHOTOS,JSON.stringify(photos));}catch(e){alert('Storage full — photos could not be saved.');}}
+function saveLogs(){try{localStorage.setItem(LS_LOGS,JSON.stringify(logs));}catch(e){alert('Storage full.');}}
+function savePhotos(){try{localStorage.setItem(LS_PHOTOS,JSON.stringify(photos));}catch(e){alert('Storage full — try removing photos.');}}
+function saveWA(){try{localStorage.setItem(LS_WA,JSON.stringify(walkarounds));}catch(e){alert('Storage full.');}}
 
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
 
@@ -210,29 +345,56 @@ function showView(v){
   document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
   if(v==='list')document.getElementById('tab-fleet').classList.add('active');
-  if(v==='master'){document.getElementById('tab-logs').classList.add('active');renderMaster();}
+  if(v==='master'){document.getElementById('tab-logs').classList.add('active');renderMaster('logs');}
 }
 
+function switchProfTab(t){
+  document.querySelectorAll('.prof-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.prof-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('ptab-'+t).classList.add('active');
+  document.getElementById('panel-'+t).classList.add('active');
+  if(t==='hist')renderHistory('logs');
+}
+
+function switchHistTab(t){
+  document.querySelectorAll('#panel-hist .mtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('htab-'+t).classList.add('active');
+  document.getElementById('hist-logs').style.display=t==='logs'?'block':'none';
+  document.getElementById('hist-wa').style.display=t==='wa'?'block':'none';
+  renderHistory(t);
+}
+
+function switchMasterTab(t){
+  document.querySelectorAll('#view-master .mtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('mtab-'+t).classList.add('active');
+  document.getElementById('alllogs').style.display=t==='logs'?'block':'none';
+  document.getElementById('allwa').style.display=t==='wa'?'block':'none';
+  renderMaster(t);
+}
+
+/* ---- Fleet list ---- */
 function renderList(list){
-  let html='', lastCat='';
+  let html='',lastCat='';
   list.forEach(m=>{
     const cat=m.cat==='truck'?'Trucks':'Heavy Equipment';
     if(cat!==lastCat){html+=`<div class="sec-label">${cat}</div>`;lastCat=cat;}
     const pp=photos[m.id]||[];
     const ll=logs[m.id]||[];
+    const ww=walkarounds[m.id]||[];
     const thumb=pp.length?`<img class="mthumb" src="${pp[0]}" alt="${m.id}">`:`<div class="mbadge ${m.cat}">${m.cat==='truck'?'TRK':'EQP'}</div>`;
     const desc=[m.make,m.model,m.type,m.year].filter(Boolean).join(' · ');
-    html+=`<div class="mrow" onclick="openMachine('${m.id}')">${thumb}<div class="minfo"><div class="mid">${m.id}${m.operator?' — '+m.operator:''}</div><div class="mdesc">${desc}</div></div>${ll.length?'<div class="ldot"></div>':''}<div class="mchev">›</div></div>`;
+    const hasBadge=(ll.length||ww.length)?'<div class="ldot"></div>':'';
+    html+=`<div class="mrow" onclick="openMachine('${m.id}')">${thumb}<div class="minfo"><div class="mid">${m.id}${m.operator?' — '+m.operator:''}</div><div class="mdesc">${desc}</div></div>${hasBadge}<div class="mchev">›</div></div>`;
   });
   if(!list.length)html='<div class="empty">No machines match your search.</div>';
   document.getElementById('mlist').innerHTML=html;
 }
-
 function filterList(q){
   q=q.toLowerCase();
   renderList(MACHINES.filter(m=>m.id.toLowerCase().includes(q)||m.make.toLowerCase().includes(q)||m.model.toLowerCase().includes(q)||m.type.toLowerCase().includes(q)||m.operator.toLowerCase().includes(q)));
 }
 
+/* ---- Open machine ---- */
 function openMachine(id){
   cur=MACHINES.find(m=>m.id===id);
   if(!cur)return;
@@ -242,15 +404,20 @@ function openMachine(id){
   document.getElementById('ph-meta').textContent=[cur.type,cur.year].filter(Boolean).join(' · ')+(cur.operator?' · '+cur.operator:'');
   document.getElementById('rlbl').textContent=cur.cat==='truck'?'Current mileage (odometer)':'Current hours (hour meter)';
   document.getElementById('f-date').value=new Date().toISOString().slice(0,10);
-  ['f-reading','f-loc','f-issues','f-reporter'].forEach(id=>document.getElementById(id).value='');
-  fuelVal=''; document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
+  ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
+  fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
   document.getElementById('toast').style.display='none';
-  renderPhotos(); renderMachineLogs(id);
+  // Switch to log tab by default
+  switchProfTab('log');
+  renderPhotos();
+  renderMachineLogs(id);
+  buildWAChecklist();
   showView('profile');
   window.scrollTo(0,0);
   startGPS();
 }
 
+/* ---- Photos ---- */
 function renderPhotos(){
   const pp=photos[cur.id]||[];
   const main=document.getElementById('main-photo');
@@ -262,129 +429,216 @@ function renderPhotos(){
   html+=`<div class="strip-add" onclick="document.getElementById('photo-input').click()">+</div>`;
   document.getElementById('photo-strip').innerHTML=html;
 }
-
 function compress(dataUrl,maxW,q){
   return new Promise(res=>{
     const img=new Image();
-    img.onload=()=>{
-      let w=img.width,h=img.height;
-      if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}
-      const cv=document.createElement('canvas');cv.width=w;cv.height=h;
-      cv.getContext('2d').drawImage(img,0,0,w,h);
-      res(cv.toDataURL('image/jpeg',q));
-    };
+    img.onload=()=>{let w=img.width,h=img.height;if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};
     img.src=dataUrl;
   });
 }
-
 async function handlePhotos(input){
   if(!cur||!input.files.length)return;
   if(!photos[cur.id])photos[cur.id]=[];
-  for(const file of input.files){
-    const reader=new FileReader();
-    const dataUrl=await new Promise(res=>{reader.onload=e=>res(e.target.result);reader.readAsDataURL(file);});
-    photos[cur.id].push(await compress(dataUrl,1600,.78));
-  }
-  savePhotos(); renderPhotos(); renderList(MACHINES);
-  toast(input.files.length===1?'Photo saved':'Photos saved');
-  input.value='';
+  for(const file of input.files){const reader=new FileReader();const d=await new Promise(res=>{reader.onload=e=>res(e.target.result);reader.readAsDataURL(file);});photos[cur.id].push(await compress(d,1600,.78));}
+  savePhotos();renderPhotos();renderList(MACHINES);toast(input.files.length===1?'Photo saved':'Photos saved');input.value='';
 }
-
 function openLb(i){lbIdx=i;document.getElementById('lb-img').src=(photos[cur.id]||[])[i];document.getElementById('lightbox').classList.add('open');}
 function closeLb(){document.getElementById('lightbox').classList.remove('open');lbIdx=null;}
 function delPhoto(){if(lbIdx===null)return;photos[cur.id].splice(lbIdx,1);savePhotos();closeLb();renderPhotos();renderList(MACHINES);toast('Photo removed');}
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb();});
 
-function selFuel(btn,v){fuelVal=v;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
-
-// --- GPS ---
-let gpsCoords=null;
+/* ---- GPS ---- */
 function startGPS(){
-  const dot=document.getElementById('gps-dot');
-  const txt=document.getElementById('gps-text');
-  const inp=document.getElementById('f-gps');
-  const lbl=document.getElementById('gps-coord-label');
-  dot.className='gps-dot searching';
-  txt.innerHTML='Getting location...';
-  inp.value='Detecting...';
-  gpsCoords=null;
-  if(!navigator.geolocation){
-    dot.className='gps-dot err';
-    txt.textContent='GPS not available on this device';
-    inp.value='Unavailable';
-    return;
-  }
+  const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text'),inp=document.getElementById('f-gps'),lbl=document.getElementById('gps-coord-label');
+  dot.className='gps-dot searching';txt.innerHTML='Getting location...';if(inp)inp.value='Detecting...';gpsCoords=null;
+  if(!navigator.geolocation){dot.className='gps-dot err';txt.textContent='GPS not available';return;}
   navigator.geolocation.getCurrentPosition(
-    pos=>{
-      const lat=pos.coords.latitude.toFixed(5);
-      const lng=pos.coords.longitude.toFixed(5);
-      const acc=Math.round(pos.coords.accuracy);
-      gpsCoords={lat,lng,acc};
-      dot.className='gps-dot';
-      const mapsUrl=`https://www.google.com/maps?q=${lat},${lng}`;
-      txt.innerHTML=`&#128205; <a href="${mapsUrl}" target="_blank">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;
-      inp.value=`${lat}, ${lng}`;
-      lbl.textContent=`— accurate to ±${acc}m`;
-    },
-    err=>{
-      dot.className='gps-dot err';
-      const msgs={1:'Location permission denied — allow in phone settings',2:'GPS signal not found',3:'GPS timed out'};
-      txt.textContent=msgs[err.code]||'Could not get location';
-      inp.value='Location unavailable';
-    },
+    pos=>{const lat=pos.coords.latitude.toFixed(5),lng=pos.coords.longitude.toFixed(5),acc=Math.round(pos.coords.accuracy);gpsCoords={lat,lng,acc};dot.className='gps-dot';const url=`https://www.google.com/maps?q=${lat},${lng}`;txt.innerHTML=`&#128205; <a href="${url}" target="_blank">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;if(inp)inp.value=`${lat}, ${lng}`;if(lbl)lbl.textContent=`— ±${acc}m`;},
+    err=>{dot.className='gps-dot err';const msgs={1:'Location denied',2:'GPS not found',3:'GPS timed out'};txt.textContent=msgs[err.code]||'Location unavailable';if(inp)inp.value='Unavailable';},
     {enableHighAccuracy:true,timeout:12000,maximumAge:0}
   );
 }
 
+/* ---- Fuel ---- */
+function selFuel(btn,v){fuelVal=v;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+
+/* ---- Log entry ---- */
 function submitLog(){
   if(!cur)return;
-  const entry={
-    ts:new Date().toISOString(),
-    date:document.getElementById('f-date').value,
-    reading:document.getElementById('f-reading').value,
-    loc:document.getElementById('f-loc').value,
-    gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',
-    gpsAcc:gpsCoords?gpsCoords.acc:null,
-    fuel:fuelVal,
-    issues:document.getElementById('f-issues').value,
-    reporter:document.getElementById('f-reporter').value
-  };
-  if(!logs[cur.id])logs[cur.id]=[];
-  logs[cur.id].unshift(entry);
-  saveLogs();
-  ['f-reading','f-loc','f-issues','f-reporter'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f-gps').value='Detecting...';
+  const entry={ts:new Date().toISOString(),date:document.getElementById('f-date').value,reading:document.getElementById('f-reading').value,loc:document.getElementById('f-loc').value,gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',gpsAcc:gpsCoords?gpsCoords.acc:null,fuel:fuelVal,issues:document.getElementById('f-issues').value,reporter:document.getElementById('f-reporter').value};
+  if(!logs[cur.id])logs[cur.id]=[];logs[cur.id].unshift(entry);saveLogs();
+  ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
+  const gi=document.getElementById('f-gps');if(gi)gi.value='Detecting...';
   fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
-  renderMachineLogs(cur.id);renderList(MACHINES);
-  toast('Log saved');
-  startGPS(); // re-ping for next entry
+  renderMachineLogs(cur.id);renderList(MACHINES);toast('Log saved');startGPS();
 }
-
 function renderMachineLogs(id){
   const ll=logs[id]||[];
   const el=document.getElementById('mlogs');
-  if(!ll.length){el.innerHTML='<div class="no-logs">No logs yet.</div>';return;}
+  if(!ll.length){el.innerHTML='<div class="no-logs">No log entries yet.</div>';return;}
   el.innerHTML=ll.map(l=>{
-    const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a>`:
-      l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:'';
-    const locLine=l.loc&&l.gps?`<div class="lloc">&#128205; ${l.loc}</div>${mapsLink}`:mapsLink;
-    return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${locLine}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
+    const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a>`:'';
+    const locLine=(l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:'')+mapsLink;
+    return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur&&cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${locLine}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
   }).join('');
 }
 
-function renderMaster(){
-  const all=[];
-  Object.entries(logs).forEach(([id,ll])=>{const m=MACHINES.find(x=>x.id===id);ll.forEach(l=>all.push({...l,mid:id,m}));});
-  all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
-  const el=document.getElementById('alllogs');
-  if(!all.length){el.innerHTML='<div class="empty">No logs yet.<br>Scan a QR code or tap a machine to log it.</div>';return;}
-  el.innerHTML=all.map(l=>{
-    const gpsLink=l.gps?`<div style="margin-top:3px"><a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a></div>`:'';
-    return`<div class="me" onclick="openMachine('${l.mid}')"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div>${l.reading?`<div class="merd">${Number(l.reading).toLocaleString()} ${l.m&&l.m.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}${l.loc?' · '+l.loc:''}</div>`:''} ${gpsLink}${l.issues?'<span class="ipill">&#9888; Issue reported</span>':''}</div>`;
-  }).join('');
+/* ---- Walk-around checklist ---- */
+function getWAItems(){return cur&&cur.cat==='truck'?WA_TRUCK:WA_EQUIP;}
+
+function buildWAChecklist(){
+  waState={};
+  const items=getWAItems();
+  items.forEach(i=>waState[i.id]=null);
+  renderWAChecklist();
 }
 
-// On load: check URL for ?machine=ID to deep-link directly from QR scan
+function renderWAChecklist(){
+  const items=getWAItems();
+  // Group into sections
+  const truckSections=[
+    {label:'Exterior & Safety',ids:['lights','wipers','mirrors','tires','body','glass','fire_ext']},
+    {label:'Mechanical',ids:['brakes','engine_oil','coolant','fuel','leaks']},
+    {label:'Interior',ids:['seatbelt','horn','bed']},
+  ];
+  const equipSections=[
+    {label:'Fluids',ids:['engine_oil','coolant','hydraulic','fuel','leaks']},
+    {label:'Undercarriage & Attachments',ids:['tracks_tires','bucket_attach','boom_arm','cylinders']},
+    {label:'Safety & Controls',ids:['lights','seatbelt','gauges','air_filter','fire_ext','housekeeping']},
+  ];
+  const sections=cur&&cur.cat==='truck'?truckSections:equipSections;
+  let html='';
+  sections.forEach(sec=>{
+    const secItems=items.filter(i=>sec.ids.includes(i.id));
+    if(!secItems.length)return;
+    html+=`<div class="wa-section"><div class="wa-section-hdr">${sec.label}</div>`;
+    secItems.forEach(item=>{
+      const s=waState[item.id];
+      html+=`<div class="wa-item">
+        <div class="wa-label">${item.label}${item.note?`<span>${item.note}</span>`:''}
+        </div>
+        <div class="wa-btns">
+          <button class="wa-btn ok${s==='ok'?' ok':''}" onclick="setWA('${item.id}','ok',this)">✓ OK</button>
+          <button class="wa-btn bad${s==='bad'?' bad':''}" onclick="setWA('${item.id}','bad',this)">✗ Issue</button>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+  document.getElementById('wa-checklist').innerHTML=html;
+  updateWAProgress();
+}
+
+function setWA(id,val,btn){
+  waState[id]=waState[id]===val?null:val;
+  // Update button styles
+  const parent=btn.closest('.wa-btns');
+  parent.querySelectorAll('.wa-btn').forEach(b=>{b.classList.remove('ok','bad');});
+  if(waState[id]==='ok')parent.querySelector('.wa-btn.ok, button:first-child').classList.add('ok');
+  if(waState[id]==='bad')parent.querySelector('.wa-btn.bad, button:last-child').classList.add('bad');
+  updateWAProgress();
+}
+
+function updateWAProgress(){
+  const items=getWAItems();
+  const total=items.length;
+  const checked=Object.values(waState).filter(v=>v!==null).length;
+  const okCount=Object.values(waState).filter(v=>v==='ok').length;
+  const badCount=Object.values(waState).filter(v=>v==='bad').length;
+  const skipCount=total-checked;
+  const pct=total?Math.round(checked/total*100):0;
+  document.getElementById('wa-prog-bar').style.width=pct+'%';
+  document.getElementById('wa-prog-txt').textContent=`${checked} of ${total} items checked`;
+  document.getElementById('wa-prog-pct').textContent=pct+'%';
+  document.getElementById('wa-ok-count').textContent=okCount;
+  document.getElementById('wa-bad-count').textContent=badCount;
+  document.getElementById('wa-skip-count').textContent=skipCount;
+}
+
+function submitWalkAround(){
+  if(!cur)return;
+  const items=getWAItems();
+  const results={};
+  items.forEach(i=>results[i.id]=waState[i.id]||'skipped');
+  const issues=items.filter(i=>waState[i.id]==='bad').map(i=>i.label);
+  const entry={
+    ts:new Date().toISOString(),
+    date:new Date().toISOString().slice(0,10),
+    reporter:document.getElementById('wa-reporter').value,
+    gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',
+    gpsAcc:gpsCoords?gpsCoords.acc:null,
+    notes:document.getElementById('wa-notes').value,
+    results,
+    issues,
+    okCount:Object.values(waState).filter(v=>v==='ok').length,
+    badCount:issues.length,
+    totalItems:items.length,
+  };
+  if(!walkarounds[cur.id])walkarounds[cur.id]=[];
+  walkarounds[cur.id].unshift(entry);
+  saveWA();
+  document.getElementById('wa-reporter').value='';
+  document.getElementById('wa-notes').value='';
+  buildWAChecklist();
+  renderList(MACHINES);
+  toast(issues.length?`Walk-around saved — ${issues.length} issue${issues.length>1?'s':''} flagged`:'Walk-around saved — all clear!');
+}
+
+/* ---- History panel ---- */
+function renderHistory(t){
+  if(t==='logs'){
+    const el=document.getElementById('hist-logs');
+    const ll=logs[cur?cur.id:'']||[];
+    if(!ll.length){el.innerHTML='<div class="no-logs">No log entries yet.</div>';return;}
+    el.innerHTML=ll.map(l=>{
+      const m=cur;
+      const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; Open in Maps</a>`:'';
+      const locLine=(l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:'')+mapsLink;
+      return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${m&&m.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${locLine}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
+    }).join('');
+  } else {
+    const el=document.getElementById('hist-wa');
+    const ww=walkarounds[cur?cur.id:'']||[];
+    if(!ww.length){el.innerHTML='<div class="no-logs">No walk-arounds yet.</div>';return;}
+    el.innerHTML=ww.map(w=>`
+      <div class="wentry">
+        <div class="wentry-hdr"><span class="wentry-date">${w.date}</span><span class="wentry-by">${w.reporter||'—'}</span></div>
+        <div style="font-size:12px;color:#636366">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped${w.gps?` · <a href="https://www.google.com/maps?q=${w.gps}" target="_blank" style="color:#185FA5;text-decoration:none">&#128205; Map</a>`:''}</div>
+        ${w.issues&&w.issues.length?`<div class="wentry-pills">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<div style="margin-top:5px;font-size:12px;color:#3B6D11;font-weight:600">&#9989; All clear</div>'}
+        ${w.notes?`<div style="font-size:12px;color:#636366;margin-top:5px">${w.notes}</div>`:''}
+      </div>`).join('');
+  }
+}
+
+/* ---- Master / All activity ---- */
+function renderMaster(t){
+  if(t==='logs'){
+    const all=[];
+    Object.entries(logs).forEach(([id,ll])=>{const m=MACHINES.find(x=>x.id===id);ll.forEach(l=>all.push({...l,mid:id,m}));});
+    all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+    const el=document.getElementById('alllogs');
+    if(!all.length){el.innerHTML='<div class="empty">No log entries yet.</div>';return;}
+    el.innerHTML=all.map(l=>{
+      const gpsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; Open in Maps</a>`:'';
+      return`<div class="me" onclick="openMachine('${l.mid}')"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div>${l.reading?`<div class="merd">${Number(l.reading).toLocaleString()} ${l.m&&l.m.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}${l.loc?' · '+l.loc:''}</div>`:''} ${gpsLink}${l.issues?'<span class="ipill">&#9888; Issue reported</span>':''}</div>`;
+    }).join('');
+  } else {
+    const all=[];
+    Object.entries(walkarounds).forEach(([id,ww])=>{const m=MACHINES.find(x=>x.id===id);ww.forEach(w=>all.push({...w,mid:id,m}));});
+    all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+    const el=document.getElementById('allwa');
+    if(!all.length){el.innerHTML='<div class="empty">No walk-arounds submitted yet.</div>';return;}
+    el.innerHTML=all.map(w=>`
+      <div class="me" onclick="openMachine('${w.mid}')">
+        <div class="met"><span class="mefl">${w.mid}</span><span class="medt">${w.date}</span></div>
+        <div class="memac">${w.m?[w.m.make,w.m.model].filter(Boolean).join(' '):''}${w.reporter?' · '+w.reporter:''}</div>
+        <div style="font-size:12px;color:#636366;margin-top:3px">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped${w.gps?` · <a href="https://www.google.com/maps?q=${w.gps}" target="_blank" style="color:#185FA5;text-decoration:none">&#128205; Map</a>`:''}</div>
+        ${w.issues&&w.issues.length?`<div class="wentry-pills" style="margin-top:5px">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<div style="margin-top:4px;font-size:12px;color:#3B6D11;font-weight:600">&#9989; All clear</div>'}
+      </div>`).join('');
+  }
+}
+
+/* ---- Boot ---- */
 loadData();
 renderList(MACHINES);
 const urlM=new URLSearchParams(location.search).get('machine');
