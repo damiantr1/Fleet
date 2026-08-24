@@ -1,6 +1,3 @@
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,159 +10,196 @@ Index · HTML
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 #app{max-width:480px;margin:0 auto;padding-bottom:72px;min-height:100vh}
-.topbar{background:#1F4E78;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.topbar h1{font-size:17px;font-weight:600;flex:1}
-.back-btn{background:rgba(255,255,255,.18);border:none;color:#fff;padding:6px 12px;border-radius:6px;font-size:14px;cursor:pointer}
-.search-wrap{padding:10px 16px;background:#fff;border-bottom:1px solid #e5e5ea}
+.topbar{background:#1F4E78;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.topbar h1{font-size:16px;font-weight:600;flex:1}
+.back-btn{background:rgba(255,255,255,.18);border:none;color:#fff;padding:5px 11px;border-radius:6px;font-size:13px;cursor:pointer}
+.notif-btn{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;position:relative;padding:2px 6px}
+.notif-badge{position:absolute;top:-2px;right:-2px;background:#ff3b30;color:#fff;border-radius:50%;width:16px;height:16px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;display:none}
+.search-wrap{padding:10px 16px;background:#fff;border-bottom:1px solid #e5e5ea;position:sticky;top:44px;z-index:9}
 .search-wrap input{width:100%;padding:9px 13px;border:1px solid #c7c7cc;border-radius:10px;font-size:16px;background:#f2f2f7}
 .search-wrap input:focus{outline:none;border-color:#1F4E78}
-.sec-label{padding:10px 16px 4px;font-size:12px;font-weight:600;letter-spacing:.04em;color:#8e8e93;text-transform:uppercase}
-.mrow{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #e5e5ea;cursor:pointer;gap:12px;background:#fff}
+.sec-label{padding:10px 16px 4px;font-size:11px;font-weight:600;letter-spacing:.04em;color:#8e8e93;text-transform:uppercase;background:#f2f2f7}
+.mrow{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #e5e5ea;cursor:pointer;gap:11px;background:#fff}
 .mrow:active{background:#f2f2f7}
-.mthumb{width:44px;height:44px;border-radius:9px;object-fit:cover;border:1px solid #e5e5ea;flex-shrink:0}
-.mbadge{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.mthumb{width:42px;height:42px;border-radius:8px;object-fit:cover;border:1px solid #e5e5ea;flex-shrink:0}
+.mbadge{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
 .mbadge.truck{background:#e1ecf8;color:#185FA5}
 .mbadge.equipment{background:#e4f0d8;color:#3B6D11}
-.mbadge.rental{background:#f3e8fb;color:#6b21a8}
-.mstatus-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:3px;display:inline-block}
+.mbadge.rental{background:#fef3c7;color:#92400e}
+.minfo{flex:1;min-width:0}
+.mid{font-size:13px;font-weight:600}
+.mdesc{font-size:11px;color:#636366;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.mserial{font-size:10px;color:#aeaeb2;margin-top:1px}
+.mchev{color:#c7c7cc;font-size:20px;flex-shrink:0}
+.ldot{width:7px;height:7px;border-radius:50%;background:#34c759;flex-shrink:0}
+.mstatus-pill{font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;display:inline-block;margin-top:2px}
 .mstatus-pill.ready{background:#e4f0d8;color:#3B6D11}
 .mstatus-pill.issue{background:#fdecea;color:#c0392b}
-.minfo{flex:1;min-width:0}
-.mid{font-size:14px;font-weight:600}
-.mdesc{font-size:12px;color:#636366;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
-.mchev{color:#c7c7cc;font-size:20px}
-.ldot{width:8px;height:8px;border-radius:50%;background:#34c759;flex-shrink:0}
 .view{display:none}.view.active{display:block}
-.ph-hero{position:relative;width:100%;height:200px;background:#0d3459;overflow:hidden}
+/* Profile */
+.ph-hero{position:relative;width:100%;height:190px;background:#0d3459;overflow:hidden}
 .ph-hero img{width:100%;height:100%;object-fit:cover}
-.ph-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.35);font-size:13px}
-.ph-no-img .icon{font-size:40px}
-.add-photo-btn{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:20px;padding:6px 13px;font-size:12px;cursor:pointer}
-.photo-strip{display:flex;gap:7px;overflow-x:auto;padding:8px 16px;scrollbar-width:none;background:#1F4E78}
+.ph-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:rgba(255,255,255,.3);font-size:12px}
+.ph-no-img .icon{font-size:36px}
+.add-photo-btn{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:20px;padding:5px 12px;font-size:12px;cursor:pointer}
+.photo-strip{display:flex;gap:6px;overflow-x:auto;padding:7px 14px;scrollbar-width:none;background:#1F4E78}
 .photo-strip::-webkit-scrollbar{display:none}
-.strip-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);cursor:pointer}
-.strip-add{width:52px;height:52px;border-radius:7px;border:2px dashed rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;color:rgba(255,255,255,.6);font-size:22px;background:transparent}
-.ph-info{background:#1F4E78;color:#fff;padding:10px 16px 14px}
-.ph-fleet{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.strip-thumb{width:48px;height:48px;border-radius:7px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.35);cursor:pointer}
+.strip-add{width:48px;height:48px;border-radius:7px;border:2px dashed rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;color:rgba(255,255,255,.55);font-size:20px}
+.ph-info{background:#1F4E78;color:#fff;padding:10px 16px 12px}
+.ph-fleet{font-size:24px;font-weight:700;letter-spacing:-.02em}
 .ph-name{font-size:14px;opacity:.85;margin-top:1px}
-.ph-meta{font-size:12px;opacity:.6;margin-top:2px}
-.sync-bar{background:#0d3459;color:#fff;padding:7px 16px;display:flex;align-items:center;gap:8px;font-size:12px;min-height:32px}
+.ph-meta{font-size:11px;opacity:.6;margin-top:2px}
+.ph-serial-line{font-size:11px;opacity:.5;margin-top:2px;letter-spacing:.01em}
+.status-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;background:#fff;border-bottom:1px solid #e5e5ea}
+.status-bar span{font-size:12px;font-weight:600;color:#636366}
+.status-btn{flex:1;padding:7px 6px;border-radius:8px;border:1.5px solid;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s}
+.status-btn.ready{border-color:#97c459;background:#e4f0d8;color:#3B6D11}
+.status-btn.issue{border-color:#e8a09a;background:#fdecea;color:#c0392b}
+.status-btn.inactive{opacity:.45}
+.sync-bar{background:#0d3459;color:#fff;padding:6px 14px;display:flex;align-items:center;gap:7px;font-size:11px}
+.sync-bar a{color:#7ec8f7;text-decoration:none}
 .sync-dot{width:7px;height:7px;border-radius:50%;background:#34c759;flex-shrink:0}
 .sync-dot.off{background:#ff3b30}
 .sync-dot.busy{background:#ff9f0a;animation:blink 1s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.gps-bar{background:#0d3459;color:#fff;padding:7px 16px;display:flex;align-items:center;gap:8px;font-size:12px;min-height:32px;border-top:1px solid rgba(255,255,255,.08)}
-.gps-bar a{color:#7ec8f7;text-decoration:none}
+.gps-bar{background:#0d3459;color:#fff;padding:6px 14px;display:flex;align-items:center;gap:7px;font-size:11px;border-top:1px solid rgba(255,255,255,.07)}
 .gps-dot{width:7px;height:7px;border-radius:50%;background:#34c759;flex-shrink:0}
 .gps-dot.searching{background:#ff9f0a;animation:blink 1s infinite}
 .gps-dot.err{background:#ff3b30}
-.prof-tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea}
-.prof-tab{flex:1;padding:11px 8px;text-align:center;font-size:13px;font-weight:600;color:#8e8e93;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent}
+.prof-tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea;overflow-x:auto;scrollbar-width:none}
+.prof-tabs::-webkit-scrollbar{display:none}
+.prof-tab{flex-shrink:0;padding:10px 12px;font-size:12px;font-weight:600;color:#8e8e93;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
 .prof-tab.active{color:#1F4E78;border-bottom-color:#1F4E78}
 .prof-panel{display:none}.prof-panel.active{display:block}
-.toast{background:#1a5c0a;color:#fff;padding:12px 16px;margin:10px 16px 0;border-radius:10px;font-size:14px;font-weight:500;display:none}
+.toast{padding:11px 14px;margin:10px 14px 0;border-radius:10px;font-size:13px;font-weight:500;display:none;background:#1a5c0a;color:#fff}
 .toast.err{background:#8B0000}
-.lform{padding:14px 16px}
-.fc{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.fc h3{font-size:11px;font-weight:600;color:#8e8e93;margin-bottom:11px;text-transform:uppercase;letter-spacing:.05em}
-.field{margin-bottom:10px}.field:last-child{margin-bottom:0}
-.field label{display:block;font-size:13px;color:#636366;margin-bottom:4px}
-.field input,.field textarea{width:100%;padding:10px 12px;border:1px solid #c7c7cc;border-radius:9px;font-size:16px;background:#f2f2f7;color:#1c1c1e;font-family:inherit}
+/* Forms */
+.lform{padding:12px 14px}
+.fc{background:#fff;border-radius:12px;padding:13px;margin-bottom:9px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.fc h3{font-size:10px;font-weight:700;color:#8e8e93;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.field{margin-bottom:9px}.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:12px;color:#636366;margin-bottom:3px}
+.field input,.field textarea{width:100%;padding:9px 11px;border:1px solid #c7c7cc;border-radius:8px;font-size:15px;background:#f2f2f7;color:#1c1c1e;font-family:inherit}
 .field input:focus,.field textarea:focus{outline:none;border-color:#1F4E78;background:#fff}
-.field textarea{min-height:70px;resize:vertical}
-.fuel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.fb{padding:9px 4px;border:1px solid #c7c7cc;border-radius:8px;background:#f2f2f7;color:#636366;font-size:13px;cursor:pointer;text-align:center;font-weight:500}
+.field textarea{min-height:65px;resize:vertical}
+.fuel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.fb{padding:8px 4px;border:1px solid #c7c7cc;border-radius:7px;background:#f2f2f7;color:#636366;font-size:12px;cursor:pointer;text-align:center;font-weight:500}
 .fb.sel{background:#1F4E78;color:#fff;border-color:#1F4E78}
-.sbtn{width:100%;padding:14px;background:#1F4E78;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;margin-top:2px}
-.sbtn:active{opacity:.85}
-.sbtn:disabled{opacity:.5;cursor:not-allowed}
-.logs-sec{padding:0 16px 16px}
-.logs-sec h3{font-size:11px;font-weight:600;color:#8e8e93;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
-.lentry{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.leh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.ldate{font-size:12px;color:#8e8e93}
-.lby{font-size:12px;font-weight:600;color:#636366}
-.lread{font-size:15px;font-weight:600;margin-bottom:2px}
-.lloc{font-size:13px;color:#636366}
-.lissue{font-size:13px;color:#c0392b;margin-top:8px;padding-top:8px;border-top:1px solid #e5e5ea}
-.lissue-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;color:#c0392b}
-.no-logs{font-size:13px;color:#8e8e93;text-align:center;padding:24px 0}
-.wa-form{padding:14px 16px}
-.wa-section{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.wa-section-hdr{background:#1F4E78;color:#fff;padding:10px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.wa-item{display:flex;align-items:center;padding:12px 14px;border-bottom:1px solid #f2f2f7;gap:12px}
+.sbtn{width:100%;padding:13px;background:#1F4E78;color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;margin-top:2px}
+.sbtn:active{opacity:.85}.sbtn:disabled{opacity:.5;cursor:not-allowed}
+/* Log entries */
+.logs-sec{padding:0 14px 14px}
+.logs-sec h3{font-size:10px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px}
+.lentry{background:#fff;border-radius:10px;padding:11px 13px;margin-bottom:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.leh{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.ldate{font-size:11px;color:#8e8e93}
+.lby{font-size:11px;font-weight:600;color:#636366}
+.lread{font-size:14px;font-weight:600;margin-bottom:2px}
+.lloc{font-size:12px;color:#636366}
+.lissue{font-size:12px;color:#c0392b;margin-top:7px;padding-top:7px;border-top:1px solid #e5e5ea}
+.lissue-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.no-logs{font-size:13px;color:#8e8e93;text-align:center;padding:20px 0}
+/* Walk-around */
+.wa-form{padding:12px 14px}
+.wa-section{background:#fff;border-radius:11px;margin-bottom:9px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wa-section-hdr{background:#1F4E78;color:#fff;padding:9px 13px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.wa-item{display:flex;align-items:center;padding:11px 13px;border-bottom:1px solid #f2f2f7;gap:10px}
 .wa-item:last-child{border-bottom:none}
-.wa-label{flex:1;font-size:14px;color:#1c1c1e}
-.wa-label span{display:block;font-size:11px;color:#8e8e93;margin-top:1px}
-.wa-btns{display:flex;gap:6px;flex-shrink:0}
-.wa-btn{width:52px;height:32px;border-radius:7px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:12px;cursor:pointer;font-weight:600;color:#636366}
+.wa-label{flex:1;font-size:13px}
+.wa-label span{display:block;font-size:10px;color:#8e8e93;margin-top:1px}
+.wa-btns{display:flex;gap:5px;flex-shrink:0}
+.wa-btn{width:50px;height:30px;border-radius:6px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:11px;cursor:pointer;font-weight:600;color:#636366}
 .wa-btn.ok{background:#e4f0d8;border-color:#97c459;color:#3B6D11}
 .wa-btn.bad{background:#fdecea;border-color:#e8a09a;color:#c0392b}
-.wa-progress{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.wa-prog-bar-wrap{background:#f2f2f7;border-radius:20px;height:8px;margin:8px 0 4px;overflow:hidden}
+.wa-progress{background:#fff;border-radius:11px;padding:13px;margin-bottom:9px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wa-prog-bar-wrap{background:#f2f2f7;border-radius:20px;height:7px;margin:7px 0 4px;overflow:hidden}
 .wa-prog-bar{background:#1F4E78;height:100%;border-radius:20px;transition:width .3s}
-.wa-prog-txt{font-size:12px;color:#8e8e93;display:flex;justify-content:space-between}
-.wa-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.wa-stat{text-align:center;padding:10px;border-radius:8px;font-size:12px;font-weight:600}
+.wa-prog-txt{font-size:11px;color:#8e8e93;display:flex;justify-content:space-between}
+.wa-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
+.wa-stat{text-align:center;padding:9px;border-radius:7px;font-size:11px;font-weight:600}
 .wa-stat.ok{background:#e4f0d8;color:#3B6D11}
 .wa-stat.bad{background:#fdecea;color:#c0392b}
 .wa-stat.skip{background:#f2f2f7;color:#8e8e93}
-.wa-stat big{display:block;font-size:22px;font-weight:700}
-.wentry{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.wentry-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.wa-stat big{display:block;font-size:20px;font-weight:700}
+/* History & walk-arounds */
+.wentry{background:#fff;border-radius:10px;padding:11px 13px;margin-bottom:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wentry-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
 .wentry-date{font-size:13px;font-weight:600}
-.wentry-by{font-size:12px;color:#8e8e93}
-.wentry-pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
-.wpill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:12px}
+.wentry-by{font-size:11px;color:#8e8e93}
+.wentry-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.wpill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:10px}
 .wpill.bad{background:#fdecea;color:#c0392b}
-.part-item{background:#f9f9f9;border:1px solid #e5e5ea;border-radius:9px;padding:11px 13px;margin-bottom:8px}
+/* Parts */
+.part-item{background:#fff;border-radius:10px;padding:11px 13px;margin-bottom:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
 .part-item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .part-name{font-size:14px;font-weight:600;flex:1}
 .part-del{background:none;border:none;color:#c7c7cc;font-size:18px;cursor:pointer;padding:0;line-height:1;flex-shrink:0}
-.part-del:active{color:#c0392b}
-.part-num{font-size:12px;color:#8e8e93;margin-top:2px}
-.part-link-row{margin-top:6px}
-.part-link-row a{font-size:13px;color:#185FA5;text-decoration:none;word-break:break-all}
-.part-notes-row{font-size:12px;color:#636366;margin-top:4px}
-.master-wrap{padding:16px}
-.master-wrap h2{font-size:20px;font-weight:600;margin-bottom:3px}
-.master-sub{font-size:13px;color:#636366;margin-bottom:14px}
-.me{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.me:active{background:#f2f2f7}
-.met{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
-.mefl{font-size:14px;font-weight:700}
-.medt{font-size:12px;color:#8e8e93}
-.memac{font-size:12px;color:#636366}
-.merd{font-size:13px;margin-top:3px}
-.ipill{display:inline-block;background:#fdecea;color:#c0392b;border-radius:20px;font-size:11px;font-weight:600;padding:2px 9px;margin-top:5px}
-.master-tabs{display:flex;gap:8px;margin-bottom:14px}
-.mtab{flex:1;padding:9px;text-align:center;border-radius:9px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:13px;font-weight:600;color:#636366;cursor:pointer}
-.mtab.active{background:#1F4E78;color:#fff;border-color:#1F4E78}
+.part-num{font-size:11px;color:#8e8e93;margin-top:2px}
+.part-machine-tag{font-size:11px;font-weight:600;color:#185FA5;background:#e1ecf8;padding:2px 7px;border-radius:10px;display:inline-block;margin-top:4px}
+.part-link-row a{font-size:12px;color:#185FA5;text-decoration:none;word-break:break-all}
+.part-notes-row{font-size:11px;color:#636366;margin-top:3px}
+/* Bottom tabs */
 .tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:10}
-.tab{flex:1;padding:10px 8px 8px;text-align:center;cursor:pointer;font-size:11px;color:#8e8e93;border:none;background:none;font-weight:500}
-.tab .ticon{font-size:20px;display:block;margin-bottom:2px}
+.tab{flex:1;padding:9px 4px 7px;text-align:center;cursor:pointer;font-size:10px;color:#8e8e93;border:none;background:none;font-weight:500;position:relative}
+.tab .ticon{font-size:19px;display:block;margin-bottom:1px}
 .tab.active{color:#1F4E78}
-.empty{text-align:center;padding:40px 20px;color:#8e8e93;font-size:14px}
-.loading{text-align:center;padding:30px;color:#8e8e93;font-size:14px}
+.tab-badge{position:absolute;top:6px;right:50%;transform:translateX(10px);background:#ff3b30;color:#fff;border-radius:50%;width:15px;height:15px;font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center}
+/* Global views */
+.view-header{padding:14px 14px 10px;border-bottom:1px solid #e5e5ea;background:#fff;position:sticky;top:44px;z-index:8}
+.view-header h2{font-size:17px;font-weight:600}
+.view-header p{font-size:12px;color:#8e8e93;margin-top:2px}
+.view-content{padding:12px 14px}
+.me{background:#fff;border-radius:10px;padding:11px 13px;margin-bottom:7px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.me:active{background:#f2f2f7}
+.met{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px}
+.mefl{font-size:14px;font-weight:700}
+.medt{font-size:11px;color:#8e8e93}
+.memac{font-size:12px;color:#636366}
+.merd{font-size:12px;margin-top:2px}
+.ipill{display:inline-block;background:#fdecea;color:#c0392b;border-radius:20px;font-size:11px;font-weight:600;padding:2px 8px;margin-top:4px}
+.gpill{display:inline-block;background:#e4f0d8;color:#3B6D11;border-radius:20px;font-size:11px;font-weight:600;padding:2px 8px;margin-top:4px}
+.master-tabs{display:flex;gap:7px;padding:12px 14px 0}
+.mtab{flex:1;padding:8px;text-align:center;border-radius:8px;border:1px solid #c7c7cc;background:#f2f2f7;font-size:12px;font-weight:600;color:#636366;cursor:pointer}
+.mtab.active{background:#1F4E78;color:#fff;border-color:#1F4E78}
+.empty-state{text-align:center;padding:48px 20px 20px;color:#8e8e93}
+.empty-state .eicon{font-size:40px;display:block;margin-bottom:10px}
+.empty-state p{font-size:14px}
+.empty-state small{font-size:12px;color:#aeaeb2;margin-top:4px;display:block}
+/* Notif alert entries */
+.alert-entry{background:#fff;border-radius:10px;padding:11px 13px;margin-bottom:7px;box-shadow:0 1px 2px rgba(0,0,0,.06);cursor:pointer;border-left:3px solid #c7c7cc}
+.alert-entry.issue{border-left-color:#c0392b}
+.alert-entry.log{border-left-color:#185FA5}
+.alert-entry.wa{border-left-color:#3B6D11}
+.alert-entry.parts{border-left-color:#f59e0b}
+.alert-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.alert-sub{font-size:11px;color:#636366}
+.alert-time{font-size:10px;color:#aeaeb2;margin-top:3px}
+/* Lightbox */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:100;align-items:center;justify-content:center;flex-direction:column}
 .lightbox.open{display:flex}
 .lightbox img{max-width:96vw;max-height:80vh;border-radius:8px;object-fit:contain}
-.lb-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer}
-.lb-del{margin-top:16px;background:rgba(200,40,40,.8);color:#fff;border:none;padding:9px 22px;border-radius:20px;font-size:14px;cursor:pointer;font-weight:600}
+.lb-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer}
+.lb-del{margin-top:14px;background:rgba(200,40,40,.8);color:#fff;border:none;padding:8px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:600}
 input[type=file]{display:none}
 </style>
 </head>
 <body>
 <div id="app">
+  <!-- FLEET LIST -->
   <div id="view-list" class="view active">
     <div class="topbar">
       <h1>R3 Fleet Tracker</h1>
-      <div class="sync-dot off" id="global-sync-dot" title="Sync status"></div>
+      <div class="sync-dot off" id="global-sync-dot"></div>
+      <button class="notif-btn" onclick="showView('alerts')" title="Alerts">
+        &#128276;<div class="notif-badge" id="notif-badge"></div>
+      </button>
     </div>
-    <div class="search-wrap"><input id="search" placeholder="Search fleet #, make, or model..." oninput="filterList(this.value)" autocomplete="off"></div>
-    <div id="mlist"><div class="loading">Connecting to database...</div></div>
+    <div class="search-wrap"><input id="search" placeholder="Search fleet #, make, model, serial..." oninput="filterList(this.value)" autocomplete="off"></div>
+    <div id="mlist"><div class="no-logs" style="padding:30px;text-align:center">Connecting to database...</div></div>
   </div>
- 
+
+  <!-- MACHINE PROFILE -->
   <div id="view-profile" class="view">
     <div class="topbar">
       <button class="back-btn" onclick="showView('list')">&#8592; Back</button>
@@ -181,25 +215,25 @@ input[type=file]{display:none}
       <div class="ph-fleet" id="ph-fleet"></div>
       <div class="ph-name" id="ph-name"></div>
       <div class="ph-meta" id="ph-meta"></div>
-      <div id="ph-serial" style="font-size:11px;opacity:.55;margin-top:3px;letter-spacing:.02em"></div>
+      <div class="ph-serial-line" id="ph-serial"></div>
+    </div>
+    <div class="status-bar">
+      <span>Status:</span>
+      <button class="status-btn ready" id="status-ready-btn" onclick="setMachineStatus('ready')">&#9679; Ready to Go</button>
+      <button class="status-btn issue" id="status-issue-btn" onclick="setMachineStatus('issue')">&#9679; Has Issue</button>
     </div>
     <div class="sync-bar"><div class="sync-dot busy" id="sync-dot"></div><span id="sync-text">Connecting...</span></div>
-    <div class="gps-bar"><div class="gps-dot err" id="gps-dot"></div><span id="gps-text">Location not active &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;cursor:pointer">Enable</button></span></div>
+    <div class="gps-bar"><div class="gps-dot err" id="gps-dot"></div><span id="gps-text">Location not active &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:2px 9px;border-radius:10px;font-size:11px;cursor:pointer">Enable</button></span></div>
     <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotos(this)">
     <div class="prof-tabs">
-      <button class="prof-tab active" id="ptab-log" onclick="switchProfTab('log')">&#128203; Log Entry</button>
+      <button class="prof-tab active" id="ptab-log" onclick="switchProfTab('log')">&#128203; Log</button>
       <button class="prof-tab" id="ptab-wa" onclick="switchProfTab('wa')">&#9989; Walk-Around</button>
       <button class="prof-tab" id="ptab-parts" onclick="switchProfTab('parts')">&#128295; Parts</button>
       <button class="prof-tab" id="ptab-hist" onclick="switchProfTab('hist')">&#128337; History</button>
     </div>
-    <!-- Machine status banner -->
-    <div id="machine-status-bar" style="display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border-bottom:1px solid #e5e5ea">
-      <span style="font-size:13px;font-weight:600;color:#636366;flex:1">Machine Status:</span>
-      <button id="status-ready-btn" onclick="setMachineStatus('ready')" style="padding:7px 16px;border-radius:8px;border:1.5px solid #97c459;background:#e4f0d8;color:#3B6D11;font-size:13px;font-weight:700;cursor:pointer">&#9679; Ready to Go</button>
-      <button id="status-issue-btn" onclick="setMachineStatus('issue')" style="padding:7px 16px;border-radius:8px;border:1.5px solid #e8a09a;background:#fdecea;color:#c0392b;font-size:13px;font-weight:700;cursor:pointer">&#9679; Has Issue</button>
-    </div>
     <div class="toast" id="toast"></div>
- 
+
+    <!-- LOG PANEL -->
     <div class="prof-panel active" id="panel-log">
       <div class="lform">
         <div class="fc">
@@ -224,26 +258,27 @@ input[type=file]{display:none}
         </div>
         <div class="fc">
           <h3>Issues or damage</h3>
-          <div class="field"><label>Describe any problems (leave blank if none)</label><textarea id="f-issues" placeholder="Any issues, leaks, damage, needed repairs..."></textarea></div>
+          <div class="field"><textarea id="f-issues" placeholder="Describe any problems — leave blank if none..."></textarea></div>
         </div>
         <div class="fc">
           <h3>Reported by</h3>
-          <div class="field"><label>Your name</label><input type="text" id="f-reporter" placeholder="Your name" autocomplete="name"></div>
+          <div class="field"><input type="text" id="f-reporter" placeholder="Your name" autocomplete="name"></div>
         </div>
         <button class="sbtn" id="log-submit-btn" onclick="submitLog()">Save Log Entry</button>
       </div>
       <div class="logs-sec">
-        <h3>Previous log entries</h3>
-        <div id="mlogs"><div class="loading">Loading...</div></div>
+        <h3>Previous entries</h3>
+        <div id="mlogs"><div class="no-logs">Loading...</div></div>
       </div>
     </div>
- 
+
+    <!-- WALK-AROUND PANEL -->
     <div class="prof-panel" id="panel-wa">
       <div class="wa-form">
         <div class="wa-progress">
-          <div style="font-size:14px;font-weight:600">Daily Walk-Around Inspection</div>
+          <div style="font-size:13px;font-weight:600">Daily Walk-Around Inspection</div>
           <div class="wa-prog-bar-wrap"><div class="wa-prog-bar" id="wa-prog-bar" style="width:0%"></div></div>
-          <div class="wa-prog-txt"><span id="wa-prog-txt">0 of 0 items checked</span><span id="wa-prog-pct">0%</span></div>
+          <div class="wa-prog-txt"><span id="wa-prog-txt">0 of 0 checked</span><span id="wa-prog-pct">0%</span></div>
           <div class="wa-summary-grid">
             <div class="wa-stat ok"><big id="wa-ok-count">0</big>OK</div>
             <div class="wa-stat bad"><big id="wa-bad-count">0</big>Issues</div>
@@ -251,36 +286,34 @@ input[type=file]{display:none}
           </div>
         </div>
         <div id="wa-checklist"></div>
-        <div class="fc">
-          <h3>Inspector name</h3>
-          <div class="field"><input type="text" id="wa-reporter" placeholder="Your name" autocomplete="name"></div>
-        </div>
-        <div class="fc">
-          <h3>Additional notes</h3>
-          <div class="field"><textarea id="wa-notes" placeholder="Any other observations..." style="min-height:60px"></textarea></div>
-        </div>
+        <div class="fc"><h3>Inspector name</h3><div class="field"><input type="text" id="wa-reporter" placeholder="Your name" autocomplete="name"></div></div>
+        <div class="fc"><h3>Notes</h3><div class="field"><textarea id="wa-notes" placeholder="Any other observations..." style="min-height:55px"></textarea></div></div>
         <button class="sbtn" id="wa-submit-btn" onclick="submitWalkAround()">Submit Walk-Around</button>
       </div>
     </div>
- 
+
+    <!-- PARTS PANEL -->
     <div class="prof-panel" id="panel-parts">
       <div class="lform">
         <div class="fc">
           <h3>Add part needed</h3>
-          <div class="field"><label>Part name / description</label><input type="text" id="part-name" placeholder="e.g. Oil filter, hydraulic hose..."></div>
-          <div class="field"><label>Part number (optional)</label><input type="text" id="part-number" placeholder="e.g. LF3000, 1R-0716..."></div>
-          <div class="field"><label>Link to part (optional)</label><input type="url" id="part-link" placeholder="https://amazon.com/... or any supplier link"></div>
-          <div class="field"><label>Notes</label><input type="text" id="part-notes" placeholder="Qty needed, urgency, supplier..."></div>
-          <button class="sbtn" id="part-submit-btn" onclick="submitPart()">Add Part</button>
+          <div class="field"><label>Part name</label><input type="text" id="part-name" placeholder="e.g. Oil filter, hydraulic hose..."></div>
+          <div class="field"><label>Part number (optional)</label><input type="text" id="part-number" placeholder="e.g. LF3000"></div>
+          <div class="field"><label>Link to order (optional)</label><input type="url" id="part-link" placeholder="https://..."></div>
+          <div class="field"><label>Notes</label><input type="text" id="part-notes" placeholder="Qty, urgency, supplier..."></div>
+          <button class="sbtn" id="part-submit-btn" onclick="submitPart()" style="margin-top:8px">Add Part</button>
         </div>
         <div class="fc">
-          <h3>Parts needed <span id="parts-count" style="background:#fdecea;color:#c0392b;border-radius:10px;padding:1px 8px;font-size:11px;margin-left:6px"></span></h3>
+          <h3>Parts needed <span id="parts-count" style="background:#fdecea;color:#c0392b;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:5px"></span></h3>
           <div id="parts-list"><div class="no-logs">No parts on the list.</div></div>
         </div>
       </div>
     </div>
-      <div style="padding:14px 16px">
-        <div class="master-tabs">
+
+    <!-- HISTORY PANEL -->
+    <div class="prof-panel" id="panel-hist">
+      <div style="padding:12px 14px">
+        <div class="master-tabs" style="padding:0 0 10px">
           <button class="mtab active" id="htab-logs" onclick="switchHistTab('logs')">Log Entries</button>
           <button class="mtab" id="htab-wa" onclick="switchHistTab('wa')">Walk-Arounds</button>
         </div>
@@ -289,44 +322,60 @@ input[type=file]{display:none}
       </div>
     </div>
   </div>
- 
+
+  <!-- ALL ACTIVITY VIEW -->
   <div id="view-master" class="view">
     <div class="topbar"><h1>All Activity</h1></div>
-    <div class="master-wrap">
-      <div class="master-tabs">
-        <button class="mtab active" id="mtab-logs" onclick="switchMasterTab('logs')">Log Entries</button>
-        <button class="mtab" id="mtab-wa" onclick="switchMasterTab('wa')">Walk-Arounds</button>
-      </div>
+    <div class="master-tabs" style="padding:12px 14px 0"><button class="mtab active" id="mtab-logs" onclick="switchMasterTab('logs')">Logs</button><button class="mtab" id="mtab-wa" onclick="switchMasterTab('wa')">Walk-Arounds</button></div>
+    <div class="view-content">
       <div id="alllogs"></div>
       <div id="allwa" style="display:none"></div>
     </div>
   </div>
+
+  <!-- ISSUES VIEW -->
+  <div id="view-issues" class="view">
+    <div class="topbar"><h1>Issues</h1></div>
+    <div class="view-content" id="issues-content"></div>
+  </div>
+
+  <!-- PARTS VIEW -->
+  <div id="view-parts" class="view">
+    <div class="topbar"><h1>Parts Needed</h1></div>
+    <div class="view-content" id="all-parts-content"></div>
+  </div>
+
+  <!-- ALERTS VIEW -->
+  <div id="view-alerts" class="view">
+    <div class="topbar"><button class="back-btn" onclick="showView('list')">&#8592; Back</button><h1>Alerts</h1><button onclick="clearAlerts()" style="background:rgba(255,255,255,.18);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer">Clear all</button></div>
+    <div class="view-content" id="alerts-content"></div>
+  </div>
 </div>
- 
+
 <div class="tabbar">
   <button class="tab active" id="tab-fleet" onclick="showView('list')"><span class="ticon">&#128666;</span>Fleet</button>
-  <button class="tab" id="tab-logs" onclick="showView('master')"><span class="ticon">&#128203;</span>All Activity</button>
+  <button class="tab" id="tab-master" onclick="showView('master');switchMasterTab('logs')"><span class="ticon">&#128203;</span>Activity<div class="tab-badge" id="badge-activity"></div></button>
+  <button class="tab" id="tab-issues" onclick="showView('issues');renderIssues()"><span class="ticon">&#9888;&#65039;</span>Issues<div class="tab-badge" id="badge-issues"></div></button>
+  <button class="tab" id="tab-parts" onclick="showView('parts');renderAllParts()"><span class="ticon">&#128295;</span>Parts<div class="tab-badge" id="badge-parts"></div></button>
+  <button class="tab" id="tab-alerts" onclick="showView('alerts');renderAlerts();clearBadge('alerts')"><span class="ticon">&#128276;</span>Alerts<div class="tab-badge" id="badge-alerts"></div></button>
 </div>
- 
+
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLb()">&#10005;</button>
-  <img id="lb-img" src="" alt="Full size photo">
-  <button class="lb-del" onclick="delPhoto()">&#128465; Remove photo</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-del" onclick="delPhoto()">&#128465; Remove</button>
 </div>
- 
+
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getDatabase, ref, push, set, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
- 
-const FB_CONFIG = {
-  databaseURL: 'https://r3-fleet-default-rtdb.firebaseio.com'
-};
-const fbApp = initializeApp(FB_CONFIG);
-const db = getDatabase(fbApp);
- 
-// ── Machine list ──────────────────────────────────────────────────────────────
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getDatabase,ref,push,set,onValue,remove}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+const fbApp=initializeApp({databaseURL:'https://r3-fleet-default-rtdb.firebaseio.com'});
+const db=getDatabase(fbApp);
+
+
 const MACHINES=[{"id":"P100","make":"Ford","model":"F250","type":"Salvaged","year":"2022","cat":"truck","operator":"","serial":"97805K4","location":""},{"id":"P101","make":"Big-Tex","model":"25DU-HD","type":"Gooseneck Dump Trailer","year":"2017","cat":"truck","operator":"","serial":"16VDX2020J2010824","location":"Yard"},{"id":"P21","make":"Ford","model":"Explorer","type":"Staff car","year":"2002","cat":"truck","operator":"","serial":"5YWN414","location":"Arizona"},{"id":"P25","make":"Sterling","model":"L7501","type":"Water Truck","year":"1998","cat":"truck","operator":"","serial":"2FZHRJAA5XAA44439","location":"Yard"},{"id":"P32","make":"GMC","model":"7500","type":"2K gal. Water Truck","year":"1998","cat":"truck","operator":"","serial":"5X93536","location":"Yard"},{"id":"P36","make":"Ford","model":"Fusion","type":"Green Staff car","year":"2013","cat":"truck","operator":"Jamie Trumble","serial":"6ZWC165","location":""},{"id":"P37","make":"Ford","model":"F450","type":"1-1/2 ton (D)","year":"2013","cat":"truck","operator":"Zane Payne","serial":"06684M1","location":""},{"id":"P40","make":"International","model":"","type":"2K gal. Water Truck","year":"1990","cat":"truck","operator":"","serial":"1HTSAZRPOLH235890","location":"Yard"},{"id":"P43","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":"","serial":"5F1151011D1003811","location":""},{"id":"P44","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":"","serial":"5F115101XD1003810","location":""},{"id":"P45","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":"","serial":"5F115101XD1004603","location":""},{"id":"P46","make":"Wanco","model":"WTSP","type":"Solar Arrowboard","year":"2013","cat":"truck","operator":"","serial":"5F1151011D1004604","location":""},{"id":"P49","make":"Ford","model":"F450","type":"1-ton (D)","year":"2015","cat":"truck","operator":"Nelson Cuervo","serial":"29422U1","location":""},{"id":"P53","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Victor Carcoba","serial":"58639Y1","location":""},{"id":"P54","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Cesar Flores","serial":"58638Y1","location":""},{"id":"P55","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Jim Rowe","serial":"53523C2","location":""},{"id":"P56","make":"Ford","model":"F350","type":"1-ton (D)","year":"2016","cat":"truck","operator":"Billy Palmer","serial":"53524C2","location":""},{"id":"P59","make":"Freightliner","model":"M2","type":"Dump Truck","year":"2012","cat":"truck","operator":"","serial":"86070M3","location":""},{"id":"P60","make":"Ford","model":"F750","type":"2K Water Truck","year":"2009","cat":"truck","operator":"","serial":"70949Z1","location":""},{"id":"P63","make":"Ford","model":"F150","type":"P/UP","year":"2017","cat":"truck","operator":"Manuel Tinajero","serial":"53860L1","location":""},{"id":"P64","make":"Ford","model":"F350","type":"Box/Dump (G)","year":"2016","cat":"truck","operator":"","serial":"19730H2","location":"Shop"},{"id":"P65","make":"International","model":"4300","type":"5 Y. dump truck","year":"2014","cat":"truck","operator":"","serial":"09742U1","location":"Shop"},{"id":"P67","make":"Ford","model":"Ford","type":"Water Truck","year":"2013","cat":"truck","operator":"","serial":"07249M1","location":""},{"id":"P68","make":"Itnl","model":"Comm","type":"Commercial","year":"2015","cat":"truck","operator":"","serial":"33114T1","location":""},{"id":"P69","make":"Intl","model":"Comm","type":"Water Truck","year":"2015","cat":"truck","operator":"","serial":"33117T1","location":""},{"id":"P71","make":"Ford","model":"F150","type":"P/UP","year":"2020","cat":"truck","operator":"Jim Rowe","serial":"66416A3","location":""},{"id":"P72","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Bobby Witt","serial":"64698A3","location":""},{"id":"P73","make":"Ford","model":"F350","type":"1-ton (D)","year":"2020","cat":"truck","operator":"Joshua Fristad JR","serial":"64694A3","location":""},{"id":"P75","make":"Ford","model":"F450","type":"1-ton (D)","year":"2020","cat":"truck","operator":"","serial":"62544A3","location":"Shop"},{"id":"P76","make":"Chevy","model":"3500","type":"1-ton","year":"2018","cat":"truck","operator":"","serial":"95109J3","location":"Yard"},{"id":"P77","make":"Ford","model":"F250","type":"3/4-ton","year":"2019","cat":"truck","operator":"Everett Thompson","serial":"48791D3","location":""},{"id":"P78","make":"Ford","model":"F350","type":"1-ton (G)","year":"2021","cat":"truck","operator":"Cameron Falkowsky","serial":"62890H3","location":""},{"id":"P79","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Mark","serial":"48230J3","location":""},{"id":"P80","make":"Wylie","model":"Wtr Trailer","type":"Water Trailer","year":"2022","cat":"truck","operator":"","serial":"5VUTW1320NP000124","location":""},{"id":"P81","make":"Wylie","model":"Wtr Trailer","type":"Water Trailer","year":"2022","cat":"truck","operator":"","serial":"5VUTW1328NP000128","location":""},{"id":"P82","make":"Sky","model":"Tank","type":"1K Tank/Trailer","year":"2021","cat":"truck","operator":"","serial":"4S9BU1226MC412063","location":""},{"id":"P83","make":"Maxxd","model":"Utility","type":"Utility/Dump Trailer","year":"2019","cat":"truck","operator":"","serial":"5R8BD1020KM059512","location":""},{"id":"P84","make":"Ford","model":"F150","type":"P/UP","year":"2018","cat":"truck","operator":"Don Huse","serial":"10987N3","location":""},{"id":"P85","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Hugo Cardoso","serial":"04287R3","location":""},{"id":"P86","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Mike Nelson","serial":"03315R3","location":""},{"id":"P87","make":"Ford","model":"F250","type":"P/UP","year":"2022","cat":"truck","operator":"Ruben Resendez","serial":"04244R3","location":""},{"id":"P88","make":"Frueh","model":"Trailer","type":"Dependable Trailer","year":"1971","cat":"truck","operator":"","serial":"WEK130205","location":""},{"id":"P91","make":"RAM","model":"2500","type":"P/UP","year":"2022","cat":"truck","operator":"Alan Rock","serial":"85303U3","location":""},{"id":"P92","make":"FORD","model":"EXPLORER","type":"","year":"2023","cat":"truck","operator":"Mark Trumble","serial":"9KIA840","location":""},{"id":"P93","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Mark Knip","serial":"13031Z3","location":""},{"id":"P94","make":"FORD","model":"Explorer","type":"SALVAGED","year":"2020","cat":"truck","operator":"Eugene Fig","serial":"8WGE484","location":""},{"id":"P95","make":"FORD","model":"F250","type":"SALVAGED","year":"2023","cat":"truck","operator":"Jacob Benthal","serial":"84467Z3","location":""},{"id":"P96","make":"CHEVY","model":"3500","type":"SALVAGED","year":"2022","cat":"truck","operator":"Rollin Ryan","serial":"84473Z3","location":""},{"id":"P97","make":"FORD","model":"F250","type":"SALVAGED","year":"2024","cat":"truck","operator":"Miguel Roman","serial":"46942B4","location":""},{"id":"P98","make":"Ford","model":"F150","type":"Salvaged","year":"2023","cat":"truck","operator":"Matt Trumble","serial":"21486D4","location":""},{"id":"P99","make":"Dodge/Ram","model":"2500","type":"Salvaged","year":"2022","cat":"truck","operator":"","serial":"43087E4","location":""},{"id":"T1","make":"Hyundai","model":"HL760-7","type":"Wheel Loader","year":"","cat":"equipment","operator":"","serial":"LC-0110586","location":""},{"id":"T10","make":"Volvo","model":"EC330BLC","type":"Excavator","year":"2006","cat":"equipment","operator":"","serial":"80096","location":""},{"id":"T11","make":"Hyundai","model":"HL760-7A","type":"Wheel Loader","year":"2007","cat":"equipment","operator":"","serial":"LC0410250","location":""},{"id":"T17","make":"Ingersol","model":"","type":"Compressor","year":"","cat":"equipment","operator":"","serial":"","location":""},{"id":"T19","make":"Sullair","model":"","type":"Compressor","year":"","cat":"equipment","operator":"","serial":"","location":""},{"id":"T29","make":"Bobcat","model":"334D","type":"7.5K Mini-Excavator","year":"2004","cat":"equipment","operator":"","serial":"232613595","location":""},{"id":"T32","make":"Bobcat","model":"Sweeper 60","type":"sweeper attachment","year":"","cat":"equipment","operator":"","serial":"714403890","location":""},{"id":"T33","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":"","serial":"SKR04193","location":""},{"id":"T34","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":"","serial":"SKR04170","location":""},{"id":"T35","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":"","serial":"HLL04PF0000288","location":""},{"id":"T36","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":"","serial":"SKR04027","location":""},{"id":"T37","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2014","cat":"equipment","operator":"","serial":"SKR04033","location":""},{"id":"T38","make":"Hyundai","model":"HL760-9a","type":"4.5 Y loader","year":"2014","cat":"equipment","operator":"","serial":"HHKHLL04EE0000222","location":""},{"id":"T39","make":"Cat","model":"GP25K","type":"5000 LB forklift","year":"","cat":"equipment","operator":"","serial":"AT17C02737","location":""},{"id":"T41","make":"Hyundai","model":"HX330L","type":"75K Excavator","year":"2016","cat":"equipment","operator":"","serial":"HHKHK901JG0000095","location":""},{"id":"T42","make":"Hyundai","model":"HX220L","type":"50K Excavator","year":"2016","cat":"equipment","operator":"","serial":"HHKHK601EG0000055","location":""},{"id":"T43","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":"","serial":"HWC02094","location":""},{"id":"T44","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":"","serial":"HWC02076","location":""},{"id":"T45","make":"Hyundai","model":"HX145LCR","type":"34K midi-ex 0-tail swing","year":"","cat":"equipment","operator":"","serial":"HHKHK404HG0000005","location":""},{"id":"T46","make":"Cat","model":"420F2","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":"","serial":"HWC02657","location":""},{"id":"T47","make":"Hyundai","model":"HX300","type":"70K Excavator","year":"2017","cat":"equipment","operator":"","serial":"HHKHKLG0000288","location":""},{"id":"T48","make":"Bobcat","model":"S650","type":"High Flow Skidsteer","year":"2014","cat":"equipment","operator":"","serial":"A3NV24634","location":""},{"id":"T49","make":"Bobcat","model":"AP450","type":"Universal Cold Planer","year":"2014","cat":"equipment","operator":"","serial":"C12532","location":""},{"id":"T50","make":"Bobcat","model":"72SB","type":"sweeper attachment","year":"2014","cat":"equipment","operator":"","serial":"783733434","location":""},{"id":"T51","make":"Wanco","model":"SA6000-WLT","type":"(4) 1000W Diesel light twr","year":"2017","cat":"equipment","operator":"","serial":"SF13D1410J1000794","location":""},{"id":"T52","make":"Hyundai","model":"HL760-9A","type":"4.5 Y loader","year":"2013","cat":"equipment","operator":"","serial":"HHKHLL04HC0000006","location":""},{"id":"T53","make":"Hyundai","model":"HL960","type":"4.5 Y.loader","year":"2017","cat":"equipment","operator":"","serial":"HHKHW600PI0000353","location":""},{"id":"T54","make":"Multi Quip","model":"MC64PH","type":"6 cu. Ft. cement mixer","year":"2015","cat":"equipment","operator":"","serial":"H1551076","location":""},{"id":"T55","make":"Hyundai","model":"HL960","type":"4.5 Y loader","year":"2017","cat":"equipment","operator":"","serial":"HHKHW600TH0000332","location":""},{"id":"T56","make":"Hyundai","model":"R35Z-9A","type":"9K mini excavator","year":"2017","cat":"equipment","operator":"","serial":"HHKMH04HH0000525","location":""},{"id":"T57","make":"Hyundai","model":"R80CR-9A","type":"18.5K mini excavator","year":"2015","cat":"equipment","operator":"","serial":"HHKHZ104HF0000045","location":""},{"id":"T58","make":"Bomag","model":"BW120","type":"3-5 Ton Roller","year":"2016","cat":"equipment","operator":"","serial":"861-880-291-333","location":""},{"id":"T59","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":"","serial":"H8T00237","location":""},{"id":"T60","make":"Cat","model":"420ST","type":"4WD ext-a-hoe","year":"2020","cat":"equipment","operator":"","serial":"H8T00238","location":""},{"id":"T61","make":"John Deere","model":"210LEP","type":"Skip Loader","year":"2016","cat":"equipment","operator":"","serial":"1T821ELTGJ893132","location":""},{"id":"T62","make":"LiuGong","model":"950E","type":"100K Excavator","year":"2020","cat":"equipment","operator":"","serial":"CLG950EZTLE004008","location":""},{"id":"T63","make":"ASV","model":"VT70","type":"Track Skid Steer","year":"2017","cat":"equipment","operator":"","serial":"HDS01172","location":""},{"id":"T64","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"","cat":"equipment","operator":"","serial":"HHKHMH04CH0000348","location":""},{"id":"T66","make":"ASV","model":"RT40","type":"Track Mini Skid Steer","year":"2018","cat":"equipment","operator":"","serial":"ASVRT40DEJDS..136","location":""},{"id":"T67","make":"Hyundai","model":"R35Z-9A","type":"Mini Excavator","year":"2018","cat":"equipment","operator":"","serial":"HHKHMH04EJ0000788","location":""},{"id":"T68","make":"ASV","model":"RS60","type":"Skid Steer","year":"2018","cat":"equipment","operator":"","serial":"ASVRS060VJDS00793","location":""},{"id":"T69","make":"Yamaha","model":"YXR66","type":"Rhino","year":"2007","cat":"equipment","operator":"","serial":"5Y4AM08Y37A018524","location":""},{"id":"T70","make":"Cat","model":"420F","type":"4WD ext-a-hoe","year":"2017","cat":"equipment","operator":"","serial":"HWC01799","location":""},{"id":"T71","make":"Case","model":"CX17C","type":"Mini Excavator","year":"","cat":"equipment","operator":"","serial":"","location":""},{"id":"C224","make":"Cat 420D","model":"BKR","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"FDP25134","location":""},{"id":"C246","make":"Cat 420F","model":"BKR","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"HWC01404","location":""},{"id":"C247","make":"Cat 420F","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"HWC00707","location":""},{"id":"C248","make":"Cat 420F","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"HWC00708","location":""},{"id":"C249","make":"Cat 420F","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"HWC00661","location":""},{"id":"C266","make":"Cat 420D2","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"H8T01266","location":""},{"id":"C267","make":"Cat 420D2","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"H8T01267","location":""},{"id":"C279","make":"Cat 420D2","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"H8T05404","location":""},{"id":"C280","make":"Cat 420D2","model":"","type":"Backhoe","year":"","cat":"rental","operator":"","serial":"H9T05405","location":""},{"id":"C-LX565","make":"LX565","model":"","type":"Skidsteer","year":"","cat":"rental","operator":"","serial":"","location":""},{"id":"C273","make":"Bobcat","model":"","type":"Skidsteer","year":"","cat":"rental","operator":"","serial":"","location":""},{"id":"C235","make":"Hyundai 740-7","model":"Edge 2.5yd","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"LF0710073","location":""},{"id":"C239","make":"Hyundai 760-XTD-9","model":"Edge 4yd Forks","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"HHIHLL01VV0000211","location":""},{"id":"C240","make":"Hyundai 760-XTD-9","model":"Teeth 4yd","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"HHIHLL01JB0000240","location":""},{"id":"C272","make":"Hyundai 960A","model":"Edge","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"HHKHWL60CL0000263","location":""},{"id":"C274","make":"LiuGong 856","model":"","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"CLG856HZVNL701761","location":""},{"id":"C275","make":"LiuGong 856","model":"","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"CLG856HZTNL701767","location":""},{"id":"C283","make":"LiuGong 856","model":"","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"CLG856HVCPL701936","location":""},{"id":"C284","make":"LiuGong 856","model":"","type":"Wheel Loader","year":"","cat":"rental","operator":"","serial":"CLG856HVKPL701965","location":""},{"id":"C231","make":"Hyundai 320LC-7A","model":"BKR","type":"Excavator","year":"","cat":"rental","operator":"","serial":"N90210131","location":""},{"id":"C233","make":"Hyundai 250LC-7A","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"N70410092","location":""},{"id":"C237","make":"Hyundai 210","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHIHQ601AB0000852","location":""},{"id":"C238","make":"Hyundai 210","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHIHQ601VB0000851","location":""},{"id":"C241","make":"Hyundai R35X-9","model":"Mini","type":"Mini Excavator","year":"","cat":"rental","operator":"","serial":"HHIHMH03VB0000026","location":""},{"id":"C242","make":"Hyundai R35X-9","model":"Mini","type":"Mini Excavator","year":"","cat":"rental","operator":"","serial":"HHIHMH03UC0000262","location":""},{"id":"C251","make":"Hyundai 320","model":"BKR","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHIHQ901PB0000098","location":""},{"id":"C252","make":"Hyundai 320","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHIHQ901VC0000173","location":""},{"id":"C254","make":"CASE 300","model":"BKR","type":"Excavator","year":"","cat":"rental","operator":"","serial":"DAC300K7JNS7N1221","location":""},{"id":"C255","make":"CASE 300","model":"BKR","type":"Excavator","year":"","cat":"rental","operator":"","serial":"DAC300K7JNS7N1229","location":""},{"id":"C268","make":"LiuGong 950E","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG950EZTLE004008","location":""},{"id":"C269","make":"Hyundai HX145-9A","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHKHK404CE0001851","location":""},{"id":"C270","make":"Hyundai HX235-9A","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHKHK608CE0000074","location":""},{"id":"C271","make":"Hyundai HX350-9A","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"HHKHK903VE0000096","location":""},{"id":"C276","make":"LiuGong 933F","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG933FZHPE906388","location":""},{"id":"C277","make":"LiuGong 933F","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG933FZEPE906389","location":""},{"id":"C278","make":"LiuGong 950E","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG950EZKPE905808","location":""},{"id":"C281","make":"LiuGong 933F","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG933FZKPE907323","location":""},{"id":"C282","make":"LiuGong 930E","model":"","type":"Excavator","year":"","cat":"rental","operator":"","serial":"CLG930EZAPE905805","location":""},{"id":"C250","make":"International 4300","model":"","type":"Water Truck","year":"2011","cat":"rental","operator":"","serial":"1HTMMAAM8BH283669","location":""}];
- 
+
 const WA_TRUCK=[
   {id:'lights',label:'Lights & signals',note:'Headlights, brake lights, turn signals, hazards'},
   {id:'wipers',label:'Wipers & washer fluid',note:''},
@@ -360,436 +409,407 @@ const WA_EQUIP=[
   {id:'fire_ext',label:'Fire extinguisher',note:'Present and charged'},
   {id:'housekeeping',label:'Cab cleanliness',note:'No trash, debris, or unsecured items in cab'},
 ];
- 
+
 // ── State ─────────────────────────────────────────────────────────────────────
-let cur=null, fuelVal='', lbIdx=null, gpsCoords=null, fromScan=false;
-let logs={}, photos={}, walkarounds={}, machineStatus={}, parts={}, waState={};
-let unsubLogs=null, unsubWA=null, unsubPhotos=null;
- 
-// ── Sync status ───────────────────────────────────────────────────────────────
-function setSyncStatus(state, msg){
-  const dot=document.getElementById('sync-dot'), txt=document.getElementById('sync-text');
-  const gdot=document.getElementById('global-sync-dot');
-  if(!dot)return;
-  dot.className='sync-dot'+(state==='busy'?' busy':state==='err'?' off':'');
-  gdot.className='sync-dot'+(state==='ok'?'':state==='busy'?' busy':' off');
-  txt.textContent=msg;
+let cur=null,fuelVal='',lbIdx=null,gpsCoords=null,fromScan=false;
+let logs={},photos={},walkarounds={},machineStatus={},parts={},waState={};
+let unsubLogs=null,unsubWA=null,unsubPhotos=null;
+let alertLog=JSON.parse(localStorage.getItem('r3_alerts')||'[]');
+let lastSeenCount=parseInt(localStorage.getItem('r3_alerts_seen')||'0');
+let notifPermission='default';
+
+// ── Notifications ─────────────────────────────────────────────────────────────
+async function requestNotifPermission(){
+  if(!('Notification' in window))return;
+  notifPermission=await Notification.requestPermission();
 }
- 
+
+function fireNotif(title,body,type){
+  // Add to local alert log
+  const entry={ts:new Date().toISOString(),title,body,type};
+  alertLog.unshift(entry);
+  if(alertLog.length>100)alertLog=alertLog.slice(0,100);
+  localStorage.setItem('r3_alerts',JSON.stringify(alertLog));
+  updateAlertBadge();
+  // Fire browser notification if permitted
+  if(notifPermission==='granted'){
+    try{new Notification('R3 Fleet — '+title,{body,icon:'/Fleet/favicon.ico'});}catch(e){}
+  }
+}
+
+function updateAlertBadge(){
+  const unseen=alertLog.length-lastSeenCount;
+  const badge=document.getElementById('badge-alerts');
+  const notifB=document.getElementById('notif-badge');
+  if(unseen>0){
+    badge.style.display='flex';badge.textContent=unseen>9?'9+':unseen;
+    notifB.style.display='flex';notifB.textContent=unseen>9?'9+':unseen;
+  }else{
+    badge.style.display='none';notifB.style.display='none';
+  }
+}
+
+function clearAlerts(){
+  alertLog=[];lastSeenCount=0;
+  localStorage.setItem('r3_alerts','[]');
+  localStorage.setItem('r3_alerts_seen','0');
+  updateAlertBadge();
+  renderAlerts();
+}
+
+function clearBadge(tab){
+  if(tab==='alerts'){
+    lastSeenCount=alertLog.length;
+    localStorage.setItem('r3_alerts_seen',lastSeenCount);
+    updateAlertBadge();
+  }
+}
+
+// ── Sync status ───────────────────────────────────────────────────────────────
+function setSyncStatus(state,msg){
+  const dot=document.getElementById('sync-dot'),txt=document.getElementById('sync-text');
+  const gdot=document.getElementById('global-sync-dot');
+  if(dot){dot.className='sync-dot'+(state==='busy'?' busy':state==='err'?' off':'');}
+  if(gdot)gdot.className='sync-dot'+(state==='ok'?'':state==='busy'?' busy':' off');
+  if(txt)txt.textContent=msg;
+}
+
 // ── Views ─────────────────────────────────────────────────────────────────────
-function showView(v){
+window.showView=function(v){
   document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
-  if(v==='list')document.getElementById('tab-fleet').classList.add('active');
-  if(v==='master'){document.getElementById('tab-logs').classList.add('active');renderMaster('logs');}
-}
-function switchProfTab(t){
+  const tabMap={list:'tab-fleet',master:'tab-master',issues:'tab-issues',parts:'tab-parts',alerts:'tab-alerts'};
+  if(tabMap[v])document.getElementById(tabMap[v]).classList.add('active');
+};
+
+window.switchProfTab=function(t){
   document.querySelectorAll('.prof-tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.prof-panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('ptab-'+t).classList.add('active');
   document.getElementById('panel-'+t).classList.add('active');
   if(t==='hist')renderHistory('logs');
   if(t==='parts')renderParts();
-}
-function switchHistTab(t){
+};
+
+window.switchHistTab=function(t){
   document.querySelectorAll('#panel-hist .mtab').forEach(b=>b.classList.remove('active'));
   document.getElementById('htab-'+t).classList.add('active');
   document.getElementById('hist-logs').style.display=t==='logs'?'block':'none';
   document.getElementById('hist-wa').style.display=t==='wa'?'block':'none';
   renderHistory(t);
-}
-function switchMasterTab(t){
+};
+
+window.switchMasterTab=function(t){
   document.querySelectorAll('#view-master .mtab').forEach(b=>b.classList.remove('active'));
   document.getElementById('mtab-'+t).classList.add('active');
   document.getElementById('alllogs').style.display=t==='logs'?'block':'none';
   document.getElementById('allwa').style.display=t==='wa'?'block':'none';
   renderMaster(t);
-}
- 
+};
+
 // ── Fleet list ────────────────────────────────────────────────────────────────
 function renderList(list){
-  let html='', lastCat='';
+  let html='',lastCat='';
   list.forEach(m=>{
-    const catLabel = m.cat==='truck'?'Trucks': m.cat==='equipment'?'Heavy Equipment':'Channels Rental Fleet';
+    const catLabel=m.cat==='truck'?'Trucks':m.cat==='equipment'?'Heavy Equipment':'Channels Rental Fleet';
     if(catLabel!==lastCat){html+=`<div class="sec-label">${catLabel}</div>`;lastCat=catLabel;}
     const pp=photos[m.id]||[];
     const ll=logs[m.id]||{};
     const ww=walkarounds[m.id]||{};
-    const mstatus=machineStatus[m.id]||null;
-    const badgeLabel=m.cat==='truck'?'TRK':m.cat==='rental'?'RNT':'EQP';
-    const thumb=pp.length?`<img class="mthumb" src="${pp[0]}" alt="${m.id}">`:`<div class="mbadge ${m.cat}">${badgeLabel}</div>`;
+    const ms=machineStatus[m.id]||null;
+    const badge=m.cat==='truck'?'TRK':m.cat==='rental'?'RNT':'EQP';
+    const thumb=pp.length?`<img class="mthumb" src="${pp[0]}" alt="${m.id}">`:`<div class="mbadge ${m.cat}">${badge}</div>`;
     const desc=[m.make,m.model,m.type,m.year].filter(Boolean).join(' · ');
-    const serialNote=m.serial?`<span style="font-size:11px;color:#aeaeb2">S/N: ${m.serial}</span>`:'';
-    const hasBadge=(Object.keys(ll).length||Object.keys(ww).length)?'<div class="ldot"></div>':'';
-    const statusPill=mstatus==='ready'?'<span class="mstatus-pill ready">&#9679; Ready</span>':mstatus==='issue'?'<span class="mstatus-pill issue">&#9679; Issue</span>':'';
-    html+=`<div class="mrow" onclick="openMachine('${m.id}',false)">
-      ${thumb}
-      <div class="minfo">
-        <div class="mid">${m.id}${m.operator?' — '+m.operator:''}</div>
-        <div class="mdesc">${desc}</div>
-        ${serialNote}
-        ${statusPill}
-      </div>
-      ${hasBadge}<div class="mchev">›</div>
-    </div>`;
+    const serial=m.serial?`<div class="mserial">S/N: ${m.serial}</div>`:'';
+    const hasDot=(Object.keys(ll).length||Object.keys(ww).length)?'<div class="ldot"></div>':'';
+    const pill=ms==='ready'?'<span class="mstatus-pill ready">&#9679; Ready</span>':ms==='issue'?'<span class="mstatus-pill issue">&#9679; Issue</span>':'';
+    html+=`<div class="mrow" onclick="openMachine('${m.id}',false)">${thumb}<div class="minfo"><div class="mid">${m.id}${m.operator?' — '+m.operator:''}</div><div class="mdesc">${desc}</div>${serial}${pill}</div>${hasDot}<div class="mchev">›</div></div>`;
   });
-  if(!list.length)html='<div class="empty">No machines match.</div>';
+  if(!list.length)html='<div class="no-logs" style="text-align:center;padding:30px">No machines match.</div>';
   document.getElementById('mlist').innerHTML=html;
+  // Update issues badge
+  const issueCount=Object.values(machineStatus).filter(s=>s==='issue').length;
+  const ib=document.getElementById('badge-issues');
+  if(issueCount>0){ib.style.display='flex';ib.textContent=issueCount;}else ib.style.display='none';
+  // Update parts badge
+  let partsTotal=0;
+  Object.values(parts).forEach(p=>partsTotal+=Object.keys(p).length);
+  const pb=document.getElementById('badge-parts');
+  if(partsTotal>0){pb.style.display='flex';pb.textContent=partsTotal>9?'9+':partsTotal;}else pb.style.display='none';
 }
+
 window.filterList=function(q){
   q=q.toLowerCase();
   renderList(MACHINES.filter(m=>m.id.toLowerCase().includes(q)||m.make.toLowerCase().includes(q)||m.model.toLowerCase().includes(q)||m.type.toLowerCase().includes(q)||m.operator.toLowerCase().includes(q)||(m.serial&&m.serial.toLowerCase().includes(q))));
 };
- 
+
 // ── Open machine ──────────────────────────────────────────────────────────────
-window.openMachine=function(id, scan=false){
-  cur=MACHINES.find(m=>m.id===id);
-  if(!cur)return;
+window.openMachine=function(id,scan=false){
+  cur=MACHINES.find(m=>m.id===id); if(!cur)return;
   fromScan=scan;
   document.getElementById('ptitle').textContent=id;
   document.getElementById('ph-fleet').textContent=id;
   document.getElementById('ph-name').textContent=[cur.make,cur.model].filter(Boolean).join(' ');
-  // Build detail line: type · year · serial · operator
-  const detailParts=[cur.type,cur.year].filter(Boolean);
-  document.getElementById('ph-meta').textContent=detailParts.join(' · ')+(cur.operator?' · '+cur.operator:'');
-  // Show serial / plate below meta
-  let serialLine='';
-  if(cur.serial) serialLine+=`S/N: ${cur.serial}`;
-  if(cur.location) serialLine+=(serialLine?' · ':'')+`Location: ${cur.location}`;
-  const serialEl=document.getElementById('ph-serial');
-  if(serialEl)serialEl.textContent=serialLine;
+  document.getElementById('ph-meta').textContent=[cur.type,cur.year].filter(Boolean).join(' · ')+(cur.operator?' · '+cur.operator:'');
+  let sl=''; if(cur.serial)sl+=`S/N: ${cur.serial}`; if(cur.location)sl+=(sl?' · ':'')+`Location: ${cur.location}`;
+  document.getElementById('ph-serial').textContent=sl;
   document.getElementById('rlbl').textContent=cur.cat==='truck'?'Current mileage (odometer)':'Current hours (hour meter)';
   document.getElementById('f-date').value=new Date().toISOString().slice(0,10);
   ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
-  const gi=document.getElementById('f-gps'); if(gi)gi.value='';
-  fuelVal=''; gpsCoords=null;
-  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
+  const gi=document.getElementById('f-gps');if(gi)gi.value='';
+  fuelVal='';gpsCoords=null;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
   document.getElementById('toast').style.display='none';
-  switchProfTab('log');
-  buildWAChecklist();
-  showView('profile');
-  window.scrollTo(0,0);
-  subscribeToMachine(id);
-  renderStatusBar();
-  renderParts();
-  if(scan) startGPS(); else setGPSIdle();
+  switchProfTab('log'); buildWAChecklist();
+  showView('profile'); window.scrollTo(0,0);
+  subscribeToMachine(id); renderStatusBar(); renderParts();
+  if(scan)startGPS();else setGPSIdle();
 };
- 
+
 // ── Firebase subscriptions ────────────────────────────────────────────────────
+let firstLoadDone={};
+
 function subscribeToMachine(id){
-  // Subscribe previous listeners
-  if(unsubLogs)unsubLogs();
-  if(unsubWA)unsubWA();
-  if(unsubPhotos)unsubPhotos();
- 
+  if(unsubLogs)unsubLogs(); if(unsubWA)unsubWA(); if(unsubPhotos)unsubPhotos();
   setSyncStatus('busy','Syncing...');
- 
-  unsubLogs=onValue(ref(db,`logs/${id}`), snap=>{
-    logs[id]={};
-    if(snap.exists())logs[id]=snap.val();
-    renderMachineLogs(id);
-    renderList(MACHINES);
-    setSyncStatus('ok','Live — all data synced');
-  }, ()=>setSyncStatus('err','Sync error — check connection'));
- 
-  unsubWA=onValue(ref(db,`walkarounds/${id}`), snap=>{
-    walkarounds[id]={};
-    if(snap.exists())walkarounds[id]=snap.val();
+  unsubLogs=onValue(ref(db,`logs/${id}`),snap=>{
+    logs[id]=snap.exists()?snap.val():{};
+    renderMachineLogs(id); renderList(MACHINES);
+    setSyncStatus('ok','Live');
+  },()=>setSyncStatus('err','Sync error'));
+  unsubWA=onValue(ref(db,`walkarounds/${id}`),snap=>{
+    walkarounds[id]=snap.exists()?snap.val():{};
     renderList(MACHINES);
   });
- 
-  unsubPhotos=onValue(ref(db,`photos/${id}`), snap=>{
-    photos[id]=[];
-    if(snap.exists())photos[id]=Object.values(snap.val());
-    renderPhotos();
-    renderList(MACHINES);
+  unsubPhotos=onValue(ref(db,`photos/${id}`),snap=>{
+    photos[id]=snap.exists()?Object.values(snap.val()):[];
+    renderPhotos(); renderList(MACHINES);
   });
- 
-  onValue(ref(db,`status/${id}`), snap=>{
+  onValue(ref(db,`status/${id}`),snap=>{
     machineStatus[id]=snap.exists()?snap.val():null;
-    renderStatusBar();
-    renderList(MACHINES);
+    renderStatusBar(); renderList(MACHINES);
   });
- 
-  onValue(ref(db,`parts/${id}`), snap=>{
-    parts[id]={};
-    if(snap.exists())parts[id]=snap.val();
+  onValue(ref(db,`parts/${id}`),snap=>{
+    parts[id]=snap.exists()?snap.val():{};
     renderParts();
-    // Update parts count badge on tab
-    const count=Object.keys(parts[id]).length;
-    const ptab=document.getElementById('ptab-parts');
-    if(ptab)ptab.textContent=count?`&#128295; Parts (${count})`:'&#128295; Parts';
+    const cnt=Object.keys(parts[id]).length;
+    const pt=document.getElementById('ptab-parts');
+    if(pt)pt.textContent=cnt?`&#128295; Parts (${cnt})`:'&#128295; Parts';
   });
 }
- 
-// Subscribe to all machines for the fleet list
+
 function subscribeAll(){
   setSyncStatus('busy','Connecting...');
-  onValue(ref(db,'logs'), snap=>{
-    logs={};
-    if(snap.exists())logs=snap.val();
+  let initialLoad=true;
+  onValue(ref(db,'logs'),snap=>{
+    const prev=JSON.stringify(logs);
+    logs=snap.exists()?snap.val():{};
+    if(!initialLoad){
+      // Detect new entries for notifications
+      const prevObj=JSON.parse(prev||'{}');
+      Object.entries(logs).forEach(([id,entries])=>{
+        const prevEntries=prevObj[id]||{};
+        const newKeys=Object.keys(entries).filter(k=>!prevKeys(prevEntries,k));
+        newKeys.forEach(k=>{
+          const e=entries[k];
+          const m=MACHINES.find(x=>x.id===id);
+          const mname=m?`${id} ${m.make} ${m.model}`:id;
+          const msg=e.issues?`Issue: ${e.issues.slice(0,60)}`:`Hours/Mi: ${e.reading||'—'} · ${e.reporter||'Unknown'}`;
+          fireNotif(`New log — ${mname}`,msg,'log');
+          if(e.issues)fireNotif(`&#9888; Issue reported on ${mname}`,e.issues.slice(0,80),'issue');
+        });
+      });
+    }
+    initialLoad=false;
     renderList(MACHINES);
     setSyncStatus('ok','Live');
-  }, ()=>setSyncStatus('err','Offline'));
-  onValue(ref(db,'walkarounds'), snap=>{
-    walkarounds={};
-    if(snap.exists())walkarounds=snap.val();
-    renderList(MACHINES);
-  });
-  onValue(ref(db,'photos'), snap=>{
-    photos={};
-    if(snap.exists()){
-      Object.entries(snap.val()).forEach(([id,v])=>{photos[id]=Object.values(v);});
+    // Update activity badge
+    const all=[];Object.values(logs).forEach(d=>Object.values(d).forEach(e=>all.push(e)));
+    const recent=all.filter(e=>new Date(e.ts)>new Date(Date.now()-3600000)).length;
+    const ab=document.getElementById('badge-activity');
+    if(recent>0){ab.style.display='flex';ab.textContent=recent>9?'9+':recent;}else ab.style.display='none';
+  },()=>setSyncStatus('err','Offline'));
+  
+  let waInitial=true;
+  onValue(ref(db,'walkarounds'),snap=>{
+    const prev=JSON.stringify(walkarounds);
+    walkarounds=snap.exists()?snap.val():{};
+    if(!waInitial){
+      const prevObj=JSON.parse(prev||'{}');
+      Object.entries(walkarounds).forEach(([id,entries])=>{
+        const prevEntries=prevObj[id]||{};
+        const newKeys=Object.keys(entries).filter(k=>!prevKeys(prevEntries,k));
+        newKeys.forEach(k=>{
+          const w=entries[k];
+          const m=MACHINES.find(x=>x.id===id);
+          const mname=m?`${id} ${m.make} ${m.model}`:id;
+          fireNotif(`Walk-around — ${mname}`,`${w.okCount} OK · ${w.badCount} issues · by ${w.reporter||'Unknown'}`,'wa');
+          if(w.badCount>0)fireNotif(`&#9888; Checklist issues on ${mname}`,w.issues.join(', '),'issue');
+        });
+      });
     }
+    waInitial=false;
     renderList(MACHINES);
   });
-  onValue(ref(db,'status'), snap=>{
-    machineStatus={};
-    if(snap.exists())machineStatus=snap.val();
+  
+  onValue(ref(db,'photos'),snap=>{
+    photos={};
+    if(snap.exists())Object.entries(snap.val()).forEach(([id,v])=>{photos[id]=Object.values(v);});
     renderList(MACHINES);
   });
-  onValue(ref(db,'parts'), snap=>{
-    parts={};
-    if(snap.exists())parts=snap.val();
+  onValue(ref(db,'status'),snap=>{machineStatus=snap.exists()?snap.val():{};renderList(MACHINES);});
+  onValue(ref(db,'parts'),snap=>{
+    const prev=JSON.stringify(parts);
+    parts=snap.exists()?snap.val():{};
+    const prevObj=JSON.parse(prev||'{}');
+    // Notify on new parts
+    Object.entries(parts).forEach(([id,entries])=>{
+      const prevE=prevObj[id]||{};
+      Object.keys(entries).filter(k=>!prevKeys(prevE,k)).forEach(k=>{
+        const p=entries[k];const m=MACHINES.find(x=>x.id===id);
+        fireNotif(`Part needed — ${m?m.id+' '+m.make:id}`,p.name+(p.number?' (#'+p.number+')':''),'parts');
+      });
+    });
+    renderList(MACHINES);
   });
 }
- 
+
+function prevKeys(obj,k){return Object.prototype.hasOwnProperty.call(obj,k);}
+
 // ── Photos ────────────────────────────────────────────────────────────────────
 function renderPhotos(){
   if(!cur)return;
   const pp=photos[cur.id]||[];
-  const main=document.getElementById('main-photo'), noImg=document.getElementById('no-img');
+  const main=document.getElementById('main-photo'),noImg=document.getElementById('no-img');
   if(pp.length){main.src=pp[0];main.style.display='block';noImg.style.display='none';}
   else{main.style.display='none';noImg.style.display='flex';}
   let html='';
-  pp.forEach((p,i)=>html+=`<img class="strip-thumb" src="${p}" alt="Photo ${i+1}" onclick="openLb(${i})">`);
+  pp.forEach((p,i)=>html+=`<img class="strip-thumb" src="${p}" onclick="openLb(${i})">`);
   html+=`<div class="strip-add" onclick="document.getElementById('photo-input').click()">+</div>`;
   document.getElementById('photo-strip').innerHTML=html;
 }
-function compress(dataUrl,maxW,q){
-  return new Promise(res=>{
-    const img=new Image();
-    img.onload=()=>{let w=img.width,h=img.height;if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};
-    img.src=dataUrl;
-  });
-}
+function compress(d,maxW,q){return new Promise(res=>{const img=new Image();img.onload=()=>{let w=img.width,h=img.height;if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};img.src=d;});}
 window.handlePhotos=async function(input){
   if(!cur||!input.files.length)return;
-  toast('Uploading photo...');
+  toast('Uploading...');
   for(const file of input.files){
     const reader=new FileReader();
     const d=await new Promise(res=>{reader.onload=e=>res(e.target.result);reader.readAsDataURL(file);});
-    const compressed=await compress(d,1200,.75);
-    await push(ref(db,`photos/${cur.id}`), compressed);
+    await push(ref(db,`photos/${cur.id}`),await compress(d,1200,.75));
   }
-  toast(input.files.length===1?'Photo saved':'Photos saved');
-  input.value='';
+  toast('Photo saved'); input.value='';
 };
-window.openLb=function(i){lbIdx=i;document.getElementById('lb-img').src=(photos[cur.id]||[])[i];document.getElementById('lightbox').classList.add('open');}
-window.closeLb=function(){document.getElementById('lightbox').classList.remove('open');lbIdx=null;}
+window.openLb=function(i){lbIdx=i;document.getElementById('lb-img').src=(photos[cur.id]||[])[i];document.getElementById('lightbox').classList.add('open');};
+window.closeLb=function(){document.getElementById('lightbox').classList.remove('open');lbIdx=null;};
 window.delPhoto=async function(){
   if(lbIdx===null||!cur)return;
   const snap=await new Promise(res=>onValue(ref(db,`photos/${cur.id}`),res,{onlyOnce:true}));
-  if(snap.exists()){
-    const entries=Object.entries(snap.val());
-    if(entries[lbIdx])await remove(ref(db,`photos/${cur.id}/${entries[lbIdx][0]}`));
-  }
-  closeLb(); toast('Photo removed');
+  if(snap.exists()){const e=Object.entries(snap.val());if(e[lbIdx])await remove(ref(db,`photos/${cur.id}/${e[lbIdx][0]}`));}
+  closeLb();toast('Photo removed');
 };
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb();});
- 
+
 // ── Machine Status ────────────────────────────────────────────────────────────
 window.setMachineStatus=async function(status){
   if(!cur)return;
-  const current=machineStatus[cur.id];
-  // Toggle off if already set
-  const newStatus = current===status ? null : status;
+  const ns=machineStatus[cur.id]===status?null:status;
   try{
-    await set(ref(db,`status/${cur.id}`), newStatus);
-    renderStatusBar();
-    renderList(MACHINES);
-    toast(newStatus==='ready'?'&#9679; Marked as Ready to Go':newStatus==='issue'?'&#9679; Issue flagged':'Status cleared');
+    await set(ref(db,`status/${cur.id}`),ns);
+    renderStatusBar(); renderList(MACHINES);
+    toast(ns==='ready'?'&#9679; Marked Ready to Go':ns==='issue'?'&#9679; Issue flagged':'Status cleared');
   }catch(e){toast('Save failed','err');}
 };
- 
 function renderStatusBar(){
   if(!cur)return;
   const s=machineStatus[cur.id]||null;
-  const readyBtn=document.getElementById('status-ready-btn');
-  const issueBtn=document.getElementById('status-issue-btn');
-  if(!readyBtn)return;
-  readyBtn.style.opacity=s==='ready'?'1':s==='issue'?'0.4':'0.7';
-  readyBtn.style.transform=s==='ready'?'scale(1.05)':'scale(1)';
-  issueBtn.style.opacity=s==='issue'?'1':s==='ready'?'0.4':'0.7';
-  issueBtn.style.transform=s==='issue'?'scale(1.05)':'scale(1)';
+  const rb=document.getElementById('status-ready-btn'),ib=document.getElementById('status-issue-btn');
+  if(!rb)return;
+  rb.className='status-btn ready'+(s==='issue'?' inactive':'');
+  ib.className='status-btn issue'+(s==='ready'?' inactive':'');
 }
- 
-// ── Parts Needed ──────────────────────────────────────────────────────────────
-window.submitPart=async function(){
-  if(!cur)return;
-  const name=document.getElementById('part-name').value.trim();
-  if(!name){toast('Enter a part name','err');return;}
-  const btn=document.getElementById('part-submit-btn');
-  btn.disabled=true;btn.textContent='Adding...';
-  const part={
-    ts:new Date().toISOString(),
-    name,
-    number:document.getElementById('part-number').value.trim(),
-    link:document.getElementById('part-link').value.trim(),
-    notes:document.getElementById('part-notes').value.trim(),
-  };
-  try{
-    await push(ref(db,`parts/${cur.id}`),part);
-    ['part-name','part-number','part-link','part-notes'].forEach(i=>document.getElementById(i).value='');
-    toast('Part added');
-    renderParts();
-  }catch(e){toast('Save failed','err');}
-  btn.disabled=false;btn.textContent='Add Part';
-};
- 
-window.deletePart=async function(key){
-  if(!cur||!confirm('Remove this part from the list?'))return;
-  try{
-    await remove(ref(db,`parts/${cur.id}/${key}`));
-    toast('Part removed');
-  }catch(e){toast('Remove failed','err');}
-};
- 
-function renderParts(){
-  if(!cur)return;
-  const data=parts[cur.id]||{};
-  const entries=Object.entries(data);
-  const countEl=document.getElementById('parts-count');
-  const listEl=document.getElementById('parts-list');
-  if(countEl)countEl.textContent=entries.length?`${entries.length} needed`:'';
-  if(!entries.length){if(listEl)listEl.innerHTML='<div class="no-logs">No parts on the list — machine is good to go.</div>';return;}
-  if(listEl)listEl.innerHTML=entries.map(([key,p])=>`
-    <div class="part-item">
-      <div class="part-item-top">
-        <div class="part-name">${p.name}</div>
-        <button class="part-del" onclick="deletePart('${key}')" title="Remove">&#10005;</button>
-      </div>
-      ${p.number?`<div class="part-num">Part #: ${p.number}</div>`:''}
-      ${p.link?`<div class="part-link-row"><a href="${p.link}" target="_blank">&#128279; View / order part</a></div>`:''}
-      ${p.notes?`<div class="part-notes-row">&#128221; ${p.notes}</div>`:''}
-    </div>`).join('');
-}
- 
+
 // ── GPS ───────────────────────────────────────────────────────────────────────
 function setGPSIdle(){
   const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text');
   dot.className='gps-dot err';
-  txt.innerHTML='Location not active &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;cursor:pointer">Enable</button>';
-  const gi=document.getElementById('f-gps');if(gi)gi.value='';
-  gpsCoords=null;
+  txt.innerHTML='Location not active &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:2px 9px;border-radius:10px;font-size:11px;cursor:pointer">Enable</button>';
+  const gi=document.getElementById('f-gps');if(gi)gi.value=''; gpsCoords=null;
 }
 window.startGPS=function(){
   const dot=document.getElementById('gps-dot'),txt=document.getElementById('gps-text');
   const inp=document.getElementById('f-gps'),lbl=document.getElementById('gps-coord-label');
-  dot.className='gps-dot searching'; txt.innerHTML='Getting location...';
-  if(inp)inp.value='Detecting...'; gpsCoords=null;
+  dot.className='gps-dot searching';txt.innerHTML='Getting location...';
+  if(inp)inp.value='Detecting...';gpsCoords=null;
   if(!navigator.geolocation){dot.className='gps-dot err';txt.textContent='GPS not available';return;}
   navigator.geolocation.getCurrentPosition(
     pos=>{
       const lat=pos.coords.latitude.toFixed(5),lng=pos.coords.longitude.toFixed(5),acc=Math.round(pos.coords.accuracy);
-      gpsCoords={lat,lng,acc};
-      dot.className='gps-dot';
+      gpsCoords={lat,lng,acc};dot.className='gps-dot';
       const url=`https://www.google.com/maps?q=${lat},${lng}`;
-      txt.innerHTML=`&#128205; <a href="${url}" target="_blank" style="color:#7ec8f7">${lat}, ${lng}</a> &nbsp;(±${acc}m)`;
-      if(inp)inp.value=`${lat}, ${lng}`;
-      if(lbl)lbl.textContent=`— ±${acc}m`;
+      txt.innerHTML=`&#128205; <a href="${url}" target="_blank" style="color:#7ec8f7">${lat}, ${lng}</a> (±${acc}m)`;
+      if(inp)inp.value=`${lat},${lng}`;if(lbl)lbl.textContent=`— ±${acc}m`;
     },
     err=>{
       dot.className='gps-dot err';
-      const msgs={1:'Location denied — check phone settings',2:'GPS not found',3:'GPS timed out'};
-      txt.innerHTML=`${msgs[err.code]||'Unavailable'} &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;cursor:pointer">Retry</button>`;
+      const msgs={1:'Location denied',2:'GPS not found',3:'GPS timed out'};
+      txt.innerHTML=`${msgs[err.code]||'Unavailable'} &nbsp;<button onclick="startGPS()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:2px 9px;border-radius:10px;font-size:11px;cursor:pointer">Retry</button>`;
       if(inp)inp.value='';
     },
     {enableHighAccuracy:true,timeout:12000,maximumAge:0}
   );
 };
- 
+
 // ── Fuel ──────────────────────────────────────────────────────────────────────
 window.selFuel=function(btn,v){fuelVal=v;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');};
- 
-// ── Log entry ─────────────────────────────────────────────────────────────────
+
+// ── Log Entry ─────────────────────────────────────────────────────────────────
 window.submitLog=async function(){
   if(!cur)return;
   const btn=document.getElementById('log-submit-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-  const entry={
-    ts:new Date().toISOString(),
-    date:document.getElementById('f-date').value,
-    reading:document.getElementById('f-reading').value,
-    loc:document.getElementById('f-loc').value,
-    gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',
-    gpsAcc:gpsCoords?gpsCoords.acc:null,
-    fuel:fuelVal,
-    issues:document.getElementById('f-issues').value,
-    reporter:document.getElementById('f-reporter').value
-  };
+  btn.disabled=true;btn.textContent='Saving...';
+  const entry={ts:new Date().toISOString(),date:document.getElementById('f-date').value,reading:document.getElementById('f-reading').value,loc:document.getElementById('f-loc').value,gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',gpsAcc:gpsCoords?gpsCoords.acc:null,fuel:fuelVal,issues:document.getElementById('f-issues').value,reporter:document.getElementById('f-reporter').value};
   try{
-    await push(ref(db,`logs/${cur.id}`), entry);
+    await push(ref(db,`logs/${cur.id}`),entry);
     ['f-reading','f-loc','f-issues','f-reporter'].forEach(i=>document.getElementById(i).value='');
     const gi=document.getElementById('f-gps');if(gi)gi.value='';
-    fuelVal=''; document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
-    toast('Log saved — visible to everyone now');
+    fuelVal='';document.querySelectorAll('.fb').forEach(b=>b.classList.remove('sel'));
+    toast('Log saved — visible to everyone');
     if(fromScan&&gpsCoords)startGPS();
-  }catch(e){toast('Save failed — check your connection','err');}
-  btn.disabled=false; btn.textContent='Save Log Entry';
+  }catch(e){toast('Save failed — check connection','err');}
+  btn.disabled=false;btn.textContent='Save Log Entry';
 };
- 
+
 function renderMachineLogs(id){
   if(!cur||cur.id!==id)return;
-  const data=logs[id]||{};
-  const ll=Object.values(data).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  const ll=Object.values(logs[id]||{}).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
   const el=document.getElementById('mlogs');
-  if(!ll.length){el.innerHTML='<div class="no-logs">No log entries yet.</div>';return;}
+  if(!ll.length){el.innerHTML='<div class="no-logs">No entries yet — be the first to log this machine.</div>';return;}
   el.innerHTML=ll.map(l=>{
-    const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Open in Maps</a>`:'';
-    const locLine=(l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:'')+mapsLink;
-    return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${locLine}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
+    const mlink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:11px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Maps</a>`:'';
+    return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}<div class="lloc">${l.loc||''}</div>${mlink}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue</div>${l.issues}</div>`:''}</div>`;
   }).join('');
 }
- 
-// ── Walk-around ───────────────────────────────────────────────────────────────
+
+// ── Walk-Around ───────────────────────────────────────────────────────────────
 function getWAItems(){return cur&&cur.cat==='truck'?WA_TRUCK:WA_EQUIP;}
- 
-function buildWAChecklist(){
-  waState={};
-  getWAItems().forEach(i=>waState[i.id]=null);
-  renderWAChecklist();
-}
- 
+function buildWAChecklist(){waState={};getWAItems().forEach(i=>waState[i.id]=null);renderWAChecklist();}
 function renderWAChecklist(){
   const items=getWAItems();
-  const truckSections=[
-    {label:'Exterior & Safety',ids:['lights','wipers','mirrors','tires','body','fire_ext']},
-    {label:'Mechanical',ids:['brakes','engine_oil','coolant','fuel','leaks']},
-    {label:'Interior',ids:['seatbelt','horn','bed']},
-  ];
-  const equipSections=[
-    {label:'Fluids',ids:['engine_oil','coolant','hydraulic','fuel','leaks']},
-    {label:'Undercarriage & Attachments',ids:['tracks_tires','bucket_attach','boom_arm','cylinders']},
-    {label:'Safety & Controls',ids:['lights','seatbelt','gauges','air_filter','fire_ext','housekeeping']},
-  ];
-  const sections=cur&&cur.cat==='truck'?truckSections:equipSections;
+  const tSecs=[{label:'Exterior & Safety',ids:['lights','wipers','mirrors','tires','body','fire_ext']},{label:'Mechanical',ids:['brakes','engine_oil','coolant','fuel','leaks']},{label:'Interior',ids:['seatbelt','horn','bed']}];
+  const eSecs=[{label:'Fluids',ids:['engine_oil','coolant','hydraulic','fuel','leaks']},{label:'Undercarriage & Attachments',ids:['tracks_tires','bucket_attach','boom_arm','cylinders']},{label:'Safety & Controls',ids:['lights','seatbelt','gauges','air_filter','fire_ext','housekeeping']}];
+  const secs=cur&&cur.cat==='truck'?tSecs:eSecs;
   let html='';
-  sections.forEach(sec=>{
-    const secItems=items.filter(i=>sec.ids.includes(i.id));
-    if(!secItems.length)return;
+  secs.forEach(sec=>{
+    const si=items.filter(i=>sec.ids.includes(i.id));if(!si.length)return;
     html+=`<div class="wa-section"><div class="wa-section-hdr">${sec.label}</div>`;
-    secItems.forEach(item=>{
+    si.forEach(item=>{
       const s=waState[item.id];
       html+=`<div class="wa-item"><div class="wa-label">${item.label}${item.note?`<span>${item.note}</span>`:''}</div><div class="wa-btns"><button class="wa-btn${s==='ok'?' ok':''}" onclick="setWA('${item.id}','ok',this)">✓ OK</button><button class="wa-btn${s==='bad'?' bad':''}" onclick="setWA('${item.id}','bad',this)">✗ Issue</button></div></div>`;
     });
     html+=`</div>`;
   });
-  document.getElementById('wa-checklist').innerHTML=html;
-  updateWAProgress();
+  document.getElementById('wa-checklist').innerHTML=html;updateWAProgress();
 }
- 
 window.setWA=function(id,val,btn){
   waState[id]=waState[id]===val?null:val;
   const btns=btn.closest('.wa-btns');
@@ -798,125 +818,182 @@ window.setWA=function(id,val,btn){
   if(waState[id]==='bad')btns.children[1].classList.add('bad');
   updateWAProgress();
 };
- 
 function updateWAProgress(){
-  const items=getWAItems(), total=items.length;
-  const okCount=Object.values(waState).filter(v=>v==='ok').length;
-  const badCount=Object.values(waState).filter(v=>v==='bad').length;
-  const checked=okCount+badCount;
-  const pct=total?Math.round(checked/total*100):0;
+  const items=getWAItems(),total=items.length;
+  const ok=Object.values(waState).filter(v=>v==='ok').length;
+  const bad=Object.values(waState).filter(v=>v==='bad').length;
+  const pct=total?Math.round((ok+bad)/total*100):0;
   document.getElementById('wa-prog-bar').style.width=pct+'%';
-  document.getElementById('wa-prog-txt').textContent=`${checked} of ${total} items checked`;
+  document.getElementById('wa-prog-txt').textContent=`${ok+bad} of ${total} checked`;
   document.getElementById('wa-prog-pct').textContent=pct+'%';
-  document.getElementById('wa-ok-count').textContent=okCount;
-  document.getElementById('wa-bad-count').textContent=badCount;
-  document.getElementById('wa-skip-count').textContent=total-checked;
+  document.getElementById('wa-ok-count').textContent=ok;
+  document.getElementById('wa-bad-count').textContent=bad;
+  document.getElementById('wa-skip-count').textContent=total-ok-bad;
 }
- 
 window.submitWalkAround=async function(){
   if(!cur)return;
-  const btn=document.getElementById('wa-submit-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-  const items=getWAItems();
-  const results={};
+  const btn=document.getElementById('wa-submit-btn');btn.disabled=true;btn.textContent='Saving...';
+  const items=getWAItems(),results={};
   items.forEach(i=>results[i.id]=waState[i.id]||'skipped');
   const issues=items.filter(i=>waState[i.id]==='bad').map(i=>i.label);
-  const entry={
-    ts:new Date().toISOString(),
-    date:new Date().toISOString().slice(0,10),
-    reporter:document.getElementById('wa-reporter').value,
-    gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',
-    gpsAcc:gpsCoords?gpsCoords.acc:null,
-    notes:document.getElementById('wa-notes').value,
-    results, issues,
-    okCount:Object.values(waState).filter(v=>v==='ok').length,
-    badCount:issues.length,
-    totalItems:items.length,
-  };
+  const entry={ts:new Date().toISOString(),date:new Date().toISOString().slice(0,10),reporter:document.getElementById('wa-reporter').value,gps:gpsCoords?`${gpsCoords.lat},${gpsCoords.lng}`:'',gpsAcc:gpsCoords?gpsCoords.acc:null,notes:document.getElementById('wa-notes').value,results,issues,okCount:Object.values(waState).filter(v=>v==='ok').length,badCount:issues.length,totalItems:items.length};
   try{
-    await push(ref(db,`walkarounds/${cur.id}`), entry);
-    document.getElementById('wa-reporter').value='';
-    document.getElementById('wa-notes').value='';
+    await push(ref(db,`walkarounds/${cur.id}`),entry);
+    document.getElementById('wa-reporter').value='';document.getElementById('wa-notes').value='';
     buildWAChecklist();
     toast(issues.length?`Walk-around saved — ${issues.length} issue${issues.length>1?'s':''} flagged`:'Walk-around saved — all clear!');
-  }catch(e){toast('Save failed — check connection','err');}
-  btn.disabled=false; btn.textContent='Submit Walk-Around';
+  }catch(e){toast('Save failed','err');}
+  btn.disabled=false;btn.textContent='Submit Walk-Around';
 };
- 
-// ── History panel ─────────────────────────────────────────────────────────────
+
+// ── Parts ─────────────────────────────────────────────────────────────────────
+window.submitPart=async function(){
+  if(!cur)return;
+  const name=document.getElementById('part-name').value.trim();
+  if(!name){toast('Enter a part name','err');return;}
+  const btn=document.getElementById('part-submit-btn');btn.disabled=true;btn.textContent='Adding...';
+  try{
+    await push(ref(db,`parts/${cur.id}`),{ts:new Date().toISOString(),name,number:document.getElementById('part-number').value.trim(),link:document.getElementById('part-link').value.trim(),notes:document.getElementById('part-notes').value.trim()});
+    ['part-name','part-number','part-link','part-notes'].forEach(i=>document.getElementById(i).value='');
+    toast('Part added');renderParts();
+  }catch(e){toast('Save failed','err');}
+  btn.disabled=false;btn.textContent='Add Part';
+};
+window.deletePart=async function(key){
+  if(!cur||!confirm('Remove this part?'))return;
+  try{await remove(ref(db,`parts/${cur.id}/${key}`));toast('Part removed');}catch(e){toast('Remove failed','err');}
+};
+function renderParts(){
+  if(!cur)return;
+  const data=parts[cur.id]||{};
+  const entries=Object.entries(data);
+  const ce=document.getElementById('parts-count');if(ce)ce.textContent=entries.length?`${entries.length} needed`:'';
+  const le=document.getElementById('parts-list');
+  if(!le)return;
+  if(!entries.length){le.innerHTML='<div class="no-logs">No parts needed — good to go.</div>';return;}
+  le.innerHTML=entries.map(([key,p])=>`<div class="part-item"><div class="part-item-top"><div class="part-name">${p.name}</div><button class="part-del" onclick="deletePart('${key}')">&#10005;</button></div>${p.number?`<div class="part-num">Part #: ${p.number}</div>`:''}<div class="part-link-row">${p.link?`<a href="${p.link}" target="_blank">&#128279; Order / view part</a>`:''}</div>${p.notes?`<div class="part-notes-row">&#128221; ${p.notes}</div>`:''}</div>`).join('');
+}
+
+// ── Issues View ───────────────────────────────────────────────────────────────
+window.renderIssues=function(){
+  const el=document.getElementById('issues-content');
+  let html='';
+  // Machines with issue status
+  const statusIssues=MACHINES.filter(m=>machineStatus[m.id]==='issue');
+  if(statusIssues.length){
+    html+=`<div class="sec-label">Machines flagged with issue</div>`;
+    statusIssues.forEach(m=>{
+      html+=`<div class="me" onclick="openMachine('${m.id}',false)"><div class="met"><span class="mefl">${m.id}</span><span class="medt" style="color:#c0392b">&#9679; Issue</span></div><div class="memac">${[m.make,m.model,m.type].filter(Boolean).join(' ')}</div></div>`;
+    });
+  }
+  // Recent log entries with issues reported
+  const logIssues=[];
+  Object.entries(logs).forEach(([id,data])=>{
+    const m=MACHINES.find(x=>x.id===id);
+    Object.values(data).filter(l=>l.issues).forEach(l=>logIssues.push({...l,mid:id,m}));
+  });
+  logIssues.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  if(logIssues.length){
+    html+=`<div class="sec-label">Reported issues in logs</div>`;
+    html+=logIssues.slice(0,30).map(l=>`<div class="me" onclick="openMachine('${l.mid}',false)"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div><div class="lissue" style="margin-top:6px;padding-top:6px"><div class="lissue-lbl">Issue</div>${l.issues}</div></div>`).join('');
+  }
+  // Walk-around issues
+  const waIssues=[];
+  Object.entries(walkarounds).forEach(([id,data])=>{
+    const m=MACHINES.find(x=>x.id===id);
+    Object.values(data).filter(w=>w.badCount>0).forEach(w=>waIssues.push({...w,mid:id,m}));
+  });
+  waIssues.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  if(waIssues.length){
+    html+=`<div class="sec-label">Walk-around issues</div>`;
+    html+=waIssues.slice(0,20).map(w=>`<div class="me" onclick="openMachine('${w.mid}',false)"><div class="met"><span class="mefl">${w.mid}</span><span class="medt">${w.date}</span></div><div class="memac">${w.m?[w.m.make,w.m.model].filter(Boolean).join(' '):''}${w.reporter?' · '+w.reporter:''}</div><div class="wentry-pills" style="margin-top:4px">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div></div>`).join('');
+  }
+  if(!html)html='<div class="empty-state"><span class="eicon">&#9989;</span><p>No issues reported</p><small>All machines are clear</small></div>';
+  el.innerHTML=html;
+};
+
+// ── All Parts View ────────────────────────────────────────────────────────────
+window.renderAllParts=function(){
+  const el=document.getElementById('all-parts-content');
+  let html='',total=0;
+  MACHINES.forEach(m=>{
+    const data=parts[m.id]||{};
+    const entries=Object.entries(data);
+    if(!entries.length)return;
+    total+=entries.length;
+    html+=`<div class="sec-label">${m.id} — ${[m.make,m.model].filter(Boolean).join(' ')}</div>`;
+    html+=entries.map(([key,p])=>`<div class="part-item"><div class="part-item-top"><div class="part-name">${p.name}</div></div>${p.number?`<div class="part-num">Part #: ${p.number}</div>`:''}<div class="part-link-row">${p.link?`<a href="${p.link}" target="_blank">&#128279; Order / view part</a>`:''}</div>${p.notes?`<div class="part-notes-row">&#128221; ${p.notes}</div>`:''}<span class="part-machine-tag" onclick="openMachine('${m.id}',false)" style="cursor:pointer">Open ${m.id}</span></div>`).join('');
+  });
+  if(!total)html='<div class="empty-state"><span class="eicon">&#128295;</span><p>No parts on any list</p><small>Open a machine to add parts needed</small></div>';
+  el.innerHTML=html;
+};
+
+// ── History ───────────────────────────────────────────────────────────────────
 function renderHistory(t){
   if(t==='logs'){
-    const data=logs[cur?cur.id:'']||{};
-    const ll=Object.values(data).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+    const ll=Object.values(logs[cur?cur.id:'']||{}).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
     const el=document.getElementById('hist-logs');
     if(!ll.length){el.innerHTML='<div class="no-logs">No log entries yet.</div>';return;}
     el.innerHTML=ll.map(l=>{
-      const mapsLink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; Open in Maps</a>`:'';
-      return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur&&cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}${l.loc?`<div class="lloc">&#128205; ${l.loc}</div>`:''}${mapsLink}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue reported</div>${l.issues}</div>`:''}</div>`;
+      const mlink=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:11px">&#128205; Open in Maps</a>`:'';
+      return`<div class="lentry"><div class="leh"><span class="ldate">${l.date||l.ts.slice(0,10)}</span><span class="lby">${l.reporter||'—'}</span></div>${l.reading?`<div class="lread">${Number(l.reading).toLocaleString()} ${cur&&cur.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}</div>`:''}<div class="lloc">${l.loc||''}</div>${mlink}${l.issues?`<div class="lissue"><div class="lissue-lbl">Issue</div>${l.issues}</div>`:''}</div>`;
     }).join('');
-  } else {
-    const data=walkarounds[cur?cur.id:'']||{};
-    const ww=Object.values(data).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  }else{
+    const ww=Object.values(walkarounds[cur?cur.id:'']||{}).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
     const el=document.getElementById('hist-wa');
     if(!ww.length){el.innerHTML='<div class="no-logs">No walk-arounds yet.</div>';return;}
-    el.innerHTML=ww.map(w=>`<div class="wentry"><div class="wentry-hdr"><span class="wentry-date">${w.date}</span><span class="wentry-by">${w.reporter||'—'}</span></div><div style="font-size:12px;color:#636366">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped${w.gps?` · <a href="https://www.google.com/maps?q=${w.gps}" target="_blank" style="color:#185FA5;text-decoration:none">&#128205; Map</a>`:''}</div>${w.issues&&w.issues.length?`<div class="wentry-pills">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<div style="margin-top:5px;font-size:12px;color:#3B6D11;font-weight:600">&#9989; All clear</div>'}${w.notes?`<div style="font-size:12px;color:#636366;margin-top:5px">${w.notes}</div>`:''}</div>`).join('');
+    el.innerHTML=ww.map(w=>`<div class="wentry"><div class="wentry-hdr"><span class="wentry-date">${w.date}</span><span class="wentry-by">${w.reporter||'—'}</span></div><div style="font-size:11px;color:#636366">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped${w.gps?` · <a href="https://www.google.com/maps?q=${w.gps}" target="_blank" style="color:#185FA5;text-decoration:none">&#128205; Map</a>`:''}</div>${w.issues&&w.issues.length?`<div class="wentry-pills">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<div style="margin-top:4px;font-size:12px;color:#3B6D11;font-weight:600">&#9989; All clear</div>'}${w.notes?`<div style="font-size:11px;color:#636366;margin-top:4px">${w.notes}</div>`:''}</div>`).join('');
   }
 }
- 
-// ── Master / All activity ─────────────────────────────────────────────────────
+
+// ── All Activity (Master) ─────────────────────────────────────────────────────
 function renderMaster(t){
   if(t==='logs'){
     const all=[];
-    Object.entries(logs).forEach(([id,data])=>{
-      const m=MACHINES.find(x=>x.id===id);
-      Object.values(data).forEach(l=>all.push({...l,mid:id,m}));
-    });
+    Object.entries(logs).forEach(([id,data])=>{const m=MACHINES.find(x=>x.id===id);Object.values(data).forEach(l=>all.push({...l,mid:id,m}));});
     all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
     const el=document.getElementById('alllogs');
-    if(!all.length){el.innerHTML='<div class="empty">No log entries yet.</div>';return;}
+    if(!all.length){el.innerHTML='<div class="empty-state"><span class="eicon">&#128203;</span><p>No log entries yet</p><small>Scan a QR code or tap a machine to log it</small></div>';return;}
     el.innerHTML=all.map(l=>{
-      const gpsLink=l.gps?`<div style="margin-top:3px"><a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:12px">&#128205; ${l.gps}${l.gpsAcc?' (±'+l.gpsAcc+'m)':''} — Maps</a></div>`:'';
-      return`<div class="me" onclick="openMachine('${l.mid}',false)"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div>${l.reading?`<div class="merd">${Number(l.reading).toLocaleString()} ${l.m&&l.m.cat==='truck'?'mi':'hrs'}${l.fuel?' · Fuel: '+l.fuel:''}${l.loc?' · '+l.loc:''}</div>`:''} ${gpsLink}${l.issues?'<span class="ipill">&#9888; Issue reported</span>':''}</div>`;
+      const gl=l.gps?`<a href="https://www.google.com/maps?q=${l.gps}" target="_blank" style="color:#185FA5;text-decoration:none;font-size:11px">&#128205; Maps</a>`:'';
+      return`<div class="me" onclick="openMachine('${l.mid}',false)"><div class="met"><span class="mefl">${l.mid}</span><span class="medt">${l.date||l.ts.slice(0,10)}</span></div><div class="memac">${l.m?[l.m.make,l.m.model].filter(Boolean).join(' '):''}${l.reporter?' · '+l.reporter:''}</div>${l.reading?`<div class="merd">${Number(l.reading).toLocaleString()} ${l.m&&l.m.cat==='truck'?'mi':'hrs'}${l.fuel?' · '+l.fuel:''}${l.loc?' · '+l.loc:''} ${gl}</div>`:''}${l.issues?'<span class="ipill">&#9888; Issue</span>':''}</div>`;
     }).join('');
-  } else {
+  }else{
     const all=[];
-    Object.entries(walkarounds).forEach(([id,data])=>{
-      const m=MACHINES.find(x=>x.id===id);
-      Object.values(data).forEach(w=>all.push({...w,mid:id,m}));
-    });
+    Object.entries(walkarounds).forEach(([id,data])=>{const m=MACHINES.find(x=>x.id===id);Object.values(data).forEach(w=>all.push({...w,mid:id,m}));});
     all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
     const el=document.getElementById('allwa');
-    if(!all.length){el.innerHTML='<div class="empty">No walk-arounds yet.</div>';return;}
-    el.innerHTML=all.map(w=>`<div class="me" onclick="openMachine('${w.mid}',false)"><div class="met"><span class="mefl">${w.mid}</span><span class="medt">${w.date}</span></div><div class="memac">${w.m?[w.m.make,w.m.model].filter(Boolean).join(' '):''}${w.reporter?' · '+w.reporter:''}</div><div style="font-size:12px;color:#636366;margin-top:3px">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped${w.gps?` · <a href="https://www.google.com/maps?q=${w.gps}" target="_blank" style="color:#185FA5;text-decoration:none">&#128205; Map</a>`:''}</div>${w.issues&&w.issues.length?`<div class="wentry-pills" style="margin-top:5px">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<div style="margin-top:4px;font-size:12px;color:#3B6D11;font-weight:600">&#9989; All clear</div>'}</div>`).join('');
+    if(!all.length){el.innerHTML='<div class="empty-state"><span class="eicon">&#9989;</span><p>No walk-arounds yet</p><small>Open a machine and tap Walk-Around to start</small></div>';return;}
+    el.innerHTML=all.map(w=>`<div class="me" onclick="openMachine('${w.mid}',false)"><div class="met"><span class="mefl">${w.mid}</span><span class="medt">${w.date}</span></div><div class="memac">${w.m?[w.m.make,w.m.model].filter(Boolean).join(' '):''}${w.reporter?' · '+w.reporter:''}</div><div style="font-size:11px;color:#636366;margin-top:2px">${w.okCount} OK · ${w.badCount} issues · ${w.totalItems-(w.okCount+w.badCount)} skipped</div>${w.issues&&w.issues.length?`<div class="wentry-pills" style="margin-top:4px">${w.issues.map(i=>`<span class="wpill bad">&#9888; ${i}</span>`).join('')}</div>`:'<span class="gpill">&#9989; All clear</span>'}</div>`).join('');
   }
 }
- 
+
+// ── Alerts ────────────────────────────────────────────────────────────────────
+window.renderAlerts=function(){
+  const el=document.getElementById('alerts-content');
+  if(!alertLog.length){el.innerHTML='<div class="empty-state"><span class="eicon">&#128276;</span><p>No alerts yet</p><small>New logs, walk-arounds, and issues will appear here</small></div>';return;}
+  el.innerHTML=alertLog.map(a=>`<div class="alert-entry ${a.type}" onclick="showView('list')"><div class="alert-title">${a.title}</div><div class="alert-sub">${a.body}</div><div class="alert-time">${new Date(a.ts).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</div></div>`).join('');
+};
+
 // ── Toast ─────────────────────────────────────────────────────────────────────
-function toast(msg, type=''){
+function toast(msg,type=''){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.className='toast'+(type==='err'?' err':'');
-  t.style.display='block';
-  setTimeout(()=>t.style.display='none',3500);
+  t.innerHTML=msg;t.className='toast'+(type==='err'?' err':'');
+  t.style.display='block';setTimeout(()=>t.style.display='none',3500);
 }
- 
+
 // ── Boot ──────────────────────────────────────────────────────────────────────
+requestNotifPermission();
 subscribeAll();
-// QR scan deep-link: ?machine=T62
+updateAlertBadge();
 const urlM=new URLSearchParams(location.search).get('machine');
-if(urlM){
-  const m=MACHINES.find(x=>x.id===urlM);
-  if(m) setTimeout(()=>openMachine(m.id, true), 300);
-}
- 
-// Expose for inline HTML onclick handlers
-window.showView=showView;
-window.switchProfTab=switchProfTab;
-window.switchHistTab=switchHistTab;
-window.switchMasterTab=switchMasterTab;
+if(urlM){const m=MACHINES.find(x=>x.id===urlM);if(m)setTimeout(()=>openMachine(m.id,true),300);}
+
+window.switchProfTab=window.switchProfTab;
+window.switchHistTab=window.switchHistTab;
+window.switchMasterTab=window.switchMasterTab;
+window.showView=window.showView;
+
 </script>
 </body>
 </html>
- 
-
-
-
