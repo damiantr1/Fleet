@@ -139,7 +139,22 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f2f2f7;color:#1c
 .part-machine-tag{font-size:11px;font-weight:600;color:#185FA5;background:#e1ecf8;padding:2px 7px;border-radius:10px;display:inline-block;margin-top:4px}
 .part-link-row a{font-size:12px;color:#185FA5;text-decoration:none;word-break:break-all}
 .part-notes-row{font-size:11px;color:#636366;margin-top:3px}
-/* Bottom tabs */
+/* Info strip on profile header */
+.info-strip{background:#163d5e;color:#fff;padding:8px 14px;display:flex;gap:10px;flex-wrap:wrap}
+.info-chip{display:flex;flex-direction:column;font-size:10px;opacity:.7;min-width:80px}
+.info-chip strong{font-size:13px;font-weight:700;opacity:1;color:#fff;margin-top:1px}
+.info-chip.warn strong{color:#ffd60a}
+.info-chip.expired strong{color:#ff6b6b}
+/* Editable info panel */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.info-field{background:#f2f2f7;border-radius:8px;padding:9px 11px;cursor:pointer;border:1.5px solid transparent;transition:border .15s}
+.info-field:focus-within{border-color:#1F4E78;background:#fff}
+.info-field label{display:block;font-size:10px;font-weight:600;color:#8e8e93;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.info-field input{width:100%;background:none;border:none;font-size:14px;font-weight:600;color:#1c1c1e;font-family:inherit;padding:0}
+.info-field input:focus{outline:none}
+.info-field input::placeholder{color:#c7c7cc;font-weight:400}
+.info-save-btn{width:100%;padding:11px;background:#1F4E78;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px}
+.info-save-btn:active{opacity:.85}
 .tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:10}
 .tab{flex:1;padding:9px 4px 7px;text-align:center;cursor:pointer;font-size:10px;color:#8e8e93;border:none;background:none;font-weight:500;position:relative}
 .tab .ticon{font-size:19px;display:block;margin-bottom:1px}
@@ -217,6 +232,13 @@ input[type=file]{display:none}
       <div class="ph-meta" id="ph-meta"></div>
       <div class="ph-serial-line" id="ph-serial"></div>
     </div>
+    <!-- Live info strip — current hours/miles, registration, insurance -->
+    <div class="info-strip" id="info-strip" style="display:none">
+      <div class="info-chip" id="chip-reading"><span>Hours / Miles</span><strong id="chip-reading-val">—</strong></div>
+      <div class="info-chip" id="chip-reg"><span>Registration</span><strong id="chip-reg-val">—</strong></div>
+      <div class="info-chip" id="chip-ins"><span>Insurance</span><strong id="chip-ins-val">—</strong></div>
+      <div class="info-chip" id="chip-plate"><span>Plate</span><strong id="chip-plate-val">—</strong></div>
+    </div>
     <div class="status-bar">
       <span>Status:</span>
       <button class="status-btn ready" id="status-ready-btn" onclick="setMachineStatus('ready')">&#9679; Ready to Go</button>
@@ -227,13 +249,103 @@ input[type=file]{display:none}
     <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotos(this)">
     <div class="prof-tabs">
       <button class="prof-tab active" id="ptab-log" onclick="switchProfTab('log')">&#128203; Log</button>
+      <button class="prof-tab" id="ptab-info" onclick="switchProfTab('info')">&#128196; Info</button>
       <button class="prof-tab" id="ptab-wa" onclick="switchProfTab('wa')">&#9989; Walk-Around</button>
       <button class="prof-tab" id="ptab-parts" onclick="switchProfTab('parts')">&#128295; Parts</button>
       <button class="prof-tab" id="ptab-hist" onclick="switchProfTab('hist')">&#128337; History</button>
     </div>
     <div class="toast" id="toast"></div>
 
-    <!-- LOG PANEL -->
+    <!-- INFO PANEL -->
+    <div class="prof-panel" id="panel-info">
+      <div class="lform">
+        <div class="fc">
+          <h3>Current reading</h3>
+          <div class="info-grid">
+            <div class="info-field" style="grid-column:1/-1">
+              <label id="info-reading-lbl">Hours / Miles</label>
+              <input type="number" id="info-reading" placeholder="Enter current reading" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+        <div class="fc">
+          <h3>Registration</h3>
+          <div class="info-grid">
+            <div class="info-field">
+              <label>Expiry date</label>
+              <input type="text" id="info-reg-exp" placeholder="e.g. 06/30/2026">
+            </div>
+            <div class="info-field">
+              <label>Plate #</label>
+              <input type="text" id="info-plate" placeholder="e.g. 4PN5097">
+            </div>
+          </div>
+          <div class="info-grid" style="margin-top:0">
+            <div class="info-field" style="grid-column:1/-1">
+              <label>Registration notes</label>
+              <input type="text" id="info-reg-notes" placeholder="e.g. Renewed, in glove box...">
+            </div>
+          </div>
+        </div>
+        <div class="fc">
+          <h3>Insurance</h3>
+          <div class="info-grid">
+            <div class="info-field">
+              <label>Expiry date</label>
+              <input type="text" id="info-ins-exp" placeholder="e.g. 12/31/2026">
+            </div>
+            <div class="info-field">
+              <label>Provider</label>
+              <input type="text" id="info-ins-provider" placeholder="e.g. State Farm">
+            </div>
+          </div>
+          <div class="info-grid" style="margin-top:0">
+            <div class="info-field" style="grid-column:1/-1">
+              <label>Policy #</label>
+              <input type="text" id="info-ins-policy" placeholder="Policy number">
+            </div>
+          </div>
+        </div>
+        <div class="fc">
+          <h3>Assignment</h3>
+          <div class="info-grid">
+            <div class="info-field">
+              <label>Assigned operator</label>
+              <input type="text" id="info-operator" placeholder="Name">
+            </div>
+            <div class="info-field">
+              <label>Home location</label>
+              <input type="text" id="info-location" placeholder="Yard, shop, site...">
+            </div>
+          </div>
+        </div>
+        <div class="fc">
+          <h3>Last service</h3>
+          <div class="info-grid">
+            <div class="info-field">
+              <label>Last service date</label>
+              <input type="text" id="info-svc-date" placeholder="e.g. 04/15/2026">
+            </div>
+            <div class="info-field">
+              <label>Reading at last service</label>
+              <input type="number" id="info-svc-reading" placeholder="e.g. 1200" inputmode="numeric">
+            </div>
+          </div>
+          <div class="info-grid" style="margin-top:0">
+            <div class="info-field">
+              <label>Service interval</label>
+              <input type="number" id="info-svc-interval" placeholder="e.g. 5000 mi / 250 hrs" inputmode="numeric">
+            </div>
+            <div class="info-field">
+              <label>Next service due</label>
+              <input type="text" id="info-svc-next" placeholder="Auto-calc or enter" readonly style="color:#636366">
+            </div>
+          </div>
+        </div>
+        <button class="info-save-btn" id="info-save-btn" onclick="saveInfo()">Save Info</button>
+        <p style="font-size:11px;color:#8e8e93;text-align:center;margin-top:8px">This info stays on the profile permanently and syncs to everyone.</p>
+      </div>
+    </div>
     <div class="prof-panel active" id="panel-log">
       <div class="lform">
         <div class="fc">
@@ -412,7 +524,7 @@ const WA_EQUIP=[
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let cur=null,fuelVal='',lbIdx=null,gpsCoords=null,fromScan=false;
-let logs={},photos={},walkarounds={},machineStatus={},parts={},waState={};
+let logs={},photos={},walkarounds={},machineStatus={},parts={},machineInfo={},waState={};
 let unsubLogs=null,unsubWA=null,unsubPhotos=null;
 let alertLog=JSON.parse(localStorage.getItem('r3_alerts')||'[]');
 let lastSeenCount=parseInt(localStorage.getItem('r3_alerts_seen')||'0');
@@ -490,6 +602,132 @@ window.switchProfTab=function(t){
   document.getElementById('panel-'+t).classList.add('active');
   if(t==='hist')renderHistory('logs');
   if(t==='parts')renderParts();
+  if(t==='info'&&cur)renderInfoPanel(cur.id);
+};
+
+// ── Machine Info (permanent, overwrites in place) ─────────────────────────────
+function renderInfoPanel(id){
+  const info=machineInfo[id]||{};
+  const fields={
+    'info-reading':info.reading||'',
+    'info-reg-exp':info.regExp||'',
+    'info-plate':info.plate||'',
+    'info-reg-notes':info.regNotes||'',
+    'info-ins-exp':info.insExp||'',
+    'info-ins-provider':info.insProvider||'',
+    'info-ins-policy':info.insPolicy||'',
+    'info-operator':info.operator||'',
+    'info-location':info.location||'',
+    'info-svc-date':info.svcDate||'',
+    'info-svc-reading':info.svcReading||'',
+    'info-svc-interval':info.svcInterval||'',
+  };
+  Object.entries(fields).forEach(([id,val])=>{
+    const el=document.getElementById(id);
+    if(el)el.value=val;
+  });
+  // Auto-calc next service due
+  calcNextService(info);
+  // Update reading label
+  const lbl=document.getElementById('info-reading-lbl');
+  if(lbl)lbl.textContent=cur&&cur.cat==='truck'?'Current mileage (odometer)':'Current hours (hour meter)';
+}
+
+function calcNextService(info){
+  const el=document.getElementById('info-svc-next');
+  if(!el)return;
+  const lastRead=parseFloat(info.svcReading);
+  const interval=parseFloat(info.svcInterval);
+  const current=parseFloat(info.reading);
+  if(!isNaN(lastRead)&&!isNaN(interval)){
+    const dueAt=lastRead+interval;
+    const remaining=dueAt-(!isNaN(current)?current:lastRead);
+    const unit=cur&&cur.cat==='truck'?'mi':'hrs';
+    if(!isNaN(current)&&remaining<=0){
+      el.value=`OVERDUE by ${Math.abs(Math.round(remaining)).toLocaleString()} ${unit}`;
+    } else if(!isNaN(current)){
+      el.value=`${Math.round(remaining).toLocaleString()} ${unit} remaining (due at ${dueAt.toLocaleString()})`;
+    } else {
+      el.value=`Due at ${dueAt.toLocaleString()} ${unit}`;
+    }
+  } else {
+    el.value='';
+  }
+}
+
+function renderInfoStrip(id){
+  const info=machineInfo[id]||{};
+  const strip=document.getElementById('info-strip');
+  const hasAny=info.reading||info.regExp||info.insExp||info.plate;
+  if(!strip)return;
+  strip.style.display=hasAny?'flex':'none';
+
+  // Reading chip
+  const rv=document.getElementById('chip-reading-val');
+  const rc=document.getElementById('chip-reading');
+  if(info.reading){
+    rv.textContent=Number(info.reading).toLocaleString()+(cur&&cur.cat==='truck'?' mi':' hrs');
+    rc.style.display='flex';
+  } else rc.style.display='none';
+
+  // Registration chip — warn if expiring within 60 days
+  const regEl=document.getElementById('chip-reg-val');
+  const regChip=document.getElementById('chip-reg');
+  if(info.regExp){
+    regEl.textContent=info.regExp;
+    const exp=new Date(info.regExp);
+    const daysLeft=Math.ceil((exp-Date.now())/(86400000));
+    regChip.className='info-chip'+(daysLeft<0?' expired':daysLeft<60?' warn':'');
+    regChip.style.display='flex';
+  } else regChip.style.display='none';
+
+  // Insurance chip
+  const insEl=document.getElementById('chip-ins-val');
+  const insChip=document.getElementById('chip-ins');
+  if(info.insExp){
+    insEl.textContent=info.insExp;
+    const exp=new Date(info.insExp);
+    const daysLeft=Math.ceil((exp-Date.now())/(86400000));
+    insChip.className='info-chip'+(daysLeft<0?' expired':daysLeft<60?' warn':'');
+    insChip.style.display='flex';
+  } else insChip.style.display='none';
+
+  // Plate chip
+  const plateEl=document.getElementById('chip-plate-val');
+  const plateChip=document.getElementById('chip-plate');
+  if(info.plate){
+    plateEl.textContent=info.plate;
+    plateChip.style.display='flex';
+  } else plateChip.style.display='none';
+}
+
+window.saveInfo=async function(){
+  if(!cur)return;
+  const btn=document.getElementById('info-save-btn');
+  btn.disabled=true;btn.textContent='Saving...';
+  const info={
+    reading:document.getElementById('info-reading').value,
+    regExp:document.getElementById('info-reg-exp').value,
+    plate:document.getElementById('info-plate').value,
+    regNotes:document.getElementById('info-reg-notes').value,
+    insExp:document.getElementById('info-ins-exp').value,
+    insProvider:document.getElementById('info-ins-provider').value,
+    insPolicy:document.getElementById('info-ins-policy').value,
+    operator:document.getElementById('info-operator').value,
+    location:document.getElementById('info-location').value,
+    svcDate:document.getElementById('info-svc-date').value,
+    svcReading:document.getElementById('info-svc-reading').value,
+    svcInterval:document.getElementById('info-svc-interval').value,
+    updatedTs:new Date().toISOString(),
+  };
+  try{
+    await set(ref(db,`info/${cur.id}`),info);
+    machineInfo[cur.id]=info;
+    calcNextService(info);
+    renderInfoStrip(cur.id);
+    toast('Info saved — visible to everyone');
+  }catch(e){toast('Save failed','err');}
+  btn.disabled=false;btn.textContent='Save Info';
 };
 
 window.switchHistTab=function(t){
@@ -563,6 +801,7 @@ window.openMachine=function(id,scan=false){
   switchProfTab('log'); buildWAChecklist();
   showView('profile'); window.scrollTo(0,0);
   subscribeToMachine(id); renderStatusBar(); renderParts();
+  renderInfoStrip(id);
   if(scan)startGPS();else setGPSIdle();
 };
 
@@ -595,6 +834,11 @@ function subscribeToMachine(id){
     const cnt=Object.keys(parts[id]).length;
     const pt=document.getElementById('ptab-parts');
     if(pt)pt.textContent=cnt?`&#128295; Parts (${cnt})`:'&#128295; Parts';
+  });
+  onValue(ref(db,`info/${id}`),snap=>{
+    machineInfo[id]=snap.exists()?snap.val():{};
+    renderInfoPanel(id);
+    renderInfoStrip(id);
   });
 }
 
@@ -658,6 +902,7 @@ function subscribeAll(){
     renderList(MACHINES);
   });
   onValue(ref(db,'status'),snap=>{machineStatus=snap.exists()?snap.val():{};renderList(MACHINES);});
+  onValue(ref(db,'info'),snap=>{machineInfo=snap.exists()?snap.val():{};});
   onValue(ref(db,'parts'),snap=>{
     const prev=JSON.stringify(parts);
     parts=snap.exists()?snap.val():{};
